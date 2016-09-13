@@ -1,0 +1,12 @@
+执行日期：20160711160015
+{"discount":"0.00","payment_type":"1","subject":"\u3010\u5f20\u56fd\u8363\u3011\u6d3b\u52a8\u660e\u767d","trade_no":"2016071121001004290214332266","buyer_email":"15301321671","gmt_create":"2016-07-11 16:00:17","notify_type":"trade_status_sync","quantity":"1","out_trade_no":"146822400884864923","seller_id":"2088021513714217","notify_time":"2016-07-11 16:00:17","body":"\u9884\u7ea6\u3010\u5f20\u56fd\u8363\u3011\u53c2\u52a0\u6d3b\u52a8\u660e\u767d","trade_status":"WAIT_BUYER_PAY","is_total_fee_adjust":"Y","total_fee":"0.01","seller_email":"3280316580@qq.com","price":"0.01","buyer_id":"2088702719575294","notify_id":"264e59b454ae9eee95a98a843147757i8m","use_coupon":"N","sign_type":"RSA","sign":"eDz9xdvk9skZu6B0hnov\/K+1tD1zOyxFhn\/ePzlNjyvL5QWVlmk7WjxyP7A2NiH8QbewaSv2N4Nguo0tnJ7n7MM+lJp437KJhJWj5fHTyyZfwOt85Gs4sOLtG\/T0ELYwbKJubsmTWuPtqM3emDQ0Zb94ignqm6vXOZbSvG+SGdE="}--succes
+执行日期：20160711160015
+WAIT_BUYER_PAY--交易状态
+执行日期：20160711160015
+146822400884864923--订单号
+执行日期：20160711160016
+{"discount":"0.00","payment_type":"1","subject":"\u3010\u5f20\u56fd\u8363\u3011\u6d3b\u52a8\u660e\u767d","trade_no":"2016071121001004290214332266","buyer_email":"15301321671","gmt_create":"2016-07-11 16:00:17","notify_type":"trade_status_sync","quantity":"1","out_trade_no":"146822400884864923","seller_id":"2088021513714217","notify_time":"2016-07-11 16:00:18","body":"\u9884\u7ea6\u3010\u5f20\u56fd\u8363\u3011\u53c2\u52a0\u6d3b\u52a8\u660e\u767d","trade_status":"TRADE_SUCCESS","is_total_fee_adjust":"N","total_fee":"0.01","gmt_payment":"2016-07-11 16:00:18","seller_email":"3280316580@qq.com","price":"0.01","buyer_id":"2088702719575294","notify_id":"24f7f62b67c7364e9c85ddbe89fc533i8m","use_coupon":"N","sign_type":"RSA","sign":"Vb2OVCEQynp1cD2fLKquEw88da5670LVXDxJTkcTQnrmfQSKJlm7BUZc8\/NN9vD4kPvz3lZdPKfxrCmnXpjPF7cRicqRiYrP1TpSSSyAmoNjzZBcbZZU6CXGOoid6WJ6y2NBup5VpcJECCaVhAK2hMo+8jpBYpTfX3n0nP8DHgc="}--succes
+执行日期：20160711160016
+TRADE_SUCCESS--交易状态
+执行日期：20160711160016
+146822400884864923--订单号

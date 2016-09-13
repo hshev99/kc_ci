@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/static/pc/css/style.css" type="text/css" rel="stylesheet" />
+<script src="/static/pc/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/pc/jedate/jedate.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/pc/jedate/skin/jedate.css">
+    <script language="javascript" src="/static/pc/js/PCASClass.js"></script>
+</head>
+
+<body class="back3">
+<?php include "header.html";?>
+<div id="main">
+	<div class="content_1000">
+    	<div class="orderSub">
+        	<div class="procedure1">
+            	<ul>
+                	<li class="on"><span>1</span><br /><em>提交订单</em></li>
+                    <li><span>2</span><br /><em>在线支付</em></li>
+                    <li><span>3</span><br /><em>确认完成</em></li>
+                </ul>
+            </div>
+            <div class="oredrInfo">
+            	<div class="orderTit">艺人信息</div>
+                <div class="singerOrderInfo">
+                	<div class="singImg"><img id="sing_img" src="" /></div>
+                    <div class="singRight">
+                    	<ul>
+                        	<li style="font-size:16px;"></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="orderTit">活动信息</div>
+                <div class="activityInfo">
+               		 <table cellpadding="0" cellspacing="0" border="0">
+                     	<tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 活动名称</td>
+                            <td width="25"></td>
+                            <td><input type="text" class="input_300_" id="activityName" /></td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 活动地点</td>
+                            <td width="25"></td>
+                            <td>
+                                <select class="address" id="province" name="province"></select>
+                                <select class="address" id="city" name="city"></select>
+                                <select class="address" id="area" name="area"></select>
+                            </td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 联系人</td>
+                            <td width="25"></td>
+                            <td><input type="text" class="input_300_" id="peopleName" /></td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 联系方式</td>
+                            <td width="25"></td>
+                            <td><input type="text" class="input_300_" id="phone_num" /></td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 到场时间</td>
+                            <td width="25"></td>
+                            <td><input type="text" class="input_300_ workinput wicon mr25" id="inpstart" readonly/></td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 结束时间</td>
+                            <td width="25"></td>
+                            <td><input type="text" class="input_300_ workinput wicon mr25" id="inpend" readonly/></td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 行程类别</td>
+                            <td width="25"></td>
+                            <td id="type_"></td>
+                        </tr>
+                         <tr height="60">
+                             <td width="115" align="right"><font style="color:#fa424c">*</font> 演出保险</td>
+                             <td width="25"></td>
+                             <td id="chan">
+                                 <em class="on">室内</em>
+                                 <em>室外</em>
+                             </td>
+                             <script>
+                                 $(function(){
+                                     var $tit1=$('#chan em');
+                                     $tit1.click(function(){
+                                         $tit1.removeClass('on');
+                                         $(this).addClass('on');
+                                     });
+                                 })
+                             </script>
+                         </tr>
+                        <tr height="60">
+                        	<td width="115" align="right">演出数量</td>
+                            <td width="25"></td>
+                            <td>
+                            	<select class="activSel" id="song">
+                                	<option>请选择</option>
+                                    <script>
+                                        for(var opti = 1; opti<=20; opti++){
+                                            document.write('<option>');
+                                            document.write(opti+'*首');
+                                            document.write('</option>');
+                                        }
+                                    </script>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right">餐饮别准</td>
+                            <td width="25"></td>
+                            <td>
+                            	<select class="activSel" id="eat">
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right">住宿标准</td>
+                            <td width="25"></td>
+                            <td>
+                            	<select class="activSel" id="hotel">
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right">出行标准</td>
+                            <td width="25"></td>
+                            <td>
+                            	<select class="activSel" id="traffic">
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right"><font style="color:#fa424c">*</font> 演出保险</td>
+                            <td width="25"></td>
+                            <td id="have">
+                            	<em class="on">有</em>
+                                <em>无</em>
+                            </td>
+                            <script>
+                                $(function(){
+                                    var $tit=$('#have em');
+                                    $tit.click(function(){
+                                        $tit.removeClass('on');
+                                        $(this).addClass('on');
+                                    });
+                                })
+                            </script>
+                        </tr>
+                        <tr height="60">
+                        	<td width="115" align="right">备注</td>
+                            <td width="25"></td>
+                            <td><input type="text" class="input_500_" id="remarks" placeholder="请填写备注，不得多于30字。" /></td>
+                        </tr>
+                     </table>
+                </div>
+                <div class="orderTit">支付方式</div>
+                <div class="payment" id="payment1">
+                	<a class="on"><img src="/static/pc/images/order1.jpg" width="29" height="29" /> &nbsp;支付宝付款</a>
+                    <a><img src="/static/pc/images/order2.jpg" width="29" height="29" /> &nbsp;&nbsp;微信支付</a>
+                    <script>
+                        $(function(){
+                            var $tit=$('.payment a');
+                            $tit.click(function(){
+                                $tit.removeClass('on');
+                                $(this).addClass('on');
+                            });
+                        })
+                    </script>
+                </div>
+            </div>
+            <div class="paySub">
+        	<div class="amount">
+
+            </div>
+            <button id="button">提交订单</button>
+        </div>
+        </div>
+    </div> 
+</div>
+<div id="footer"></div>
+<script type="text/javascript">
+    new PCAS("province","city","area","所在省","所在市","所在区");
+    var start = {
+        dateCell: '#inpstart',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        minDate: jeDate.now(1), //设定最小日期为当前日期
+        initAddVal:[1],
+        isinitVal:true,
+        festival:true,
+        ishmsVal:false,
+        maxDate: '2099-06-30 23:59:59', //最大日期
+        choosefun: function(elem,datas){
+            end.minDate = datas; //开始日选好后，重置结束日的最小日期
+        }
+    };
+    var end = {
+        dateCell: '#inpend',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        minDate: jeDate.now(2), //设定最小日期为当前日期
+        festival:true,
+        maxDate: '2099-06-16 23:59:59', //最大日期
+        choosefun: function(elem,datas){
+            start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+        }
+    };
+    jeDate(start);
+    jeDate(end);
+
+</script>
+<script type="text/javascript">
+    var uid="<?php echo $uid?>";
+    var activity_id="<?php echo $activity_id?>";
+    payNum = 0;
+$(document).ready(function(){
+    $.ajax({
+        type:'get',
+        url:'../UserInfo/get_user_info?uid='+uid,
+        dataType:'json',
+        success:function(data){
+            $('#sing_img').attr('src',data.results.info.img);
+            $('.singRight ul li:first').html('<span style="color:#212121" id="nam">'+data.results.info.name+'</span> &nbsp;&nbsp;&nbsp;<span>'+data.results.info.nick+'</span>');
+            var tr = '';
+            for(var num = 0; num<data.results.style.length; num++){
+               var cha =  data.results.style[num].selected;
+                if(cha == 'T'){
+                   tr+='“'+data.results.style[num].name+'”'+' ';
+                }
+            }
+            $('.singRight ul li:eq(1)').html(tr);
+            $('.singRight ul li:last').html('预约定金：<span style="font-size:20px; color:#fa424c">￥'+data.results.info.about_price+'</span> &nbsp;&nbsp; 出场费用：<span style="font-size:20px; color:#fa424c">￥'+data.results.info.price+'</span><font style="color:#fa424c; font-size:14px;">万/场</font>');
+
+            var chi = '';
+            for(var sing =0; sing < data.results.meal.length; sing++){
+                var che = data.results.meal[sing].selected;
+                if(che == 'T'){
+                    chi +='<option>'+data.results.meal[sing].name+' 元/天'+'</option>'
+                }
+            }
+            $('#eat').html('<option>请选择</option>'+chi);
+
+            var zhu = '';
+            for(var hos =0; hos < data.results.hotel.length; hos++){
+                var hosS = data.results.hotel[hos].selected;
+                if(hosS == 'T'){
+                    zhu +='<option>'+data.results.hotel[hos].name+'</option>'
+                }
+            }
+            $('#hotel').html('<option>请选择</option>'+zhu);
+
+            var xin = '';
+            for(var tra =0; tra < data.results.traffic.length; tra++){
+                var traNum = data.results.traffic[tra].selected;
+                if(traNum == 'T'){
+                    xin +='<option>'+data.results.traffic[tra].name+'</option>';
+                }
+            }
+            $('#traffic').html('<option>请选择</option>'+xin);
+            var yan = '';
+            for(var num1 =0; num1 < data.results.activity.length; num1++){
+                var yanNum = data.results.activity[num1].selected;
+                var yanNumId = data.results.activity[num1].id;
+                if(yanNum == 'T' && yanNumId == activity_id){
+                    yan +='<span>'+data.results.activity[num1].name+'</span>';
+                }
+            }
+            $('#type_').html(yan);
+            $('.amount').html('预约定金：<span style="font-size:20px; color:#fa424c;" >￥<font id="payId">'+data.results.info.about_price+'</font></span><br />请再次确认以上信息准确无误')
+            payNum =data.results.info.about_price;
+        }
+    })
+});
+    $(function(){
+        $('#button').click(function(){
+            if($('#activityName').val() == ''){
+                alert('请填写活动名称');
+                document.getElementById('activityName').focus();
+                return false;
+            }
+            var opt = document.getElementById("province").value;
+            if(opt == ''){
+                alert('请选择活动地点');
+                return false;
+            }
+            if($('#peopleName').val() == ''){
+                alert('请填写联系人');
+                document.getElementById('peopleName').focus();
+                return false;
+            }
+            var myNum = /^((1[3-8]{1})+\d{9})$/;
+            if($('#phone_num').val() == ''){
+                alert('请填写联系方式');
+                document.getElementById('phone_num').focus();
+                return false;
+            }else if(!myNum.test($('#phone_num').val())){
+                alert('联系方式格式不正确');
+                document.getElementById('phone_num').focus();
+                return false;
+            }
+            if($('#inpend').val()==''){
+                alert('请填写活动结束时间');
+                document.getElementById('inpend').focus();
+                return false;
+            }
+            if($('#remarks').val().length <= 30){
+            }else{
+                alert('备注信息不多于30字');
+                document.getElementById('remarks').focus();
+                return false;
+            }
+            var active = '';
+            lis = document.getElementById('have').getElementsByTagName('em');
+            for(var zp =0; zp < lis.length; zp++){
+                if(lis[zp].className=="on"){
+                    active=lis[zp].innerHTML;
+                }
+            }
+            var act = '';
+            ap = document.getElementById('type_').getElementsByTagName('span');
+            for(var cp =0; cp < ap.length; cp++){
+                    act=ap[cp].innerHTML;
+                }
+            var cha = '';
+            jin = document.getElementById('chan').getElementsByTagName('em');
+            for(var cj =0; cj < jin.length; cj++){
+                if(jin[cj].className=="on"){
+                    cha=jin[cj].innerHTML;
+                }
+            }
+            var pay = '';
+            payment1 =document.getElementById('payment1').getElementsByTagName('a');
+            for(var py =0; py<payment1.length; py++){
+                if(payment1[py].className == 'on'){
+                    var payn=payment1[py].innerHTML;
+                    if(payn =='<img src="/static/pc/images/order1.jpg" width="29" height="29"> &nbsp;支付宝付款'){
+                        pay='1'
+                    }else{
+                        pay='2'
+                    }
+                }
+            }
+            var opt1 = document.getElementById("song").value;
+            var et = document.getElementById("eat").value;
+            var ho = document.getElementById("hotel").value;
+            var tra = document.getElementById("traffic").value;
+            $.ajax({
+                type:'post',
+                url:'../orders/index',
+                dataType: 'json',
+                data:{
+                    worker_img:$('#sing_img').attr('src'),
+                    boss_uid : '<?php echo $uid?>',
+                    worker_uid :'<?php echo $uid?>',
+                    performace_name : $('#activityName').val(),
+                    start_time : $('#inpstart').val(),
+                    place: $('#province').val()+'-'+$('#city').val()+'-'+$('#area').val(),
+                    phone: $('#phone_num').val(),
+                    end_time : $('#inpend').val(),
+                    per_menber : opt1,
+                    meal : et,
+                    live : ho,
+                    travel : tra,
+                    cate : act,
+                    scen: cha,
+                    pay_way:pay,
+                    pay_amount:payNum,
+                    note : $('#remarks').val(),
+                    insurance :active
+                },
+                success:function(data){
+                    var ha ="http://www.51huole.cn/pc/payment?uid="+uid+"&order_sn="+data.results.order_sn+"";
+                    window.location =ha;
+                }
+            })
+        })
+    });
+</script>
+</body>
+</html>

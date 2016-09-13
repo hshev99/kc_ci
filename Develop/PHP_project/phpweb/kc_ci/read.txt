@@ -1,0 +1,9 @@
+1.php 版本 7.0
+2.PHP扩展
+	1.redis
+	2.memcache
+	3.sphinx
+	4.elactearch
+3.mysql 主从数据库
+
+4.redis缓存

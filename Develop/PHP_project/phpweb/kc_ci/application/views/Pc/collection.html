@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/static/pc/css/style.css" type="text/css" rel="stylesheet" />
+<script src="/static/pc/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+</head>
+
+<body class="back">
+<?php include "header.html";?>
+<div id="main">
+	<div class="wrap">
+    	<div class="content">
+        	<div class="infomation" style="margin-top:80px;">
+                <div class="collection">
+                	<div class="coll">
+                    	<span>我的收藏</span>
+                    	<div class="right_span"><a href="#">首页</a> &nbsp;>&nbsp; <a href="#">我的</a> &nbsp;>&nbsp; <a href="#" class="on">我的收藏</a></div>
+                    </div>
+                	<div class="coll_list">
+                    	<ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<div id="footer"></div>
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url:'../userfocus?uid=41',
+            type:'get',
+            dataType:'json',
+            success:function(data){
+               var coll_list ='';
+               for(var j =0; j < data.results.length; j++){
+                   coll_list+='<li><a href="">'
+                           +'<div class="t_img_col"><img src="'+data.results[j].img+'" /></div>'
+                           +'<div class="d_text_col"><nobr>'+data.results[j].name+'</nobr></div>'
+                           +'</a></li>';
+               }
+               $('.coll_list ul').html(coll_list);
+            }
+        })
+    })
+</script>
+</body>
+</html>
