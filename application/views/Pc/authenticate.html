@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/static/pc/css/style.css" type="text/css" rel="stylesheet" />
+<script src="/static/pc/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="/static/pc/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="/static/pc/js/register.js" type="text/javascript"></script>
+<script src="/static/pc/js/jquery.uploadfile.min.js" type="text/javascript"></script>
+<script src="/static/pc/js/jquery.form.js" type="text/javascript"></script>
+</head>
+
+<body class="back3">
+<?php include "header.html";?>
+<div id="main">
+	<div class="content_800">
+    	<div class="register">
+        	<div class="procedure">
+            	<ul>
+                	<li class="on"><span>1</span><br /><em>注册</em></li>
+                    <li class="on"><span>2</span><br /><em>认证</em></li>
+                    <li><span>3</span><br /><em>完成</em></li>
+                </ul>
+            </div>
+            <div class="authentication">
+                <div class="autTit hd">
+                    <ul>
+                        <li class="first">歌手认证</li>
+                        <li>企业认证</li>
+                        <li>经纪人认证</li>
+                        <li>经纪公司认证</li>
+                    </ul>
+                </div>
+                <div class="autBox bd">
+                    <form action="authentication_singer" name="form1" method="post">
+                    <ul>
+                    	<table cellpadding="0" cellspacing="0" border="0">
+                        	<tr height="60">
+                            	<td width="240" align="right">认证名称</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" class="input_300_" id="name_sing_user" name='name_sing' placeholder="歌手/乐队/组合名称/艺名" /></td>
+                            </tr>
+                            <tr height="60">
+                                <td width="240" align="right">歌手类型</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                    <label><input type="radio" name="sing_lei" class="certificates" checked="checked" value="0"/> <span>女歌手</span></label>
+                                    <label><input type="radio" name="sing_lei" class="certificates" value="1"/> <span>男歌手</span></label>
+                                    <label><input type="radio" name="sing_lei" class="certificates" value="2"/> <span>组合</span></label>
+                                </td>
+                            </tr>
+                            <tr height="60">
+                                <td width="240" align="right">认证人姓名</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" class="input_300_" id="name_sing" name='name_sing' placeholder="请输入本人的真实姓名" /></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">联系方式</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" class="input_300_" id="phone_sing" name="phone_sing" placeholder="请输入本人有效联系方式" /></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">证件类型</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                <label><input type="radio" name="certificates" class="certificates" checked="checked" value="1"/> <span>二代居民身份证</span></label>
+                                <label><input type="radio" name="certificates" class="certificates" value="2"/> <span>护照</span></label>
+                                </td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">证件号码</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" class="input_300_" id="id_sing" name="id_sing" placeholder="请输入本人真实证件号码" /></td>
+                            </tr>
+                            <tr>
+                            	<td width="240" align="right" valign="top" style="line-height:60px">证件图片</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                	<div class="photo">
+                                    	<div class="top_info">请上传本人证件，确保图片清晰完整。</div>
+                                        <div class="cer_img">
+                                            <input type="hidden" class="nameText" name="way" value="1"/>
+                                            <input type="hidden" id="fileuploader0_input" class="nameText" name="img_positive"/>
+                                            <input type="hidden" id="fileuploader1_input" class="nameText" name="img_reverse"/>
+                                        	<div class="l_img" name="fileuploader0"><div id="fileuploader0"></div></div>
+                                            <div class="l_img" name="fileuploader1"><div id="fileuploader1"></div>
+                                        </div>
+                                        </div>
+                                        <div class="exhibition">
+                                        	<span><img src="/static/pc/images/ce3.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                            <span><img src="/static/pc/images/ce4.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr height="45">
+                            	<td width="800" colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><span style="width:300px; text-align:center; float:left; color:#212121; font-size:14px;">请确保以上信息准确有效</span></td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="submit" class="button_sub" id="sing_sub" value="确认提交" /></td>
+                            </tr>
+                        </table>
+                    </ul>
+                    </form>
+                    <form action="authentication_enterprise" name="form2" method="post">
+                    <ul>
+                    	<table cellpadding="0" cellspacing="0" border="0">
+
+                        	<tr height="60">
+                            	<td width="240" align="right">企业全称</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="name_enter" class="input_300_" name="name_enter"/></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">联系方式</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="phone_enter" class="input_300_" name="phone_enter"/></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">营业执照注册号</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="license_enter" class="input_300_" name="license_enter"/></td>
+                            </tr>
+                            <tr height="60">
+                                <td width="240" align="right">认证人姓名</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="per_name_enter" class="input_300_" name="per_name_enter"/></td>
+                            </tr>
+                            <tr>
+                            	<td width="240" align="right" valign="top" style="line-height:60px">营业执照上传</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                	<div class="photo">
+                                    	<div class="top_info">请上传企业营业执照，确保图片清晰完整。</div>
+                                        <div class="cer_img">
+                                            <input type="hidden" id="fileuploader2_input" class="nameText" name="fileuploader2"/>
+                                        	<div class="l_img"><div id="fileuploader2" ></div></div>
+                                            <span><img src="/static/pc/images/ce3.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr height="45">
+                            	<td width="800" colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><span style="width:300px; text-align:center; float:left; color:#212121; font-size:14px;">请确保以上信息准确有效</span></td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="submit" class="button_sub" id="enter_sub" value="确认提交" /></td>
+                            </tr>
+                        </table>
+                    </ul>
+                    </form>
+                    <form action="authentication_broker" name="form3" method="post">
+                    <ul>
+                    	<table cellpadding="0" cellspacing="0" border="0">
+                        	<tr height="60">
+                            	<td width="240" align="right">经纪人姓名</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="broker_name" class="input_300_" placeholder="请输入本人的真实姓名" name="broker_name"/></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">联系方式</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="broker_phone" class="input_300_" placeholder="请输入本人有效联系方式" name="broker_phone"/></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">证件类型</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                <label><input type="radio" name="broker" class="certificates" checked="checked" value="1"/> <span>二代居民身份证</span></label>
+                                <label><input type="radio" name="broker" class="certificates" value="2"/> <span>护照</span></label>
+                                </td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">证件号码</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="broker_id" class="input_300_" placeholder="请输入本人真实证件号码" name="broker_id"/></td>
+                            </tr>
+                            <tr>
+                            	<td width="240" align="right" valign="top" style="line-height:60px">证件图片</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                	<div class="photo">
+                                    	<div class="top_info">请上传本人证件，确保图片清晰完整。</div>
+                                        <div class="cer_img">
+                                        <input type="hidden" class="nameText" name="way2" value="2"/>
+                                            <input type="hidden" id="fileuploader5_input" class="nameText" name="fileuploader5"/>
+                                            <input type="hidden" id="fileuploader6_input" class="nameText" name="fileuploader6"/>
+                                        	<div class="l_img"><div id="fileuploader5"></div></div>
+                                            <div class="l_img"><div id="fileuploader6"></div></div>
+                                        </div>
+                                        <div class="exhibition">
+                                        	<span><img src="/static/pc/images/ce3.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                            <span><img src="/static/pc/images/ce4.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                            	<td width="240" align="right" valign="top" style="line-height:60px">经纪人证图片</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                	<div class="photo">
+                                    	<div class="top_info">请上传经纪人证证件图片，确保图片清晰完整。</div>
+                                        <div class="cer_img">
+                                            <input type="hidden" id="fileuploader7_input" class="nameText" name="img_positive7"/> 
+                                        	<div class="l_img"><div id="fileuploader7"></div></div>
+                                            <span><img src="/static/pc/images/ce3.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr height="45">
+                            	<td width="800" colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><span style="width:300px; text-align:center; float:left; color:#212121; font-size:14px;">请确保以上信息准确有效</span></td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="submit" class="button_sub" id="broker_sub" value="确认提交" /></td>
+                            </tr>
+                        </table>
+                    </ul>
+                    </form>
+                    <form action="authentication_broker_enterprise" name="form4" method="post">
+                    <ul>
+                    	<table cellpadding="0" cellspacing="0" border="0">
+                        	<tr height="60">
+                            	<td width="240" align="right">企业全称</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="name_agency" class="input_300_" name="name_agency"/></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">联系方式</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="phone_agency" class="input_300_"  name="phone_agency"/></td>
+                            </tr>
+                            <tr height="60">
+                                <td width="240" align="right">认证人姓名</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="per_name_agency" class="input_300_" name="per_name_agency"/></td>
+                            </tr>
+                            <tr height="60">
+                            	<td width="240" align="right">营业执照注册号</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="text" id="license_agency" class="input_300_" name="license_agency"/></td>
+                            </tr>
+                            <tr>
+                            	<td width="240" align="right" valign="top" style="line-height:60px">营业执照上传</td>
+                                <td width="20"></td>
+                                <td width="540">
+                                	<div class="photo">
+                                    	<div class="top_info">请上传企业营业执照，确保图片清晰完整。</div>
+                                        <div class="cer_img">
+                                        <input type="hidden" class="nameText" name="way4" value="1"/>
+                                            <input type="hidden" id="fileuploader8_input" class="nameText" name="img_positive4"/>
+                                        	<div class="l_img"><div id="fileuploader8"></div></div>
+                                            <span><img src="/static/pc/images/ce3.jpg" width="140" height="90" />
+                                            <div class="float_fixed"><img src="/static/pc/images/ce2.png" width="140" height="90" /></div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr height="45">
+                            	<td width="800" colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><span style="width:300px; text-align:center; float:left; color:#212121; font-size:14px;">请确保以上信息准确有效</span></td>
+                            </tr>
+                            <tr height="35">
+                            	<td width="240">&nbsp;</td>
+                                <td width="20"></td>
+                                <td width="540"><input type="submit" class="button_sub" value="确认提交" id="agency_sub" /></td>
+                            </tr>
+                        </table>
+                    </ul>
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript">jQuery(".authentication").slide({trigger:"click"});</script>
+        </div>
+    </div> 
+</div>
+<div id="footer"></div>
+<script type="text/javascript" src="/static/pc/js/photo.js"></script>
+</body>
+</html>

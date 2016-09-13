@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/static/pc/css/style.css" type="text/css" rel="stylesheet" />
+<script src="/static/pc/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+<script src="/static/pc/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="/static/pc/js/maodian.0.2.1.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/pc/css/kalendae.css" type="text/css" charset="utf-8">
+<script src="/static/pc/js/kalendae.standalone.js" type="text/javascript"></script>
+</head>
+
+<body class="back">
+<?php include "header.html";?>
+<div id="main">
+	<div class="wrap">
+    	<div class="content">
+        	<div class="singer">
+                <div class="focus">
+                    <ul class="rslides f426x240" id="abs">
+
+                    </ul>
+                </div>
+                <div class="singInfo">
+                    <div class="singName">
+                    </div>
+                    <div class="u2">
+
+                    </div>
+                    <div class="u3">
+
+                    </div>
+                    <div class="u4">
+                        <div class="l1">温馨提示</div>
+                        <div class="l2"><strong style="color:#fa424c">[不含税费]</strong>如艺人档期紧凑，价格会略有浮动</div>
+                    </div>
+                    <div class="u4 rem">
+                        <div class="l1">备注信息</div>
+                        <div class="l2"></div>
+                    </div>
+                    <div class="u5">
+                        <div class="l1">活动类型</div> 
+                        <div class="right_class"> 
+                        <ul id="activ">
+                        </ul>
+                        <div class="ps">*&nbsp;无法点击项目表示歌手暂不接受此类订单，请谅解！</div>
+                        </div>
+                    </div>
+                    <div class="u7">
+                        <li class="l1"><a style="float: left;"><input type="submit" id="bespoke" value=""/></a></li>
+                        <li class="l2"><input type="submit" value=""/></li>
+
+                        <script>
+                            $(function(){
+                                var $img =$('.u7 .l2 input');
+                                var collection= "<?php echo $info['collection']?>";
+                                var fans = "<?php echo $info['uid']?>";
+                                var uid = "<?php $_SESSION['user_login']['uid']?>";
+                                if(collection == 'T'){
+                                    $(".u7 .l2 input").attr('class','on');
+                                }else if(collection == 'F'){
+                                    $(".u7 .l2 input").attr('class','');
+                                }
+                                $img.click(function(){
+                                    if(collection=='L'){
+                                        alert('请登录');
+                                        return false;
+                                    }
+
+                                    if(collection=='F'){
+                                        setTimeout(function(){
+                                            $.ajax({
+                                                type:'POST',
+                                                data:{fans:fans},
+                                                url:'../userfocus/save_fans?uid='+uid,
+                                                dateType:'json',
+                                                success:function(data){
+                                                    var jsonobj=eval('('+data+')');
+                                                    console.log(jsonobj.results);
+                                                }
+                                            });
+                                        },200);
+                                    }
+                                    var ing =$(this).attr('class');
+                                    if(ing == undefined || ing == ''){
+                                        $(this).attr('class','on');
+                                    }else{
+                                        $(this).attr('class','');
+                                    }
+                                });
+                            })
+                        </script>
+                    </div>   
+                </div>
+           	</div>
+            <div class="singerInfo">
+            	<div class="singerTit hd" id="fixed_nav">
+                	<ul>
+                    	<li class="on"><a href="javascript:scrollTo('#dd_1',-60,300)">档期</a></li>
+                        <li><a href="javascript:scrollTo('#dd_2',-60,300)">歌手简介</a></li>
+                        <li><a href="javascript:scrollTo('#dd_3',-60,300)">音乐作品</a></li>
+                        <li><a href="javascript:scrollTo('#dd_4',-60,300)">视频/MV</a></li>
+                        <li><a href="javascript:scrollTo('#dd_5',-60,300)">服务详情</a></li>
+                    </ul>
+                </div>
+                <div class="Columns bd">
+                	<div class="topCol" id="dd_1">
+                    	<div class="colTit">档期查看</div>
+                        <div class="calendar" id="dd23">
+                            <div class="mask"></div>
+                    	</div>
+                        <div class="prompt_gray">不可预约</div>
+                    </div>
+                    <div class="topCol" id="dd_2">
+                    	<div class="colTit">歌手介绍</div>
+                        <div class="baidu"><a target="_blank" href="">查看艺人百科</a></div>
+                        <div class="singPage"></div>
+                    </div>
+                    <div class="topCol" id="dd_3">
+                    	<div class="colTit">音乐作品</div>
+                        <div class="singMusic">
+                            <ul>
+
+                            </ul>
+                    	</div>
+                    </div>
+                    <div class="topCol" id="dd_4">
+                    	<div class="colTit">视频/MV</div>
+                        <div class="singVideo">
+                            <ul>
+
+                            </ul>
+                    	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<div id="footer"></div>
+<script type="text/javascript" src="/static/pc/js/detailslrtk.js"></script>
+<script type="text/javascript">
+    var uid="<?php echo $uid?>";
+    var daarr =[];
+    $(document).ready(function(){
+        $.ajax({
+            url:'../User/index?uid='+uid,
+            type:'get',
+            async:true,
+            dataType: 'json',
+            success:function(data){
+                //console.log(data.results.img.length);
+                var his_may='';
+                if(data.results.info.history_price==''){
+                }else{
+                    his_may+='市场价：'+data.results.info.history_price+'万/场';
+                }
+                var name_singer = '<div class="l1">'+data.results.info.name+'</div>'
+                        +'<div class="l2">'+data.results.info.nick+'</div>';
+                $('.singName').html(name_singer);
+                var deposit = '<div class="l1">预定金</div>'
+                        +'<div class="l2">￥&nbsp;<span>'+data.results.info.about_price+'</span></div>';
+                $('.u2').html(deposit);
+                var reserve_gold = '<div class="l1">预约价</div>'
+                        +'<div class="l2"><span>￥&nbsp;</span>'+data.results.info.price+'&nbsp;<span>万/场</span></div>'
+                        +'<div class="l3">'+his_may+'</div>';
+                $('.u3').html(reserve_gold);
+                var remarks = '<div class="l1">备注信息</div>'
+                        +'<div class="l2">'+data.results.info.special+'</div>';
+                $('.rem').html(remarks);
+                var infoImg = '';
+                for(var k = 0; k < data.results.img.length; k++){
+                    if(k==0){
+                        style="display: list-item; float: left; position: relative;"
+                    }
+                    infoImg += '<li id="rslides1_s'+k+'" style="display: none; float: none; position: absolute;"><img src="'+data.results.img[k].url+'"/></li>'
+                }
+                //console.log(infoImg);
+                $('#abs').html(infoImg);
+                var musicList ='';
+                for(var t = 0; t < data.results.introduce.music.length; t++){
+                    musicList+='<li><a target="_blank" href="'+data.results.introduce.music[t].url+'"><span>'+data.results.introduce.music[t].name+'</span></a></li>';
+                }
+                $('.singMusic ul').html(musicList);
+                var videoList = '';
+                for(var v = 0; v < data.results.introduce.video.length; v++){
+                    videoList += '<li>'
+                            +'<img src="'+data.results.introduce.video[v].img+'" width="360" height="240" />'
+                            +'<div class="play">'
+                            +'<a target="_blank" href="'+data.results.introduce.video[v].url+'"><span><nobr>'+data.results.introduce.video[v].name+'</nobr></span></a>'
+                            +'</div>'
+                            +'</li>';
+                }
+                $('.singVideo ul').html(videoList);
+                $('.baidu a').attr('href',data.results.introduce.baike_url);
+                //介绍
+                var infoStar= '';
+                $("#abs").responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: true,
+                    speed: 700,
+                    maxwidth: 710
+                });
+            }
+        });
+        $.ajax({
+            url:'../UserInfo/get_user_info?uid='+uid,
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                $('.singPage').html(data.results.info.introduction);
+                for(var da = 0; da < data.results.user_order_date.length; da++){
+                    var daNum = data.results.user_order_date[da].date;
+                    daarr[daarr.length]= daNum;
+                }
+                var att = document.getElementById("dd23");
+                Kan=new Kalendae(document.body,{
+                    months:3,
+                    direction:'future',
+                    mode:'multiple',
+                    attachTo: att,
+                    selected:daarr
+                });
+                var actOn= '';
+                for(var act = 0; act < data.results.activity.length; act++){
+                    var actNum=data.results.activity[act].selected;
+                    if(actNum == 'T') {
+                        actOn += '<li class="cli" value="'+data.results.activity[act].id+'">' + data.results.activity[act].name + '</li>';
+                    }else{
+                        actOn+='<li value="'+data.results.activity[act].id+'">'+data.results.activity[act].name+'</li>';
+                    }
+                }
+                $('.u5 ul').html(actOn);
+                $('.u5 ul li.cli:first').attr('class','cli on');
+                var $tit=$('.cli');
+                $tit.click(function(){
+                    $tit.removeClass('on');
+                    $(this).addClass('on');
+                });
+                lis = document.getElementById('activ').getElementsByTagName('li');
+                cje = '';
+                $('#bespoke').click(function(){
+                    for(var zp =0; zp < data.results.activity.length; zp++){
+                        var cha =data.results.activity[zp].id;
+                        if(lis[zp].className=="cli on"){
+                            cje = lis[zp].value;
+                            //alert(lis[zp].value);
+                        }
+                    }
+                });
+            }
+        });
+        $('.u7 .l1 a').click(function(){
+            //alert("1111");
+            var ha ="http://www.51huole.cn/pc/placeOrder?uid="+uid+"&activity_id="+cje+"";
+            window.location =ha;
+        });
+    });
+    </script>
+</body>
+</html>

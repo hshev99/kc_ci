@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/static/pc/css/style.css" type="text/css" rel="stylesheet" />
+<script src="/static/pc/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+</head>
+
+<body class="back">
+<?php include "header.html";?>
+<div id="main">
+	<div class="wrap">
+    	<div class="content">
+        	<div class="infomation">
+            	<div class="orderText">
+                	<div class="tit1">订单列表</div>
+                    <div class="tit_box">
+                        <div class="tit2">我是预约方</div>
+                        <div class="tit3">
+                            <ul id="booking">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tit_box" style="border-top:1px dashed #ddd; margin-top:30px;">
+                        <div class="tit2">我是艺人</div>
+                        <div class="tit3">
+                            <ul id="order_my">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightInfo">
+                	<div class="list_830">
+                    	<div class="list_tit">
+                        	<ul>
+                            	<li>歌手</li>
+                                <li>预定金</li>
+                                <li>实付款</li>
+                            </ul>
+                        </div>
+                        <div class="list_content">
+                        	<ul id="order_list">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<div id="footer"></div>
+<script type="text/javascript">
+    var uid="<?php echo $uid?>";
+    var order_sn ="<?php echo $order_sn?>";
+    var user_order_my="UserOrderMy";
+    var user_order="UserOrder";
+    $(function(){
+        var on1 ='';
+        on1 +='<li class="on" value="-1"><a>全部订单</a></li>'
+                +'<li value="1"><a>待付款</a></li>'
+                +'<li value="2"><a>待接单</a></li>'
+                +'<li value="4"><a>进行中</a></li>'
+                +'<li value="7"><a>已完成</a></li>'
+                +'<li value="3"><a>已关闭</a></li>';
+        $('#booking').html(on1);
+        var $tit=$('#booking li');
+        $tit.click(function(){load_order_detail(user_order,uid,order_sn,$(this).val());
+            $tit.removeClass('on');
+            $(this).addClass('on');
+        });
+
+        var on2 ='';
+        on2 +='<li value="-1"><a>全部订单</a></li>'
+                +'<li value="1"><a>待接单</a></li>'
+                +'<li value="4"><a>进行中</a></li>'
+                +'<li value="7"><a>已完成</a></li>'
+                +'<li value="3"><a>已关闭</a></li>';
+        $('#order_my').html(on2);
+        var $tit1=$('#order_my li');
+        $tit1.click(function(){load_order_detail(user_order_my,uid,order_sn,$(this).val());
+            $tit1.removeClass('on');
+            $(this).addClass('on');
+        });
+
+        load_order_detail('UserOrder',uid);
+        function load_order_detail(url='UserOrder',uid='',order_sn='',status='-1') {
+            $.ajax({
+                type:'get',
+//                url:'../Userorder/UserOrderMy/?uid=41',
+                url:'../Userorder/'+url+'/?uid='+uid+'&status='+status,
+                dataType:'json',
+                success:function(data){
+                    if(data.results==''){
+                        $('#order_list').html('<div class="word_ti">您还没有生成订单偶</div>');
+                    }else{
+                    var singerList ='';
+                    for(var j = 0; j < data.results.length; j++){
+                        var list = '';
+                        list += '<span>还剩 1小时30分15秒</span><a>取消订单</a>';
+                        singerList += '<li>'
+                                +'<div class="fixed_box" style="float: left; width: 0; height: 0;"></div>'
+                                +'<div class="top_order">'
+                                +'<div class="t_left">'
+                                +'<span>订单号：'+data.results[j].order_sn+'</span>'
+                                +'<span>下单时间：'+data.results[j].trading_time+'</span>'
+                                +'</div>'
+                                +'<div class="t_right"><a href="orderInfo?order_sn='+data.results[j].order_sn+'">订单详情</a></div>'
+                                +'</div>'
+                                +'<div class="order_info">'
+                                +'<table cellspacing="0" cellpadding="0" border="0">'
+                                +'<tr height="80" valign="middle">'
+                                +'<td width="100"><div class="img_ordInfo"><a href="artistHome?uid='+data.results[j].worker_uid+'"><img src="'+data.results[j].worker_img+'"</a></div></td>'
+                                +'<td width="275"><span style="font-size:16px;"><a href="artistHome?uid='+data.results[j].worker_uid+'">'+data.results[j].worker_name+'</a></span></td>'
+                                +'<td width="275"><span style="font-size:14px;">'+data.results[j].about_price+'</span></td>'
+                                +'<td style="font-size:14px">'
+                                +data.results[j].about_price+'<br />'
+                                +'<span style="color:#666666">在线支付</span>'
+                                +'</td>'
+                                +'</tr>'
+                                +'</table>'
+                                +'</div>'
+                                +'<div class="down_order">'
+                                +'<div class="d_left">'
+                                +list
+                                +'</div>'
+                                +'<div class="d_right">'
+                                +'<span>当前状态：'+data.results[j].status_name+'</span>'
+                                +'<a href="#">继续支付</a>'
+                                +'</div>'
+                                +'</div>'
+                                +'</li>';
+                        var pro = '';
+                        pro+='<div class="prompt1" id="Form1" style="display:none;">'
+                                +'<div class="proBox1">'
+                                +'<h5>温馨提示</h5><br />'
+                                +'<p>您确定要取消订单么？</p>'
+                                +'<div>'
+                                +'<a id="qux" style="width:50%; border:0; margin:0;">取消</a>'
+                                +'<a href="cancel_order?order_sn='+data.results[j].order_sn+'" style="width:50%; border:0; border-left:1px solid #ccc; box-sizing:border-box; border-radius:0;margin:0; "><input type="submit"  value="确定" style="float:left; width:100%; text-align:center; border:0; background:none; height:30px; line-height:30px; font-size:14px;" /></a>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>';
+                    }
+
+                    $('#order_list').html(singerList);
+                    $('.fixed_box').html(pro);
+                    $('.d_left a').click(function(){
+                        $('#Form1').css('display','block');
+                    });
+                    $('#qux').click(function(){
+                        $('#Form1').css('display','none');
+
+                    });
+
+                    lis1=document.getElementById("order_list").getElementsByTagName("li");
+                    var cr = $('.d_right span').length;
+                    var dr = $('.d_right span');
+                    console.log(cr);
+                    for(var i = 0; i< cr; i++){
+                        var er = dr.eq(i).html();
+                        if(er == '当前状态：待付款') {
+                            $('.d_left').eq(i).css('display', 'block');
+                            $('.d_right a').eq(i).css('display', 'block');
+                        }else if(er == '当前状态：已付款'){
+                            $('.d_right a').eq(i).css('display','none');
+                            $('.d_left a').eq(i).css('display', 'none');
+                        }else{
+                            $('.d_left').eq(i).css('display','none');
+                            $('.d_right a').eq(i).css('display','none');
+                        }
+                    }
+                    }
+                    for(var chi = 0; chi < $('#booking li').length; chi++){
+
+                    }
+                }
+            });
+        }
+    })
+
+</script>
+</body>
+</html>

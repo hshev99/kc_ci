@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/static/pc/css/style.css" type="text/css" rel="stylesheet" />
+<script src="/static/pc/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+</head>
+
+<body class="back">
+<?php include "header.html";?>
+<div id="main">
+	<div class="wrap">
+    	<div class="content">
+        	<div class="infomation">
+            	<div class="orderText">
+                	<div class="tit1">订单列表</div>
+                    <div class="tit_box">
+                        <div class="tit2">我是预约方</div>
+                        <div class="tit3">
+                            <ul>
+                                <li class="on"><a href="#">全部订单</a></li>
+                                <li><a href="#">待付款</a></li>
+                                <li><a href="#">待接单</a></li>
+                                <li><a href="#">进行中</a></li>
+                                <li><a href="#">已完成</a></li>
+                                <li><a href="#">已关闭</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tit_box" style="border-top:1px dashed #ddd; margin-top:30px;">
+                        <div class="tit2">我是艺人</div>
+                        <div class="tit3">
+                            <ul>
+                                <li class="on"><a href="#">全部订单</a></li>
+                                <li><a href="#">待接单</a></li>
+                                <li><a href="#">进行中</a></li>
+                                <li><a href="#">已完成</a></li>
+                                <li><a href="#">已关闭</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightInfo" style="padding:0 19px 20px 19px; width:890px;">
+                	<div class="info_or"><span>订单详情</span></div>
+                    <div class="crumb"> 
+                         <div class="current">订单状态>></div> 
+                         <div class="cro_box" id="order_num">
+
+                         </div>
+                    </div>
+                    <div class="crumb"> 
+                         <div class="current">订单跟踪>></div> 
+                         <div class="cro_box">
+                         	<div class="progressBar">
+
+                            </div>
+                         </div> 
+                    </div>
+                    <div class="crumb"> 
+                         <div class="current">订单信息>></div> 
+                         <div class="cro_box">
+                         	<div class="top_order_info">
+                            	<div class="ess_info">
+                                	<h4>基本信息</h4>
+                                    <div class="d_ing">
+
+                                    </div>
+                                </div>
+                            </div>
+                         </div> 
+                    </div>
+                    <div class="crumb"> 
+                         <div class="current">艺人信息>></div> 
+                         <div class="cro_box" style="background:none; padding:0; width:878px;">
+                         	<div class="list_tit">
+                                <ul>
+                                    <li>歌手</li>
+                                    <li>出场费用</li>
+                                    <li>预定金</li>
+                                </ul>
+                            </div>
+                         	<div class="list_content">
+                        	<ul>
+
+                            </ul>
+                        </div>
+                         </div> 
+                    </div>
+                </div>
+            </div>        	
+        </div>
+    </div> 
+</div>
+<div id="footer"></div>
+<div class="fixed_box"></div>
+<script type="text/javascript" src="/static/pc/js/raphael.js"></script>
+<script type="text/javascript">
+    var uid="<?php echo $uid?>";
+    var order_sn ="<?php echo $order_sn?>";
+    $(function(){
+        $.ajax({
+            url:'../orderdeta/index/?order_sn='+order_sn+'&uid='+uid,
+            type:'get',
+            dataType:'json',
+            success:function(data){
+                var orderNum ='';
+                orderNum += '<dl>'
+                            +'<dd>订单编号：<span style="color:#fa424c;">'+data.results.order.order_sn+'</span></dd>'
+                            +'<dd class="status"><div style="float:left;">当前状态：<span style="color:#fa424c;">'+data.results.status.now+'</span></div><span id="times" style="float:left;margin-left: 30px; font-style: 14px; display: none;">请在<strong style="color:#fa424c;" id="timer"></strong>内付款；若未及时付款，系统将自动取消订单</span></dd>'
+                            +'<dd id="cancel" style="display: none;">如不想购买，可以 &nbsp;&nbsp;<a id="order_qx" style="color:#36c">取消订单</a></dd>'
+                            +'</dl>';
+                $('#order_num').html(orderNum);
+
+                var pro = '';
+                pro+='<div class="prompt1" id="Form1" style="display:none;">'
+                        +'<div class="proBox1">'
+                        +'<h5>温馨提示</h5><br />'
+                        +'<p>您确定要取消订单么？</p>'
+                        +'<div>'
+                        +'<a id="qux" style="width:50%; border:0; margin:0;">取消</a>'
+                        +'<a href="cancel_order?order_sn='+order_sn+'" style="width:50%; border:0; border-left:1px solid #ccc; box-sizing:border-box; border-radius:0;margin:0; "><input type="submit"  value="确定" style="float:left; width:100%; text-align:center; border:0; background:none; height:30px; line-height:30px; font-size:14px;" /></a>'
+                        +'</div>'
+                        +'</div>'
+                        +'</div>';
+                $('.fixed_box').html(pro);
+                $('#order_qx').click(function(){
+                    $('#Form1').css('display','block')
+                });
+                $('#qux').click(function(){
+                    $('#Form1').css('display','none')
+                });
+
+                var orderInfo ='';
+                var tel='';
+                tel +='<span id="tel12">'+data.results.order.phone+'</span>';
+                orderInfo +='<div class="l_ing">'
+                        +'<p><span>活动名称：</span>'+data.results.order.performace_name+'</p>'
+                +'<p><span>活动地点：</span>'+data.results.order.place+'</p>'
+                +'<p><span>联系方式：</span>'+tel+'</p>'
+                +'<p><span>到场时间：</span>'+data.results.order.start_time+'</p>'
+                +'<p><span>结束时间：</span>'+data.results.order.end_time+'</p>'
+                +'<p><span>行程类别：</span>'+data.results.order.cate+'</p>'
+                +'<p><span>场景：</span>'+data.results.order.scen+'</p>'
+                +'</div>'
+                +'<div class="l_ing">'
+                +'<p><span>演出数量：</span>x'+data.results.order.per_menber+'首</p>'
+                +'<p><span>餐标：</span>'+data.results.order.meal+'</p>'
+                +'<p><span>住宿：</span>'+data.results.order.live+'</p>'
+                +'<p><span>出行方式：</span>'+data.results.order.travel+'</p>'
+                +'<p><span>演出保险：</span>'+data.results.order.insurance+'</p>'
+                +'<p><span>备注：</span>'+data.results.order.ps+'</p>'
+                +'</div>';
+                $('.d_ing').html(orderInfo);
+                var x2 = document.getElementById("tel12").innerHTML;
+                var reg = /^(\d{3})\d{4}(\d{4})$/;
+                tel = x2.replace(reg, "$1****$2");
+                $('#tel12').html(tel);
+                var tim = '';
+                for(var l = 0; l < data.results.status.line.length; l++){
+                    tim +='<li>'
+                            +'<div class="garden">'
+                            +'<span></span>'
+                            +'</div>'
+                            +'<div class="promptText">'+data.results.status.line[l].name+'<br />'+data.results.status.line[l].time+'</div>'
+                            +'</li>';
+                }
+                $('.progressBar').html(tim);
+                if($('.progressBar li').eq(0).text() != '待付款'){
+                    $('.progressBar li').eq(0).attr('class','on');
+                }
+                if($('.progressBar li').eq(1).text() != '等待接单'){
+                    $('.progressBar li').eq(1).attr('class','on');
+                }
+                if($('.progressBar li').eq(2).text() != '等待歌手到场'){
+                    $('.progressBar li').eq(2).attr('class','on');
+                }
+                if($('.progressBar li').eq(3).text() != '未完成'){
+                    $('.progressBar li').eq(3).attr('class','on');
+                }
+
+                var singInfo ='';
+                singInfo +='<li>'
+                        +'<div class="order_info">'
+                        +'<table cellspacing="0" cellpadding="0" border="0">'
+                        +'<tr height="80" valign="middle">'
+                        +'<td width="100"><div class="img_ordInfo"><a href="artistHome"><img src="'+data.results.user_info.img+'" /></a></div></td>'
+                        +'<td width="295"><span style="font-size:16px;"><a href="artistHome">'+data.results.order.worker_name+'</a></span></td>'
+                        +'<td width="300"><span style="font-size:14px;">￥'+data.results.user_info.price+'万/场</span></td>'
+                        +'<td style="font-size:14px">'
+                        +'￥'+data.results.order.pay_amount+'<br />'
+                        +'<span style="color:#666666">在线支付</span>'
+                        +'</td>'
+                        +'</tr>'
+                        +'</table>'
+                        +'</div>'
+                        +'<div class="down_order">'
+                        +'<div class="d_right" style="font-size:14px;"><strong style="float:left">订单金额：</strong><span style="color:#fa424c; font-weight:bold;">￥'+data.results.order.pay_amount+'元</span> <a style="display: none;">继续支付</a></div>'
+                        +'</div>'
+                        +'</li>';
+                $('.list_content ul').html(singInfo);
+                if($('.progressBar li').eq(0).text() == '待付款'){
+                    $('.d_right a').css('display','block');
+                }
+                if($('.status div span:first').html() == '待付款'){
+                    $('#times').css('display','block');
+                    $('#cancel').css('display','block');
+                    var tin =data.results.pay_params.timeStamp;
+                    var timestamp =tin;
+                    var d = new Date(timestamp * 1000);    //根据时间戳生成的时间对象
+                    var date = (d.getFullYear()) + "-" +
+                            (d.getMonth() + 1) + "-" +
+                            (d.getDate()) + " " +
+                            (d.getHours()) + ":" +
+                            (d.getMinutes()) + ":" +
+                            (d.getSeconds());
+                    $('#timer').html(d.getHours()+"小时"+d.getMinutes()+"分钟"+d.getSeconds()+"秒");
+                    console.log(date);
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
