@@ -53,5 +53,5 @@ background: -moz-linear-gradient(top, #719fff 15%, #50abf1 100%); background: -w
 .log_box .left input[type=checkbox]:checked + .check-box,.log_box .left .check-box.checked { border-color: #34b93d;}
 .log_box .left input[type=checkbox]:checked + .check-box::after,.check-box.checked::after { height:5px; -moz-animation: dothabottomcheck 0.2s ease 0s forwards; -o-animation: dothabottomcheck 0.2s ease 0s forwards; -webkit-animation: dothabottomcheck 0.2s ease 0s forwards; animation: dothabottomcheck 0.2s ease 0s forwards;}
 .log_box .left input[type=checkbox]:checked + .check-box::before,.check-box.checked::before { height: 10px;-moz-animation: dothatopcheck 0.4s ease 0s forwards; -o-animation: dothatopcheck 0.4s ease 0s forwards; -webkit-animation: dothatopcheck 0.4s ease 0s forwards; animation: dothatopcheck 0.4s ease 0s forwards;}
-.log_box .left span{ float:left;}
+.log_box .left span{ float:left; margin-left:8px; height:22px; line-height:22px; color:#9ea7b4;}
 
