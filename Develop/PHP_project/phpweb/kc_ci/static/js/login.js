@@ -75,7 +75,7 @@ $(function(){
             if($('#user_new_pass').val().length == 0){
 
             }else if($('#user_new_pass').val().length > 0 && $('#user_new_pass').val().length < 6){
-                $('.passPro1 span').replaceWith('<span style="color:#fa424c;">长度只能在6-20个字符之间</span>');
+                $('.log_pass span').replaceWith('<span style="color:#fa424c;">长度只能在6-20个字符之间</span>');
                 return false;
             }else if(!myPass.test($("#user_new_pass").val())){
                 $('.passPro1 span').replaceWith('<span style="color:#fa424c;">密码需包含字母数字或特殊字符且大于六位</span>');
