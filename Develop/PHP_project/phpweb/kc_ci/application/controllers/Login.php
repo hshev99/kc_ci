@@ -33,8 +33,8 @@ class Login extends CI_Controller {
 		$data['login_name']=$this->login_name;
 		$data['password']=$this->password;
 
-		$this->load->model('User_singer_model');
-		$this->User_singer_model->upload_its($data);
+		$this->load->model('ReadAdminUser_model');
+		exit(json_encode(parent::output($this->ReadAdminUser_model->getAdminUser($data))));
 
 	}
 }
