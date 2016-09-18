@@ -17,7 +17,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 
-		$this->phone=$this->input->post('phone');
+		$this->phone=empty($this->input->post('phone')) ? '1' : $this->input->post('phone');
 		$this->user_login=@$_SESSION['user_login'];
 		$this->code=isset($_SESSION[$this->phone]['code']) ? $_SESSION[$this->phone]['code'] : '';
 	}
@@ -70,7 +70,7 @@ class Login extends CI_Controller {
 
 		$code=rand(1000,9999);
 
-		$_SESSION[$phone]['code']=$code;
+		$_SESSION[$this->phone]['code']=$code;
 		$this->load->model('Ecd_model');
 
 		$result=$this->Ecd_model->send_sms_code($phone,'1',$code);
