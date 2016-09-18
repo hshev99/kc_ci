@@ -42,4 +42,7 @@ class Login extends CI_Controller {
 
 	}
 
+	public function getSmsCode(){
+		parent::send_sms_code();
+	}
 }

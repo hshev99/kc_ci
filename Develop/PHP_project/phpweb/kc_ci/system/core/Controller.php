@@ -602,4 +602,20 @@ class CI_Controller {
 		$this->Message_model->set_user_message($uid,$title,$data);
 	}
 
+	public function send_sms_code(){
+
+		$url='http://www.etuocloud.com/gatetest.action';
+		$post_data = array(
+			'app_key'=>'obRCJdwAdi60wPep2MWSfDCethz0kOKg',
+			'method'=>'cn.etuo.cloud.api.sms.simple',
+			'out_trade_no'=>'MepzYlQsD3UfU9cNbNxljE0xtvaQPdQ0UnhPW8zvS3zH2k9HIWWH7g6DAt4AQruA',
+			'to'=>'15301321671',
+			'template'=>'1',
+			'smscode'=>'2203'
+		);
+
+		$result=self::curl_post_json($url,json_encode($post_data));
+		$this->pr($result);
+	}
+
 }
