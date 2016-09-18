@@ -38,6 +38,37 @@ $(function(){
         })
     });
 });
+/*判断手机号 判断验证码*/
+$(function(){
+    $('#user_name_pass').blur(function(){
+        var myNum = /^((1[3-8]{1})+\d{9})$/;
+        var numVal = myNum.test($("#user_name_pass").val());
+        if($('#user_name_pass').val().length == 0){
+
+        }else if(numVal) {
+            document.getElementById("btn").onclick=function(){time(this);};
+        }else{
+            $('.phonePro span').replaceWith('<span style="color:#fa424c;">请输入有效的手机号码</span>');
+            return false;
+        }
+    });
+
+    var wait=60;
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            o.value="获取验证码";
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            o.value="重新发送(" + wait + ")";
+            wait--;
+            setTimeout(function() {
+                time(o)
+            }, 1000)
+        }
+    }
+});
 
 
 
