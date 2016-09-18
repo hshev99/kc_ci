@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 
 		$this->phone=$this->input->post('phone');
 		$this->user_login=@$_SESSION['user_login'];
-		$this->code=@$_SESSION[$this->phone]['code'];
+		$this->code=isset($_SESSION[$this->phone]['code']) ? $_SESSION[$this->phone]['code'] : '';
 	}
 
 	public function index(){
