@@ -27,8 +27,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_input{ float:left; width:202px; border:1px solid #ececec; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; height:30px; text-indent:10px;}
 .log_box button{ margin:0 auto; display:table; width:100px; height:30px; border:1px solid #6090f4; color:#fff; font-size:14px;font-family:"microsoft yahei"; line-height:30px; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; cursor:pointer;
 background: -moz-linear-gradient(top, #719fff 15%, #6090f4 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#719fff), color-stop(100%,#6090f4)); background: -webkit-linear-gradient(top, #719fff 15%,#6090f4 100%); background: -o-linear-gradient(top, #719fff 15%,#6090f4 100%); background: -ms-linear-gradient(top, #719fff 15%,#6090f4 100%); background: linear-gradient(to bottom, #719fff 15%,#6090f4 100%);}
-
-
+.log_box a{ color:#6596f5; font-size:14px;}
 
 
 
