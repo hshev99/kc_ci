@@ -33,7 +33,7 @@ class Ecd_model extends CI_Model
      * @param $code 验证码
      * @param $out_trade_no 商户订单号，可空
      */
-    public function send_sms_code($moblie,$template,$code,$out_trade_no){
+    public function send_sms_code($moblie,$template,$code,$out_trade_no=''){
         $post_data = array(
             'app_key'=>$this->app_key,
             'view'=>$this->format,
