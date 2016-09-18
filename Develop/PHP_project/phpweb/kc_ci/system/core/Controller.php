@@ -134,7 +134,7 @@ class CI_Controller {
 			'errorMsg'=>$errorMsg,
 			'results'=>$arr
 		];
-		exit(json_encode(parent::output($arr)));
+		exit(json_encode($arr));
 	}
 
 	//CURL get 请求
