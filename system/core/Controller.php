@@ -128,6 +128,15 @@ class CI_Controller {
 		return $arr;
 	}
 
+	public function outPutEnd($arr=[],$error=0,$errorMsg=''){
+		$arr=[
+			'error'=>$error,
+			'errorMsg'=>$errorMsg,
+			'results'=>$arr
+		];
+		exit(json_encode(parent::output($arr)));
+	}
+
 	//CURL get 请求
 	public function curl_get($url=null){
 		//初始化
