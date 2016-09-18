@@ -30,6 +30,10 @@ class Login extends CI_Controller {
 		$this->load->view("/Login/forget.html");
 	}
 
+	public function registered(){
+		$this->load->view("/Login/registered.html");
+	}
+
 
 	public function getAdminUser(){
 		$this->login_name=$this->input->post('login_name');
