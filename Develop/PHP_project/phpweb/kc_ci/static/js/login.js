@@ -94,6 +94,9 @@ $(function(){
                 $('.log_pass_new span').replaceWith('<span style="color:#fa424c;">两次密码不一致</span>');
             }
         })
+        $('#user_new1_pass').keyup(function(){
+            $('.log_pass_new span').replaceWith('<span></span>');
+        });
     });
 
     SID ="";
