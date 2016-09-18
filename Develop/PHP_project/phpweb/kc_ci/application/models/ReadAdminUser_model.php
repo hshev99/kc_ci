@@ -10,7 +10,7 @@ class ReadAdminUser_model extends CI_Model
         $this->cargo = $this->load->database('cargo',TRUE);
         $sql="SELECT * FROM hz_admin_user WHERE login_name='{$data['login_name']}' AND password='{$data['password']}'";
         $query=$this->cargo->query($sql);
-
+$this->pr($query->result);
         $result='';
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
