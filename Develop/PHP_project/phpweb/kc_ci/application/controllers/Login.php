@@ -24,5 +24,17 @@ class Login extends CI_Controller {
 		$this->load->view("/Login/login.html");
 	}
 
+	public function getAdminUser(){
+		$this->login_name=$this->input->post('login_name');
+		$this->password=$this->input->post('password');
 
+		if ($this->login_name=='' || $this->password=='') exit(json_encode(parent::output([],101,'用户名密码不能为空')));
+		$data=[];
+		$data['login_name']=$this->login_name;
+		$data['password']=$this->password;
+
+		$this->load->model('User_singer_model');
+		$this->User_singer_model->upload_its($data);
+
+	}
 }
