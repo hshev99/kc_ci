@@ -23,7 +23,7 @@ class Login extends CI_Controller {
 	}
 
 	public function index(){
-		echo '123';exit;
+		$this->load->view("/Login/login.html");
 	}
 
 	public function login(){
