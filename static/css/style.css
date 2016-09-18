@@ -30,7 +30,7 @@ background: -moz-linear-gradient(top, #719fff 15%, #6090f4 100%); background: -w
 .log_box a{ color:#6596f5; font-size:14px;}
 
 .log_prompt,.log_pass{ position:absolute; z-index:11; left:0; top:40px;}
-
+.user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
 
 
 
