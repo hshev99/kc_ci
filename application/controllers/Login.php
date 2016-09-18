@@ -43,7 +43,8 @@ class Login extends CI_Controller {
 	}
 
 	public function getSmsCode(){
-		$this->Ecd=$this->load->libraries('Ecd');
+		$this->Ecd->model('Ecd_model');
+
 		$this->pr($this->Ecd);
 		$result=$this->Ecd->send_sms_code('15301321671','1','2203');
 		$this->pr($result);
