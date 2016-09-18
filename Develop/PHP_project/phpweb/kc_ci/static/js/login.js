@@ -96,6 +96,7 @@ $(function(){
         $.ajax({
             type:'post',
             url:'../login/getSmsCode',
+            data:{phone:$('#user_name_pass').val()},
             success:function(data){
                 var sbian = JSON.parse(data);
                 SID = sbian.results.code;
