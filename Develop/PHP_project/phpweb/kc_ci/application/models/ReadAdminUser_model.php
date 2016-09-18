@@ -8,9 +8,10 @@ class ReadAdminUser_model extends CI_Model
 
     public function getAdminUser($data=[]){
         $this->cargo = $this->load->database('cargo',TRUE);
-        $sql="SELECT * FROM hz_admin_user WHERE login_name='{$data['login_name']}' AND password='{$data['password']}'";
+        $password=md5(md5(md5($data['password'])+'tuodui2016')+'0918');
+        $sql="SELECT * FROM hz_admin_user WHERE login_name='{$data['login_name']}' AND password='{$password}'";
         $query=$this->cargo->query($sql);
-$this->pr(md5(md5(md5('gezi')+'tuodui2016')+'0918'));
+$this->pr($sql);
         $result='';
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
