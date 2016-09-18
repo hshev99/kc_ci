@@ -604,7 +604,7 @@ class CI_Controller {
 
 	public function send_sms_code(){
 
-		$url='http://www.etuocloud.com/gatetest.action';
+		$url='http://www.etuocloud.com/gateway.action';
 		$post_data = array(
 			'app_key'=>'obRCJdwAdi60wPep2MWSfDCethz0kOKg',
 			'method'=>'cn.etuo.cloud.api.sms.simple',
