@@ -27,6 +27,7 @@ $(function(){
             success:function(data){
                 var user_info=eval('('+data+')');
                 if(user_info.error == 102){
+                    document.getElementById("user_name").focus();
                     $('.user_prompt span').replaceWith('<span style="color:#fa424c;">'+user_info.errorMsg+'</span>');
                     //alert(user_info.errorMsg);
                     return false;
