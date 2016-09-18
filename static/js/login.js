@@ -40,6 +40,13 @@ $(function(){
 });
 /*判断手机号 判断验证码*/
 $(function(){
+    $('#user_name_pass').focus(function(){
+        if($('#user_name_pass').val().length == 0){
+            $('.log_prompt span').replaceWith('<span>密码需包含字母数字或特殊字符且大于六位</span>')
+        }
+    }).blur(function(){
+        $('.log_prompt span').replaceWith('<span></span>');
+    });
     $('#user_name_pass').blur(function(){
         var myNum = /^((1[3-8]{1})+\d{9})$/;
         var numVal = myNum.test($("#user_name_pass").val());
