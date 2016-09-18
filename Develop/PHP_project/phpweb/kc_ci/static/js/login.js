@@ -24,8 +24,14 @@ $(function(){
                 login_name:$('#user_name') .val(),
                 password:$('#user_pass').val()
             },
-            success:function(){
-
+            success:function(data){
+                var user_info=eval('('+data+')');
+                if(user_info.error == 102){
+                    alert(user_info.errorMsg);
+                    return false;
+                }else if(user_info.error == 0){
+                    window.location.href="http://www.51huole.cn/pc/index";
+                }
             }
         })
     });
