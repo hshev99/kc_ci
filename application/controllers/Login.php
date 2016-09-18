@@ -43,9 +43,24 @@ class Login extends CI_Controller {
 	}
 
 	public function getSmsCode(){
+
+		$phone=$this->input->post('phone');
+
+		if (empty($phone)) exit(json_encode(parent::output([],103,'手机号码不能为空')));
+
+		if (strlen($phone) != '11') exit(json_encode(parent::output([],104,'手机号码不合法')));
+
+		$code=rand(1000,9999);
 		$this->load->model('Ecd_model');
 
-		$this->pr($this->Ecd_model->send_sms_code('15301321671111','1','2203'));
+		$result=$this->Ecd_model->send_sms_code($phone,'1',$code);
+
+		$this->pr($result);
+		if (json_decode($result,true)['result'] == 0){
+
+		}else{
+
+		}
 
 		exit;
 	}
