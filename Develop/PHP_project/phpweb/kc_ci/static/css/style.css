@@ -34,7 +34,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_box .right{ float:right;}
 .log_box .right a{ color:#6596f5; font-size:14px;}
 .log_box .right span{ color:#666; font-size:14px;}
-.log_prompt,.log_pass{ position:absolute; z-index:11; left:0; top:60px; height:30px; line-height:30px;}
+.log_prompt,.log_pass,.log_code{ position:absolute; z-index:11; left:0; top:60px; height:30px; line-height:30px;}
 .user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
 
 @-moz-keyframes dothabottomcheck { 0% { height: 0; } 100% { height: 7px;}}
