@@ -48,7 +48,7 @@ $(function(){
         }else if(numVal) {
             document.getElementById("btn").onclick=function(){time(this);};
         }else{
-            $('.phonePro span').replaceWith('<span style="color:#fa424c;">请输入有效的手机号码</span>');
+            $('.user_prompt span').replaceWith('<span style="color:#fa424c;">请输入有效的手机号码</span>');
             return false;
         }
     });
@@ -68,6 +68,7 @@ $(function(){
             }, 1000)
         }
     }
+
 });
 
 
