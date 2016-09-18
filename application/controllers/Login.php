@@ -6,11 +6,16 @@ class Login extends CI_Controller {
 
 	public $uid;
 	public $lc=0;
-	
+
+	public $user_login;
+	public $code;
+
 
 	public function __construct()
 	{
 		parent::__construct();
+		$this->user_login=@$_SESSION['user_login'];
+		$this->code=@$_SESSION['user_login']['code'];
 	}
 
 	public function index(){
@@ -79,8 +84,26 @@ class Login extends CI_Controller {
 
 	public function setUserPassword(){
 
-		
+		$code=$this->input->post('code');
+		$phone=$this->input->post('phone');
+		$password=$this->input->post('password');
+
+		if ($this->code) parent::outPutEnd([],106,'验证码已过期');
+		if ($this->code != $code) parent::outPutEnd([],107,'验证码不正确');
+		if (empty($password) || empty($phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
+
+		$data=[
+			'user_name'=>$phone,
+			'login_name'=>$phone,
+			'password'=>$password,
+		];
 		$this->load->model('WriteAdminUser_model');
-		$result=$this->WriteAdminUser_model->setAdminUser($data);
+		$result=$this->WriteAdminUser_model->upAdminUser($data);
+
+		if (!$result){
+			parent::outPutEnd([],109,'改账户未注册');
+		}else{
+			parent::outPutEnd(['msg'=>'修改成功']);
+		}
 	}
 }
