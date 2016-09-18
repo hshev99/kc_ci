@@ -16,6 +16,8 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->phone=$this->input->post('phone');
 		$this->user_login=@$_SESSION['user_login'];
 		$this->code=@$_SESSION[$this->phone]['code'];
 	}
@@ -91,7 +93,7 @@ class Login extends CI_Controller {
 	public function setUserPassword(){
 
 		$code=$this->input->post('code');
-		$phone=$this->phone=$this->input->post('phone');
+		$phone=$this->input->post('phone');
 		$password=$this->input->post('password');
 
 		if (empty($this->code)) parent::outPutEnd([],106,'验证码已过期');
