@@ -12,16 +12,18 @@ a:hover{text-decoration:none; color:#fa424c;}
 body {margin:0;padding:0;min-width:320px;width:100%;}
 body,td,th {font-family:"microsoft yahei"; font-size:12px; color:#434343;}
 a,p,ul,li{ text-decoration:none; margin:0; padding:0; list-style-type:none;}
-@media screen and (max-device-width: 320px){body{-webkit-text-size-adjust:none}}
+/*@media screen and (max-device-width: 320px){body{-webkit-text-size-adjust:none}}
 @media screen and (max-device-width: 480px){body{-webkit-text-size-adjust:none}}
 @media only screen and (-webkit-min-device-pixel-ratio: 2){body{-webkit-text-size-adjust:none}}
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px){body{-webkit-text-size-adjust:none}}  
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px){body{-webkit-text-size-adjust:none}}*/  
 textarea,select{-webkit-appearance: none; -o-appearance: none; -moz-appearance: none; appearance: none; border-radius:0; box-sizing:border-box; }  
 input{border-radius:0; box-sizing:border-box; font-family:"microsoft yahei";}
 input[type="button"], input[type="submit"], input[type="radio"], input[type="datetime-local"]{-webkit-appearance: none; -o-appearance: none; -moz-appearance: none; appearance: none; border-radius:0; box-sizing:border-box; }
-/**/
 
 
+/*登录*/
+.login{ position:fixed; z-index:999; left:50%; margin-left:-150px; top:50%; margin-top:-150px;}
+.log_box{ float:left; width:298px; height:298px; border:1px solid #ececec; background:rgba(255,255,255,.5)}
 
 
 
