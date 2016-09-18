@@ -25,6 +25,7 @@ class Login extends CI_Controller {
 		$this->load->view("/Login/forget.html");
 	}
 
+
 	public function getAdminUser(){
 		$this->login_name=$this->input->post('login_name');
 		$this->password=$this->input->post('password');
@@ -76,7 +77,10 @@ class Login extends CI_Controller {
 		exit;
 	}
 
-	public function getUserPassword(){
+	public function setUserPassword(){
 
+		
+		$this->load->model('WriteAdminUser_model');
+		$result=$this->WriteAdminUser_model->setAdminUser($data);
 	}
 }
