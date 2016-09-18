@@ -608,7 +608,7 @@ class CI_Controller {
 		$post_data = array(
 			'app_key'=>'obRCJdwAdi60wPep2MWSfDCethz0kOKg',
 			'method'=>'cn.etuo.cloud.api.sms.simple',
-			'out_trade_no'=>'MepzYlQsD3UfU9cNbNxljE0xtvaQPdQ0UnhPW8zvS3zH2k9HIWWH7g6DAt4AQruA',
+			'out_trade_no'=>'',
 			'to'=>'15301321671',
 			'template'=>'1',
 			'smscode'=>'2203'
