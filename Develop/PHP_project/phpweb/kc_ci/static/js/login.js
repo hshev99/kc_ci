@@ -103,14 +103,14 @@ $(function(){
             }
         })
     });
-    $('#user_code').blur(function(){
-        if($('#user_code').val()== SID){
-        }else if($('#user_code').val().length == 0){
-        }else{
-            $('.log_code span').replaceWith('<span style="color:#fa424c">验证码不正确</span>');
-            return false;
-        }
-    });
+    // $('#user_code').blur(function(){
+    //     if($('#user_code').val()== SID){
+    //     }else if($('#user_code').val().length == 0){
+    //     }else{
+    //         $('.log_code span').replaceWith('<span style="color:#fa424c">验证码不正确</span>');
+    //         return false;
+    //     }
+    // });
     $('#user_code').keyup(function(){
         $('.log_code span').replaceWith('<span></span>');
     });
