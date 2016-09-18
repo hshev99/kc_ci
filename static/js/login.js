@@ -32,7 +32,7 @@ $(function(){
                     //alert(user_info.errorMsg);
                     return false;
                 }else if(user_info.error == 0){
-                    window.location.href="http://123.57.74.11:81/index/index";
+                    window.location.href="/index/index";
                 }
             }
         })
