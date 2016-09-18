@@ -155,3 +155,24 @@ $db['orders'] = array(
 	'stricton' => FALSE,
 	'failover' => array()
 );
+
+$db['cargo'] = array(
+	'dsn'   => '',
+	'hostname' => '112.126.82.117',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'cargo',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => TRUE,
+	'db_debug' => FALSE,
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'compress' => FALSE,
+	'encrypt' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array()
+);
