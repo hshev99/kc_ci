@@ -51,6 +51,8 @@ class Login extends CI_Controller {
 		if (strlen($phone) != '11') exit(json_encode(parent::output([],104,'手机号码不合法')));
 
 		$code=rand(1000,9999);
+
+		$_SESSION['user_login']['code']=$code;
 		$this->load->model('Ecd_model');
 
 		$result=$this->Ecd_model->send_sms_code($phone,'1',$code);
