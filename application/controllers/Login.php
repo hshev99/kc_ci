@@ -55,7 +55,6 @@ class Login extends CI_Controller {
 
 		$result=$this->Ecd_model->send_sms_code($phone,'1',$code);
 
-		$this->pr(json_decode($result,true));
 		if (json_decode($result,true)['result'] == 0){
 
 			exit(json_decode(parent::output(json_decode($result,true)['msg'])));
