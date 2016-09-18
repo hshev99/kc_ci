@@ -34,7 +34,12 @@ class Login extends CI_Controller {
 		$data['password']=$this->password;
 
 		$this->load->model('ReadAdminUser_model');
-		exit(json_encode(parent::output($this->ReadAdminUser_model->getAdminUser($data))));
+		$result=$this->ReadAdminUser_model->getAdminUser($data);
+		if (empty($result)){
+			exit(json_encode(parent::output([],102,'用户名或密码有误')));
+		}
+
+		exit(json_encode(parent::output($result)));
 
 	}
 }
