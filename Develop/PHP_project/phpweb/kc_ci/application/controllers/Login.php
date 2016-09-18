@@ -8,6 +8,8 @@ class Login extends CI_Controller {
 	public $lc=0;
 
 	public $user_login;
+
+	public $phone;
 	public $code;
 
 
@@ -15,7 +17,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->user_login=@$_SESSION['user_login'];
-		$this->code=@$_SESSION['user_login']['code'];
+		$this->code=@$_SESSION[$this->phone]['code'];
 	}
 
 	public function index(){
@@ -66,7 +68,7 @@ class Login extends CI_Controller {
 
 		$code=rand(1000,9999);
 
-		$_SESSION['user_login']['code']=$code;
+		$_SESSION[$phone]['code']=$code;
 		$this->load->model('Ecd_model');
 
 		$result=$this->Ecd_model->send_sms_code($phone,'1',$code);
@@ -89,10 +91,10 @@ class Login extends CI_Controller {
 	public function setUserPassword(){
 
 		$code=$this->input->post('code');
-		$phone=$this->input->post('phone');
+		$phone=$this->phone=$this->input->post('phone');
 		$password=$this->input->post('password');
 
-		if ($this->code) parent::outPutEnd([],106,'验证码已过期');
+		if (empty($this->code)) parent::outPutEnd([],106,'验证码已过期');
 		if ($this->code != $code) parent::outPutEnd([],107,'验证码不正确');
 		if (empty($password) || empty($phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
 
