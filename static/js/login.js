@@ -89,6 +89,11 @@ $(function(){
                 return false;
             }
         });
+        $('#user_new1_pass').blur(function(){
+            if($('#user_new1_pass').val() != $('#user_new_pass').val()){
+                $('.log_pass_new span').replaceWith('<span style="color:#fa424c;">两次密码不一致</span>');
+            }
+        })
     });
 
     SID ="";
@@ -111,9 +116,10 @@ $(function(){
     //         return false;
     //     }
     // });
-    $('#user_code').keyup(function(){
-        $('.log_code span').replaceWith('<span></span>');
-    });
+    // $('#user_code').keyup(function(){
+    //     $('.log_code span').replaceWith('<span></span>');
+    // });
+
     $('#pre_submit').click(function(){
 
     })
