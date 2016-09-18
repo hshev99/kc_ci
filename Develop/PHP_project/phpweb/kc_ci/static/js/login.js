@@ -27,7 +27,7 @@ $(function(){
             success:function(data){
                 var user_info=eval('('+data+')');
                 if(user_info.error == 102){
-                    $('.log_pass span').replaceWith('<span style="color:#fa424c;">'+user_info.errorMsg+'</span>');
+                    $('.user_prompt span').replaceWith('<span style="color:#fa424c;">'+user_info.errorMsg+'</span>');
                     //alert(user_info.errorMsg);
                     return false;
                 }else if(user_info.error == 0){
