@@ -37,7 +37,72 @@ background: -moz-linear-gradient(top, #719fff 15%, #50abf1 100%); background: -w
 .log_prompt,.log_pass{ position:absolute; z-index:11; left:0; top:60px; height:30px; line-height:30px;}
 .user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
 
+@-moz-keyframes dothabottomcheck {
+  0% {
+    height: 0;
+  }
 
+  100% {
+    height: 50px;
+  }
+}
+@-webkit-keyframes dothabottomcheck {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 50px;
+  }
+}
+@keyframes dothabottomcheck {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 50px;
+  }
+}
+@keyframes dothatopcheck {
+  0% {
+    height: 0;
+  }
+
+  50% {
+    height: 0;
+  }
+
+  100% {
+    height: 120px;
+  }
+}
+@-webkit-keyframes dothatopcheck {
+  0% {
+    height: 0;
+  }
+
+  50% {
+    height: 0;
+  }
+
+  100% {
+    height: 120px;
+  }
+}
+@-moz-keyframes dothatopcheck {
+  0% {
+    height: 0;
+  }
+
+  50% {
+    height: 0;
+  }
+
+  100% {
+    height: 120px;
+  }
+}
 .log_box .left input[type=checkbox] {
   display: none;
 }
