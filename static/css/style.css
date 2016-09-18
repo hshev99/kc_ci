@@ -32,7 +32,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 background: -moz-linear-gradient(top, #719fff 15%, #50abf1 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#719fff), color-stop(100%,#50abf1)); background: -webkit-linear-gradient(top, #719fff 15%,#50abf1 100%); background: -o-linear-gradient(top, #719fff 15%,#50abf1 100%); background: -ms-linear-gradient(top, #719fff 15%,#50abf1 100%); background: linear-gradient(to bottom, #719fff 15%,#50abf1 100%);}
 .log_box a{ color:#6596f5; font-size:14px;}
 
-.log_prompt,.log_pass{ position:absolute; z-index:11; left:0; top:40px; height:20px; line-height:20px;}
+.log_prompt,.log_pass{ position:absolute; z-index:11; left:0; top:60px; height:30px; line-height:30px;}
 .user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
 
 
