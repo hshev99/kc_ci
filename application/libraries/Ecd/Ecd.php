@@ -1,18 +1,18 @@
 <?php
-header("Content-type: text/html; charset=utf-8"); 
+//header("Content-type: text/html; charset=utf-8");
 //载入ecd类
 //require_once('lib/Ecd.class.php');
 
 //接口生产地址(应用上线后正式环境必须使用该地址)
-const url = "http://www.etuocloud.com/gateway.action";
+//const url = "http://www.etuocloud.com/gateway.action";
 //接口测试地址（未上线前测试环境使用）
 //const url = "http://www.etuocloud.com/gatetest.action";
-const app_key = 'obRCJdwAdi60wPep2MWSfDCethz0kOKg';
-const app_secret = 'MepzYlQsD3UfU9cNbNxljE0xtvaQPdQ0UnhPW8zvS3zH2k9HIWWH7g6DAt4AQruA';
-const format = 'json';
+//const app_key = 'obRCJdwAdi60wPep2MWSfDCethz0kOKg';
+//const app_secret = 'MepzYlQsD3UfU9cNbNxljE0xtvaQPdQ0UnhPW8zvS3zH2k9HIWWH7g6DAt4AQruA';
+//const format = 'json';
 
 //初始化
-$ecd = new Ecd(url,app_key,app_secret,format);
+//$ecd = new Ecd(url,app_key,app_secret,format);
 
 class Ecd
 {
