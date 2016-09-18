@@ -27,7 +27,8 @@ $(function(){
             success:function(data){
                 var user_info=eval('('+data+')');
                 if(user_info.error == 102){
-                    alert(user_info.errorMsg);
+                    $('.log_pass span').replaceWith('<span style="color:#fa424c;">'+user_info.errorMsg+'</span>');
+                    //alert(user_info.errorMsg);
                     return false;
                 }else if(user_info.error == 0){
                     window.location.href="http://www.51huole.cn/pc/index";
