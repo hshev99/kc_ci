@@ -119,10 +119,9 @@ class CI_Controller {
 		return '';
 	}
 	//接口输出
-	public function output($arr=[],$res='success',$error=0,$errorMsg=''){
+	public function output($arr=[],$error=0,$errorMsg=''){
 		$arr=[
 			'error'=>$error,
-			'status'=>$res,
 			'errorMsg'=>$errorMsg,
 			'results'=>$arr
 		];
