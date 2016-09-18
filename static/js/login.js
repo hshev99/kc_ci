@@ -13,7 +13,7 @@ $(function(){
             return false;
         }
         if($('#user_pass').val().length==0){
-            document.getElementById("user_name").focus();
+            document.getElementById("user_pass").focus();
             $('.log_pass span').replaceWith('<span style="color:#fa424c;">您还没有输入密码！</span>');
             return false;
         }
@@ -25,7 +25,7 @@ $(function(){
                 password:$('#user_pass').val()
             },
             success:function(){
-                
+
             }
         })
     });
