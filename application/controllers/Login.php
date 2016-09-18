@@ -60,11 +60,11 @@ class Login extends CI_Controller {
 			$arr=[
 				'msg'=>json_decode($result,true)['msg']
 			];
-			exit(json_decode(parent::output($arr)));
+			exit(json_encode(parent::output($arr)));
 
 		}else{
 
-			exit(json_decode(parent::output([],105,json_decode($result,true)['msg'])));
+			exit(json_encode(parent::output([],105,json_decode($result,true)['msg'])));
 		}
 
 		exit;
