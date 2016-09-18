@@ -70,7 +70,7 @@ class Login extends CI_Controller {
 
 		$code=rand(1000,9999);
 
-		$_SESSION[$this->phone]['code']=$code;
+		$_SESSION['code'][$this->phone]=$code;
 		$this->load->model('Ecd_model');
 
 		$result=$this->Ecd_model->send_sms_code($phone,'1',$code);
