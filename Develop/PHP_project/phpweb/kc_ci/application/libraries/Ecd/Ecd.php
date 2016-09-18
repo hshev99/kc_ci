@@ -28,7 +28,7 @@ class Ecd
      * @param $app_secret 应用 app_secret
      * @param $format 接口响应格式 json或xml
      */
-    public function  __construct($url,$app_key,$app_secret,$format)
+    public function  __construct($url='http://www.etuocloud.com/gateway.action',$app_key,$app_secret,$format)
     {
         if(empty($url) || empty($app_key) || empty($app_secret)){
             throw new Exception("非法参数");
