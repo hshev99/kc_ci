@@ -9,10 +9,17 @@ class Index extends CI_Controller {
 		parent::__construct();
 
 
+		//判断是否登录
+		if (!empty($_SESSION['user_login'])){
+			$this->user_login=@$_SESSION['user_login'];
+		}else{
+			$this->user_login= false;
+			header("Location:/Login/index");
+		}
+
 	}
 
 	public function index(){
-		var_dump($this->user_login);
 		$this->load->view("/Index/index.html");
 	}
 
