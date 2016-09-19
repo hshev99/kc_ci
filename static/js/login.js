@@ -133,7 +133,10 @@ $(function(){
                 code:$('#user_code').val()
             },
             success:function(data){
-
+                if(data.error !=0){
+                    alert(data.errorMsg);
+                    return false;
+                }
             }
         })
     })
