@@ -113,7 +113,8 @@ $(function(){
             success:function(data){
                 alert(data);
                 if(data.error !=0){
-                    alert(data.errorMsg);
+                    var obj =JSON.stringify(data.errorMsg);
+                    alert(obj);
                     return false;
                 }
                 var sbian = JSON.parse(data);
