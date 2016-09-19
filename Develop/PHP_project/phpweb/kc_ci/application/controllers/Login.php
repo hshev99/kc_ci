@@ -3,11 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-
-	public $uid;
-	public $lc=0;
-
-	public $user_login;
+//	public $user_login;
 
 	public $phone;
 	public $code;
@@ -18,7 +14,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 
 		$this->phone=empty($this->input->post('phone')) ? '1' : $this->input->post('phone');
-		$this->user_login=@$_SESSION['user_login'];
+//		$this->user_login=@$_SESSION['user_login'];
 		$this->code=isset($_SESSION['code'][$this->phone]) ? $_SESSION['code'][$this->phone] : '';
 	}
 
