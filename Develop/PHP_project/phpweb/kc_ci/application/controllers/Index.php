@@ -12,7 +12,7 @@ class Index extends CI_Controller {
 	}
 
 	public function index(){
-		$this->pr($_SESSION);
+		$this->pr($this->user_login);
 		$this->load->view("/Index/index.html");
 	}
 
