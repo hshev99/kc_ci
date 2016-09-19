@@ -13,30 +13,30 @@ class ReadCargo_model extends CI_Model
         $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} ";
         $query=$this->cargo->query($sql);
 
-        $result='';
+        $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $result['shipper_id']=$row->shipper_id;
-                $result['send_user_mobile']=$row->send_user_mobile;
-                $result['send_user_name']=$row->send_user_name;
-                $result['send_address']=$row->send_address;
+                $arr['shipper_id']=$row->shipper_id;
+                $arr['send_user_mobile']=$row->send_user_mobile;
+                $arr['send_user_name']=$row->send_user_name;
+                $arr['send_address']=$row->send_address;
 
 
-                $result['receive_address']=$row->receive_address;
-                $result['receive_user_mobile']=$row->receive_user_mobile;
-                $result['receive_user_name']=$row->receive_user_name;
+                $arr['receive_address']=$row->receive_address;
+                $arr['receive_user_mobile']=$row->receive_user_mobile;
+                $arr['receive_user_name']=$row->receive_user_name;
 
-                $result['cargo_name']=$row->cargo_name;
-                $result['cargo_weight']=$row->cargo_weight;
-                $result['expect_price']=$row->expect_price;
-                $result['start_time']=$row->start_time;
-                $result['end_time']=$row->end_time;
-                $result['status']=$row->status;
-                $result['remark']=$row->remark;
-                $result['create_time']=$row->create_time;
-                $result['update_time']=$row->update_time;
+                $arr['cargo_name']=$row->cargo_name;
+                $arr['cargo_weight']=$row->cargo_weight;
+                $arr['expect_price']=$row->expect_price;
+                $arr['start_time']=$row->start_time;
+                $arr['end_time']=$row->end_time;
+                $arr['status']=$row->status;
+                $arr['remark']=$row->remark;
+                $arr['create_time']=$row->create_time;
+                $arr['update_time']=$row->update_time;
 
-
+                $result[]=$arr;
             }
             return $result;
         }else{
