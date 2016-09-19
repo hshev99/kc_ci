@@ -175,8 +175,9 @@ $(function(){
                 code:$('#user_code').val()
             },
             success:function(data){
-                if(data.error !=0){
-                    alert(data.errorMsg);
+                var obj =JSON.parse(data);
+                if(obj.error !=0){
+                    alert(obj.errorMsg);
                     return false;
                 }
             }
