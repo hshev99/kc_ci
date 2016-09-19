@@ -72,7 +72,7 @@ class CI_Controller {
 	 * @return	void
 	 */
 	public function __construct()
-	{
+	{var_dump($_SESSION['user_login']);
 		if (!empty($_SESSION['user_login'])){
 			$this->user_login=@$_SESSION['user_login'];
 		}else{
