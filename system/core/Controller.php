@@ -135,7 +135,7 @@ class CI_Controller {
 			'errorMsg'=>$errorMsg,
 			'results'=>$arr
 		];
-		exit(json_encode($arr));
+		exit(json_encode($arr,JSON_UNESCAPED_UNICODE));
 	}
 
 	//CURL get 请求
