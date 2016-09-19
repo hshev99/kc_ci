@@ -109,11 +109,12 @@ $(function(){
         $.ajax({
             type:'post',
             url:'../login/getSmsCode',
+            dataType:'json',
             data:{phone:$('#user_name_pass').val()},
             success:function(data){
                 alert(data);
                 if(data.error !=0){
-                    var obj =strJSON.parseJSON(data.errorMsg);
+                    var obj =JSON.parse(data.errorMsg);
                     alert(obj);
                     return false;
                 }
