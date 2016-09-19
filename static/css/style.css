@@ -58,7 +58,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_box .left span{ float:left; margin-left:8px; height:18px; font-size:16px; line-height:18px; color:rgba(158,167,180,1);}
 
 /*忘记密码*/
-input.code{ float:right; width:90px; height:30px; background:rgba(80,171,241,1); text-align:center; line-height:30px; font-size:16px; color:#fff; cursor:pointer; border:0;}
+input.code{ float:right; width:90px; height:28px; background:rgba(80,171,241,1); text-align:center; line-height:28px; font-size:16px; color:#fff; cursor:pointer; border:0;}
 button.code_sub{ width:170px; height:30px; font-size:16px;}
 
 
