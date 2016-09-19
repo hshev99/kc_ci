@@ -17,7 +17,7 @@ class Index extends CI_Controller {
 	}
 
 	public function index(){
-		echo '123';exit;
+		$this->load->view("/Index/index.html");
 	}
 
 
