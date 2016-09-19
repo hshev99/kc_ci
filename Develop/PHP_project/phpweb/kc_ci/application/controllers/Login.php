@@ -55,6 +55,7 @@ class Login extends CI_Controller {
 		if (empty($result)){
 			exit(json_encode(parent::output([],102,'用户名或密码有误')));
 		}
+		$_SESSION['user_login']=$result;
 
 		exit(json_encode(parent::output($result)));
 
