@@ -114,7 +114,7 @@ $(function(){
             success:function(data){
                 var obj =JSON.parse(data);
                 //alert(obj.error);
-                alert(obj.errorMsg);
+                //alert(obj.errorMsg);
                 if(obj.error !=0){
                     alert(obj.errorMsg);
                     return false;
