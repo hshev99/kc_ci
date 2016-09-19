@@ -10,7 +10,7 @@ h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
 a{text-decoration:none; color:#434343;}
 a:hover{text-decoration:none; color:#fa424c;}
 body {margin:0;padding:0;min-width:320px;width:100%;}
-body,td,th {font-family:"microsoft yahei"; font-size:12px; color:#434343;}
+body,td,th {font-family:"microsoft yahei"; font-size:12px; color:rgba(158,167,180,1);}
 a,p,ul,li{ text-decoration:none; margin:0; padding:0; list-style-type:none;}
 /*@media screen and (max-device-width: 320px){body{-webkit-text-size-adjust:none}}
 @media screen and (max-device-width: 480px){body{-webkit-text-size-adjust:none}}
@@ -26,14 +26,14 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_box{ float:left; width:460px; height:420px; background-color:#fff; /*border-radius:8px; -webkit-border-radius:8px; -moz-border-radius:8px; -o-border-radius:8px; -ms-border-radius:8px;*/}
 #logo{ float:left; width:460px; height:100px; line-height: 100px; background:rgba(49,67,99,1); text-align:center;}
 #logo img{ vertical-align:middle; margin-top:-3px;}
-.text_info{ float:left; width:380px; padding:0 40px; margin-top:30px;}
-.log_input{ float:left; width:378px; border:1px solid #ccc; font-size:16px; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; height:48px; text-indent:40px;}
-.posin_img{ position:absolute; z-index:11; left:10px; top:13px; height: 48px; line-height: 48px;}
+.text_info{ float:left; width:390px; padding:0 35px; margin-top:30px;}
+.log_input{ float:left; width:388px; border:1px solid rgba(227,230,244,1); font-size:14px;  height:28px; text-indent:28px;}
+.posin_img{ position:absolute; z-index:11; left:10px; top:0px; height: 28px; line-height: 28px;}
 .posin_img img{ vertical-align: middle; margin-top: -3px;}
-.log_box button{ margin:0 auto; display:table; width:200px; height:50px; color:#fff; font-size:18px;font-family:"microsoft yahei"; line-height:30px; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; cursor:pointer;background:rgba(80,171,241,1); border:0;}
+.log_box button{ margin:0 auto; display:table; width:390px; height:30px; color:#fff; font-size:16px;font-family:"microsoft yahei"; line-height:30px; cursor:pointer;background:rgba(80,171,241,1); border:0;}
 .log_box .left{ float:left}
 .log_box .right{ float:right;}
-.log_box .right a{ color:#6596f5; font-size:14px;}
+.log_box .right a{ color:rgba(227,230,244,1); font-size:14px;}
 .log_box .right span{ color:#666; font-size:14px;}
 .log_prompt,.log_pass,.log_code,.log_pass_new{ position:absolute; z-index:11; left:0; top:60px; height:30px; line-height:30px;}
 .user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
@@ -47,7 +47,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 @-moz-keyframes dothatopcheck { 0% { height: 0;} 50% { height: 0; }100% {height: 20px;}}
 .log_box .left input[type=checkbox] { display: none;}
 
-.log_box .left .check-box { float:left; height: 18px; width: 18px; background-color: transparent; border: 2px solid #666; border-radius: 2px; position: relative; display: inline-block; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-transition: border-color ease 0.2s; -o-transition: border-color ease 0.2s; -webkit-transition: border-color ease 0.2s; transition: border-color ease 0.2s; cursor: pointer;}
+.log_box .left .check-box { float:left; height: 18px; width: 18px; background-color: transparent; border: 1px solid rgba(227,230,244,1); position: relative; display: inline-block; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-transition: border-color ease 0.2s; -o-transition: border-color ease 0.2s; -webkit-transition: border-color ease 0.2s; transition: border-color ease 0.2s; cursor: pointer;}
 .log_box .left .check-box::before, .check-box::after { -moz-box-sizing: border-box;-webkit-box-sizing: border-box; box-sizing: border-box; position: absolute; height: 0;width: 3px; background-color: #50abf1; display: inline-block; -moz-transform-origin: left top; -ms-transform-origin: left top; -o-transform-origin: left top; -webkit-transform-origin: left top; transform-origin: left top; border-radius: 5px;content: ' '; -webkit-transition: opacity ease .5;-moz-transition: opacity ease .5; transition: opacity ease .5;}
 .log_box .left .check-box::before { top: 13px; left: 7px; -moz-transform: rotate(-135deg);-ms-transform: rotate(-135deg); -o-transform: rotate(-135deg); -webkit-transform: rotate(-135deg); transform: rotate(-135deg);}
 .log_box .left .check-box::after { top: 6px; left: 0px; -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); transform: rotate(-45deg);}
@@ -55,7 +55,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_box .left input[type=checkbox]:checked + .check-box,.log_box .left .check-box.checked { border-color: #50abf1;}
 .log_box .left input[type=checkbox]:checked + .check-box::after,.check-box.checked::after { height:5px; -moz-animation: dothabottomcheck 0.2s ease 0s forwards; -o-animation: dothabottomcheck 0.2s ease 0s forwards; -webkit-animation: dothabottomcheck 0.2s ease 0s forwards; animation: dothabottomcheck 0.2s ease 0s forwards;}
 .log_box .left input[type=checkbox]:checked + .check-box::before,.check-box.checked::before { height: 10px;-moz-animation: dothatopcheck 0.4s ease 0s forwards; -o-animation: dothatopcheck 0.4s ease 0s forwards; -webkit-animation: dothatopcheck 0.4s ease 0s forwards; animation: dothatopcheck 0.4s ease 0s forwards;}
-.log_box .left span{ float:left; margin-left:8px; height:18px; line-height:18px; color:#9ea7b4;}
+.log_box .left span{ float:left; margin-left:8px; height:18px; font-size:16px; line-height:18px; color:rgba(158,167,180,1);}
 
 /*忘记密码*/
 input.code{ float:right; width:140px; height:48px; background:rgba(80,171,241,1); border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; text-align:center; line-height:48px; font-size:16px; color:#fff; cursor:pointer; border:0;}
