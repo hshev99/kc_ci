@@ -59,13 +59,7 @@ class CI_Controller {
 	 */
 	private static $instance;
 	private $_secret_key = 'key';
-
-
-	public $uid;
-	public $user_name;
-	public $login_name;
-	public $user_login;
-
+	
 	/**
 	 * Class constructor
 	 *
@@ -73,11 +67,6 @@ class CI_Controller {
 	 */
 	public function __construct()
 	{
-		if (!empty($_SESSION['user_login'])){
-			$this->user_login=@$_SESSION['user_login'];
-		}else{
-			$this->user_login= false;
-		}
 
 		self::$instance =& $this;
 
