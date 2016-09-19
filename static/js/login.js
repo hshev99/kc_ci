@@ -111,6 +111,7 @@ $(function(){
             url:'../login/getSmsCode',
             data:{phone:$('#user_name_pass').val()},
             success:function(data){
+                alert(data);
                 if(data.error !=0){
                     alert(data.errorMsg);
                     return false;
