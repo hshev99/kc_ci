@@ -36,7 +36,7 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_box .right a{ color:rgba(158,167,180,1); font-size:16px;}
 .log_box .right span{ color:rgba(158,167,180,1); font-size:16px;}
 .log_prompt,.log_pass,.log_code,.log_pass_new{ position:absolute; z-index:11; right:0; top:-20px; height:20px; line-height:20px; font-size:16px;}
-.user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
+.user_prompt{ position:absolute; z-index:11; right:0; top:-20px; font-size:16px;}
 .log_pass span{ color:rgba(80,171,241,1)}
 
 @-moz-keyframes dothabottomcheck { 0% { height: 0; } 100% { height: 7px;}}
