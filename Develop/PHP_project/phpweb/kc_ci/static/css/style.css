@@ -33,8 +33,8 @@ input[type="button"], input[type="submit"], input[type="radio"], input[type="dat
 .log_box button{ margin:0 auto; display:table; width:390px; height:30px; color:#fff; font-size:16px;font-family:"microsoft yahei"; line-height:30px; cursor:pointer;background:rgba(80,171,241,1); border:0;}
 .log_box .left{ float:left}
 .log_box .right{ float:right;}
-.log_box .right a{ color:rgba(227,230,244,1); font-size:14px;}
-.log_box .right span{ color:#666; font-size:14px;}
+.log_box .right a{ color:rgba(158,167,180,1); font-size:16px;}
+.log_box .right span{ color:rgba(158,167,180,1); font-size:16px;}
 .log_prompt,.log_pass,.log_code,.log_pass_new{ position:absolute; z-index:11; left:0; top:60px; height:30px; line-height:30px;}
 .user_prompt{ position:absolute; z-index:11; left:0; top:-10px;}
 .log_pass span{ color:rgba(80,171,241,1)}
