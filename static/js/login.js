@@ -101,6 +101,11 @@ $(function(){
 
     SID ="";
     $('#btn').click(function(){
+        if($('#user_name_pass').val().length ==0){
+            document.getElementById("user_name_pass").focus();
+            $('.log_prompt span').replaceWith('<span style="color:#fa424c;">请输入帐号！</span>');
+            return false;
+        }
         $.ajax({
             type:'post',
             url:'../login/getSmsCode',
