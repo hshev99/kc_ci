@@ -17,9 +17,10 @@ class Index extends CI_Controller {
 	}
 
 	public function index(){
+		$this->pr($_SESSION);
 		$this->load->view("/Index/index.html");
 	}
 
-
+	
 
 }
