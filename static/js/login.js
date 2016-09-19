@@ -112,10 +112,11 @@ $(function(){
             //dataType:'json',
             data:{phone:$('#user_name_pass').val()},
             success:function(data){
-                alert(data);
-                if(data.error !=0){
-                    var obj =strJSON.parseJSON(data.errorMsg);
-                    alert(obj);
+                var obj =JSON.parse(data);
+                //alert(obj.error);
+                alert(obj.errorMsg);
+                if(obj.error !=0){
+                    alert(obj.errorMsg);
                     return false;
                 }
                 var sbian = JSON.parse(data);
