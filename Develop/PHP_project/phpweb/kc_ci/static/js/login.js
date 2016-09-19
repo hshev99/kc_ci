@@ -124,6 +124,38 @@ $(function(){
     // });
 
     $('#pre_submit').click(function(){
+        $('#user_new_pass').keyup(function(){
+            $('.log_pass span').replaceWith('<span></span>');
+        });
+        $('#user_name_pass').keyup(function(){
+            $('.log_prompt span').replaceWith('<span></span>');
+        });
+        $('#user_code').keyup(function(){
+            $('.log_code span').replaceWith('<span></span>');
+        });
+        $('#user_new1_pass').keyup(function(){
+            $('.log_pass_new span').replaceWith('<span></span>');
+        });
+        if($('#user_name_pass').val().length==0){
+            document.getElementById("user_name_pass").focus();
+            $('.log_prompt span').replaceWith('<span style="color:#fa424c;">请输入帐号！</span>');
+            return false;
+        }
+        if($('#user_code').val().length==0){
+            document.getElementById("user_code").focus();
+            $('.log_code span').replaceWith('<span style="color:#fa424c;">请验证码！</span>');
+            return false;
+        }
+        if($('#user_new_pass').val().length==0){
+            document.getElementById("user_new_pass").focus();
+            $('.log_pass span').replaceWith('<span style="color:#fa424c;">请输入新密码！</span>');
+            return false;
+        }
+        if($('#user_new1_pass').val().length==0){
+            document.getElementById("user_new1_pass").focus();
+            $('.log_pass_new span').replaceWith('<span style="color:#fa424c;">请再次输入密码！</span>');
+            return false;
+        }
         $.ajax({
             type:'post',
             url:'../login/setUserPassword',
