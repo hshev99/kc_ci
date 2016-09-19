@@ -113,7 +113,7 @@ $(function(){
             success:function(data){
                 alert(data);
                 if(data.error !=0){
-                    var obj =JSON.stringify(data.errorMsg);
+                    var obj =JSON.parse(data.errorMsg);
                     alert(obj);
                     return false;
                 }
