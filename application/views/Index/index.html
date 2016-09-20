@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>首页</title>
-    <link type="text/css" href="css/style.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <link type="text/css" href="/static/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+    <script src="/static/js/jquery-1.11.2.min.js" type="text/javascript"></script>
 </head>
 <body class="back_box">
 <div class="wrapper">
@@ -23,8 +23,8 @@
             </div>
         </div>
         <div class="right_about">
-           <a href="#"><img src="images/her1.png" width="13" height="14"> 关于我们</a>
-           <a href="#"><img src="images/her2.png" width="13" height="14"> 退出登录</a>
+           <a href="#"><img src="/static/images/her1.png" width="13" height="14"> 关于我们</a>
+           <a href="#"><img src="/static/images/her2.png" width="13" height="14"> 退出登录</a>
         </div>
     </div>
     <!--侧导航-->
@@ -84,10 +84,6 @@ $(function(){
 				$('.main-header').css('padding-left','252px');
 				$('.content-wrapper').css('padding-left','252px')
 			}
-	})
-	$('#menu ul li').click(function(){
-		alert('111');
-		$('#menu ul li .nav_sub').css('display','block');	
 	})
 })
 </script>
