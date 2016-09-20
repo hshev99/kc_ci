@@ -20,13 +20,6 @@ class Index extends CI_Controller {
 	}
 
 	public function index(){
-//		$arr=[
-//			'error'=>404,
-//			'errorMsg'=>'You requested does not exist',
-//			'results'=>[]
-//		];
-//		exit(json_encode($arr));
-
 		parent::outPutEnd([],404,'You requested does not exist');
 	}
 
