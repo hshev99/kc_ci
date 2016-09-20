@@ -44,5 +44,33 @@ class ReadCargo_model extends CI_Model
         }
     }
 
+    public function getCargoDefault($admin_id=''){
+        if (!$admin_id) return false;
+        $this->cargo = $this->load->database('cargo',TRUE);
+
+        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} ORDER BY id DESC limit 1";
+        $query=$this->cargo->query($sql);
+
+        $result=[];
+        if(!empty($query->result())){
+            foreach ($query->result() as $row) {
+                $arr['send_user_mobile']=$row->send_user_mobile;
+                $arr['send_user_name']=$row->send_user_name;
+                $arr['send_address']=$row->send_address;
+
+
+                $arr['receive_address']=$row->receive_address;
+                $arr['receive_user_mobile']=$row->receive_user_mobile;
+                $arr['receive_user_name']=$row->receive_user_name;
+
+
+                $result=$arr;
+            }
+            return $result;
+        }else{
+            return '';
+        }
+    }
+
 }
  ?>
