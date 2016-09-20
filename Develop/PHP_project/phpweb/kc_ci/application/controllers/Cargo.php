@@ -41,6 +41,19 @@ class Cargo extends CI_Controller {
 	}
 
 	/*
+	 * @content 发货操作
+	 * @time 20160920
+	 * */
+	public function setCargo(){
+		$this->load->model('ReadCargo_model');
+
+		//获取数据
+		
+		$result=$this->ReadCargo_model->setCargo($this->uid);
+
+	}
+
+	/*
 	 * @content 获取默认信息
 	 * @time 20160920
 	 *
