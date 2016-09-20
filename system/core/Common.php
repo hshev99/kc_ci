@@ -451,7 +451,7 @@ if ( ! function_exists('show_404'))
 			'errorMsg'=>'You requested does not exist',
 			'results'=>[]
 		];
-		exit(json_encode($arr,JSON_UNESCAPED_UNICODE));
+		exit(json_encode($arr));
 		exit;
 		$_error->show_404($page, $log_error);
 		exit(4); // EXIT_UNKNOWN_FILE
