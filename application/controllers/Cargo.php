@@ -39,4 +39,17 @@ class Cargo extends CI_Controller {
 			parent::outPutEnd($result);
 		}
 	}
+
+	/*
+	 * @content 获取默认信息
+	 * @time 20160920
+	 *
+	 * **/
+	public function getCargoDefault(){
+
+		$this->load->model('ReadCargo_model');
+		$result=$this->ReadCargo_model->getCargoDefault($this->uid);
+
+		$this->pr($result);
+	}
 }
