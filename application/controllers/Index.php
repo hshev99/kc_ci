@@ -27,7 +27,7 @@ class Index extends CI_Controller {
 //		];
 //		exit(json_encode($arr));
 
-		parent::outPutEnd(404,'You requested does not exist');
+		parent::outPutEnd([],404,'You requested does not exist');
 	}
 
 	
