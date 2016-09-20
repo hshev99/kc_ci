@@ -50,6 +50,10 @@ class Cargo extends CI_Controller {
 		$this->load->model('ReadCargo_model');
 		$result=$this->ReadCargo_model->getCargoDefault($this->uid);
 
-		$this->pr($result);
+		if (!$result){
+			parent::outPutEnd([],201,'暂无默认货物数据');
+		}else{
+			parent::outPutEnd($result);
+		}
 	}
 }
