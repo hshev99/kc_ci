@@ -4,11 +4,12 @@ class ReadCargo_model extends CI_Model
 	public function __construct()
     {
         parent::__construct();
+
+        $this->cargo = $this->load->database('cargo',TRUE);
     }
 
     public function getCargo($admin_id=''){
         if (!$admin_id) return false;
-        $this->cargo = $this->load->database('cargo',TRUE);
 
         $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} ";
         $query=$this->cargo->query($sql);
@@ -44,11 +45,14 @@ class ReadCargo_model extends CI_Model
         }
     }
 
-    public function getCargoDefault($admin_id=''){
-        if (!$admin_id) return false;
-        $this->cargo = $this->load->database('cargo',TRUE);
+    public function getCargoDefault($uid=''){
+        if (!$uid) return false;
 
-        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} ORDER BY id DESC limit 1";
+        //调用默认货物类型
+        $this->load->model('ReadGoodsType_model');
+        $goods_type=$this->ReadGoodsType_model->getUserGoodsType($uid);
+
+        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$uid} ORDER BY id DESC limit 1";
         $query=$this->cargo->query($sql);
 
         $result=[];
@@ -63,7 +67,7 @@ class ReadCargo_model extends CI_Model
                 $arr['receive_user_mobile']=$row->receive_user_mobile;
                 $arr['receive_user_name']=$row->receive_user_name;
 
-
+                $arr['goods_type_default']=$goods_type;
                 $result=$arr;
             }
             return $result;
