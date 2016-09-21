@@ -10,12 +10,12 @@ class Index extends CI_Controller {
 
 
 		//判断是否登录
-		if (!empty($_SESSION['user_login'])){
-			$this->user_login=@$_SESSION['user_login'];
-		}else{
-			$this->user_login= false;
-			header("Location:/Login/index");
-		}
+//		if (!empty($_SESSION['user_login'])){
+//			$this->user_login=@$_SESSION['user_login'];
+//		}else{
+//			$this->user_login= false;
+//			header("Location:/Login/index");
+//		}
 
 	}
 
