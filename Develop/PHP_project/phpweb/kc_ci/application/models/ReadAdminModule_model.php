@@ -10,7 +10,7 @@ class ReadAdminModule_model extends CI_Model
         if (!$admin_id) return false;
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT * FROM hz_admin_module WHERE parent_id=0";
+        $sql="SELECT * FROM hz_admin_module WHERE parent_id=0 AND enabled=0";
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
