@@ -20,7 +20,10 @@ class Index extends CI_Controller {
 	}
 
 	public function index(){
-		parent::outPutEnd([],404,'You requested does not exist');
+
+
+		$this->load->view("/Index/index.html");
+//		parent::outPutEnd([],404,'You requested does not exist');
 	}
 
 	
