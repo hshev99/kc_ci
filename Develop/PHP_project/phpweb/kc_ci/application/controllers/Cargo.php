@@ -22,6 +22,26 @@ class Cargo extends CI_Controller {
 
 	}
 
+
+	//发货操作
+	public function setCargo(){
+		//发货地址
+
+		$data=json_decode(parent::get_json(),true);
+
+		$this->load->model('WriteCargo_model');
+
+		$result=$this->WriteCargo_model->setCargo($data);
+
+		if ($result){
+			$arr=[
+				'msg'=>'提交成功'
+			];
+			parent::outPutEnd($arr);
+		}else{
+			parent::outPutEnd([],201,'提交失败');
+		}
+	}
 	/*
 	 * @content 发货列表
 	 * @time 20160919
@@ -40,18 +60,6 @@ class Cargo extends CI_Controller {
 		}
 	}
 
-	/*
-	 * @content 发货操作
-	 * @time 20160920
-	 * */
-	public function setCargo(){
-		$this->load->model('ReadCargo_model');
-
-		//获取数据
-		
-		$result=$this->ReadCargo_model->setCargo($this->uid);
-
-	}
 
 	/*
 	 * @content 获取默认信息
