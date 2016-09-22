@@ -8,10 +8,12 @@ class ReadCargo_model extends CI_Model
         $this->cargo = $this->load->database('cargo',TRUE);
     }
 
-    public function getCargo($admin_id=''){
+    public function getCargo($admin_id='',$page=1,$l=12){
         if (!$admin_id) return false;
 
-        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} ";
+        $limit=$l*($page-1).','.$l;
+
+        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} $limit";
         $query=$this->cargo->query($sql);
 
         $status_name=[
