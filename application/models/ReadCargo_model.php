@@ -36,30 +36,46 @@ class ReadCargo_model extends CI_Model
                 $arr['status']=$row->status;
                 $arr['status_name']=$status_name[$row->status];
 
-                $arr['operate']=[
-                    1=>[
-                        'name'=>'货单详情',
-                        'url'=>'CargoDetail'
-                    ],
-                    2=>[
-                        'name'=>'报价信息',
-                        'url'=>'CargoPriceList'
-                    ],
-                    3=>[
-                        'name'=>'取消发货',
-                        'url'=>'CargoRemove'
-                    ],
-                    4=>[
-                        'name'=>'再来一单',
-                        'CargoAgain'
-                    ]
-                ];
+                $arr['operate']=self::CargoOperate($row->status);
                 $result[]=$arr;
             }
             return $result;
         }else{
             return '';
         }
+    }
+
+    public function CargoOperate($status=1){
+
+        $arr=[];
+        if ($status == 1){
+            $arr[]=[
+                'name'=>'货单详情',
+                'url'=>'CargoDetail'
+            ];
+        }elseif ($status ==2){
+            $arr[]=[
+                'name'=>'货单详情',
+                'url'=>'CargoDetail'
+            ];
+        }
+
+        $arr[]=[
+            'name'=>'报价信息',
+            'url'=>'CargoPriceList'
+        ];
+
+        if ($status ==1) $arr[]=[
+            'name'=>'取消发货',
+            'url'=>'CargoRemove'
+        ];
+
+        $arr=[
+            'name'=>'再来一单',
+            'CargoAgain'
+        ];
+
+        return $arr;
     }
 
     public function getCargoDefault($uid=''){
