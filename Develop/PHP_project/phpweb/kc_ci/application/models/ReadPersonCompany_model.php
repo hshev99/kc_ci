@@ -6,23 +6,22 @@ class ReadPersonCompany_model extends CI_Model
         parent::__construct();
     }
 
-    public function getPersonCompany($cargo_id=''){
-        if (!$cargo_id) return 0;
-        $this->cargo = $this->load->database('cargo',TRUE);
+    public function getPersonCompany($user_id=''){
+        if (!$user_id) return 0;
+        $this->caravans = $this->load->database('caravans',TRUE);
 
-        $sql="SELECT count(1) as a FROM hz_cargo_price WHERE cargo_id={$cargo_id}";
+        $sql="SELECT company_name FROM person_company WHERE user_id={$user_id}";
         $query=$this->cargo->query($sql);
 
-        $result=0;
+        $result='';
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $result=$row->a;
+                $result=$row->company_name;
             }
 
-            if ($result > 99) $result ="99+";
             return $result;
         }else{
-            return 0;
+            return '';
         }
     }
 
