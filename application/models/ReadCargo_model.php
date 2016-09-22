@@ -15,7 +15,7 @@ class ReadCargo_model extends CI_Model
         $where .=" and status in ({$status})";
         $limit='limit '.$l*($page-1).','.$l;
 
-        $sql="SELECT * FROM hz_cargo WHERE 1 $where shipper_id={$admin_id} $limit";
+        $sql="SELECT * FROM hz_cargo WHERE 1 $where shipper_id={$admin_id} $limit";$this->pr($sql);
         $query=$this->cargo->query($sql);
 
         $sql_count="SELECT COUNT(1) as a FROM hz_cargo WHERE 1 $where shipper_id={$admin_id} $limit";
