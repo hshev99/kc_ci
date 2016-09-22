@@ -75,7 +75,7 @@ class ReadCargo_model extends CI_Model
                         $arr['freight_price']=$cargo_price['expect_price'].'/吨';
                         $arr['freight_total_price']=number_format(($cargo_price['expect_price']*$cargo_price['ton_count']),2).'/吨';
 
-                        $arr['progress'] = 0.40;
+                        $arr['progress'] = 0.45;
                     }
 
                 }
