@@ -36,7 +36,24 @@ class ReadCargo_model extends CI_Model
                 $arr['status']=$row->status;
                 $arr['status_name']=$status_name[$row->status];
 
-
+                $arr['operate']=[
+                    1=>[
+                        'name'=>'货单详情',
+                        'url'=>'CargoDetail'
+                    ],
+                    2=>[
+                        'name'=>'报价信息',
+                        'url'=>'CargoPriceList'
+                    ],
+                    3=>[
+                        'name'=>'取消发货',
+                        'url'=>'CargoRemove'
+                    ],
+                    4=>[
+                        'name'=>'再来一单',
+                        'CargoAgain'
+                    ]
+                ];
                 $result[]=$arr;
             }
             return $result;
