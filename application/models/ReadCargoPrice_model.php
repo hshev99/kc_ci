@@ -7,6 +7,7 @@ class ReadCargoPrice_model extends CI_Model
     }
 
     public function getCargoPrice($cargo_id=''){
+        if (!$cargo_id) return 0;
         $this->cargo = $this->load->database('cargo',TRUE);
 
         $sql="SELECT count(1) as a FROM hz_cargo_price WHERE cargo_id={$cargo_id}";
