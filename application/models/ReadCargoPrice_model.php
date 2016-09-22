@@ -6,20 +6,20 @@ class ReadCargoPrice_model extends CI_Model
         parent::__construct();
     }
 
-    public function getCargoPrice($uid=''){
+    public function getCargoPrice($cargo_id=''){
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT name FROM hz_goods_type WHERE uid={$uid}";
+        $sql="SELECT count(1) as a FROM hz_cargo_price WHERE cargo_id={$cargo_id}";
         $query=$this->cargo->query($sql);
 
-        $result=[];
+        $result=0;
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $result[]['name']=$row->name;
+                $result=$row->a;
             }
             return $result;
         }else{
-            return '';
+            return 0;
         }
     }
 
