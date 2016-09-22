@@ -44,7 +44,7 @@ class ReadCargo_model extends CI_Model
                 $arr['status_name']=$status_name[$row->status];
 
                 $arr['operate']=self::CargoOperate($row->status);
-                $result[]=$arr;
+                $result['result']=$arr;
             }
             return $result;
         }else{
