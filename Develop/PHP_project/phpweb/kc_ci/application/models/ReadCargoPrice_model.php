@@ -18,6 +18,8 @@ class ReadCargoPrice_model extends CI_Model
             foreach ($query->result() as $row) {
                 $result=$row->a;
             }
+
+            if ($result > 99) $result ="99+";
             return $result;
         }else{
             return 0;
