@@ -26,6 +26,11 @@ class ReadCargo_model extends CI_Model
             6=>'已过期'
         ];
         $result=[];
+        $result['page']=[
+            'curpage'=>$page,
+            'limit'=>$l,
+            'totalCount'=>1
+        ];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
                 $arr['cargo_sn']=$row->cargo_sn;
