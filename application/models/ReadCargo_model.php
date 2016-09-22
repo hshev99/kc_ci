@@ -13,7 +13,7 @@ class ReadCargo_model extends CI_Model
 
         $limit=$l*($page-1).','.$l;
 
-        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} $limit";
+        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} $limit";$this->pr($sql);
         $query=$this->cargo->query($sql);
 
         $status_name=[
