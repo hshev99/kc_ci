@@ -19,6 +19,7 @@ class ReadCargo_model extends CI_Model
         $sql_count="SELECT COUNT(1) FROM hz_cargo WHERE shipper_id={$admin_id} $limit";
         $query_count=$this->cargo->query($sql_count);
 
+        empty($query_count->result()) ? $totalCount=0 : $totalCount=$query_count->result()[0]['COUNT(1)'];
         $status_name=[
             0=>'异常',
             1=>'询价中',
@@ -32,7 +33,7 @@ class ReadCargo_model extends CI_Model
         $result['page']=[
             'curpage'=>$page,
             'limit'=>$l,
-            'totalCount'=>$query_count[0]->COUNT(1)
+            'totalCount'=>$totalCount
         ];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
