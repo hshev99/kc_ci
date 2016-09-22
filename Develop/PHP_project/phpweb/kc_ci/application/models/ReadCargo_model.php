@@ -51,6 +51,8 @@ class ReadCargo_model extends CI_Model
 
                 $arr['cargo_detail']=$row->cargo_name.'/'.$row->cargo_weight.'吨';
 
+                $arr['cargo_price_time'] = 12;
+
                 $arr['status']=$row->status;
                 $arr['status_name']=$status_name[$row->status];
 
