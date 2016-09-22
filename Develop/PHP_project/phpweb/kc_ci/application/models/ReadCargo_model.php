@@ -17,7 +17,7 @@ class ReadCargo_model extends CI_Model
         $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $arr['shipper_id']=$row->shipper_id;
+                $arr['cargo_sn']=$row->cargo_sn;
                 $arr['send_user_mobile']=$row->send_user_mobile;
                 $arr['send_user_name']=$row->send_user_name;
                 $arr['send_address']=$row->send_address;
