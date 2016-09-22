@@ -13,6 +13,8 @@ class ReadCargo_model extends CI_Model
 
         $this->load->model('ReadCargoPrice_model');
 
+        $this->load->model('ReadPersonCompany_model');
+
 
         $where ='';
         $where .=" and status in ({$status})";
@@ -60,6 +62,21 @@ class ReadCargo_model extends CI_Model
                 $arr['status_name']=$status_name[$row->status];
 
                 $arr['operate']=self::CargoOperate($row->status);
+
+                if ($arr['status'] == 2){
+                    $cargo_price=$this->ReadCargoPrice_model->getCargoPricedetail($row->id);
+
+                    if (empty($cargo_price)){
+                        $arr['company']='---';
+                        $arr['freight_price']='---';
+                        $arr['freight_total_price']='---';
+                    }else{
+                        $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
+                        $arr['freight_price']=$cargo_price['expect_price'].'/吨';
+                        $arr['freight_total_price']=number_format(($cargo_price['expect_price']*$cargo_price['ton_count']),2).'/吨';
+                    }
+
+                }
 
 
                 $result['result'][]=$arr;

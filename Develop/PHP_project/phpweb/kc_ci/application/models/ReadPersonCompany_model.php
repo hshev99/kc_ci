@@ -7,7 +7,7 @@ class ReadPersonCompany_model extends CI_Model
     }
 
     public function getPersonCompany($user_id=''){
-        if (!$user_id) return 0;
+        if (!$user_id) return '';
         $this->caravans = $this->load->database('caravans',TRUE);
 
         $sql="SELECT company_name FROM person_company WHERE user_id={$user_id}";
