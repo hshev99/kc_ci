@@ -85,7 +85,7 @@ class ReadCargo_model extends CI_Model
 
         $arr[]=[
             'name'=>'再来一单',
-            'CargoAgain'
+            'url'=>'CargoAgain'
         ];
 
         return $arr;
