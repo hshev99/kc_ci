@@ -19,6 +19,7 @@ class ReadCargo_model extends CI_Model
         $sql_count="SELECT COUNT(1) FROM hz_cargo WHERE shipper_id={$admin_id} $limit";
         $query_count=$this->cargo->query($sql_count);
 
+        $this->pr($query_count->result()[0]['COUNT(1)']);
         empty($query_count->result()) ? $totalCount=0 : $totalCount=$query_count->result()[0]['COUNT(1)'];
         $status_name=[
             0=>'异常',
