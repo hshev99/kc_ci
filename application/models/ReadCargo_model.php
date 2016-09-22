@@ -11,6 +11,9 @@ class ReadCargo_model extends CI_Model
     public function getCargo($admin_id='',$status=1,$page=1,$l=12){
         if (!$admin_id) return false;
 
+        $this->load->model('ReadCargoPrice_model');
+
+
         $where ='';
         $where .=" and status in ({$status})";
 
@@ -51,7 +54,7 @@ class ReadCargo_model extends CI_Model
 
                 $arr['cargo_detail']=$row->cargo_name.'/'.$row->cargo_weight.'吨';
 
-                $arr['cargo_price_time'] = "10".'/次';
+                $arr['cargo_price_time'] = $this->ReadCargoPrice_model->getCargoPrice($row->id)."10".'/次';
 
                 $arr['status']=$row->status;
                 $arr['status_name']=$status_name[$row->status];
