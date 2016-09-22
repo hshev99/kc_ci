@@ -46,6 +46,9 @@ class ReadCargo_model extends CI_Model
                 $arr['send_address']=$row->send_address;
                 $arr['receive_address']=$row->receive_address;
 
+                $arr['start_time']=$row->start_time;
+                $arr['end_time']=$row->end_time;
+
                 $arr['cargo_detail']=$row->cargo_name.'/'.$row->cargo_weight.'吨';
 
                 $arr['status']=$row->status;
