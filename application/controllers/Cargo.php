@@ -53,9 +53,13 @@ class Cargo extends CI_Controller {
 	 * */
 	public function getCargoList(){
 
+		$data=json_decode(parent::get_json(),true);
+
+		$page=$data['page'];
+		$l=$data['total_page'];
 
 		$this->load->model('ReadCargo_model');
-		$result=$this->ReadCargo_model->getCargo($this->uid);
+		$result=$this->ReadCargo_model->getCargo($this->uid,$page,$l);
 
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
