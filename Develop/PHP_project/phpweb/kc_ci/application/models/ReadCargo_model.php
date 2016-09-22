@@ -15,6 +15,7 @@ class ReadCargo_model extends CI_Model
         $query=$this->cargo->query($sql);
 
         $status_name=[
+            0=>'异常',
             1=>'询价中',
             2=>'进行中',
             3=>'待付款',
