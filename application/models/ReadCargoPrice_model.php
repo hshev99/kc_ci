@@ -26,5 +26,29 @@ class ReadCargoPrice_model extends CI_Model
         }
     }
 
+    public function getCargoPricedetail($cargo_id=''){
+
+        if (!$cargo_id) return [];
+        $this->cargo = $this->load->database('cargo',TRUE);
+
+        $sql="SELECT * FROM hz_cargo_price WHERE cargo_id={$cargo_id}";
+        $query=$this->cargo->query($sql);
+
+        $result=[];
+        if(!empty($query->result())){
+            foreach ($query->result() as $row) {
+                $arr['company_id']=$row->company_id;
+                $arr['expect_price']=$row->expect_price;
+                $arr['ton_count']=$row->ton_count;
+                $arr['status']=$row->status;
+                $arr['remark']=$row->remark;
+            }
+
+            return $result=$arr;
+        }else{
+            return [];
+        }
+    }
+
 }
  ?>
