@@ -29,6 +29,10 @@ class Cargo extends CI_Controller {
 
 		$data=json_decode(parent::get_json(),true);
 
+		//添加 用户信息  订单号
+		$data['shipper_id']=$this->uid;
+		$data['cargo_sn']='MJ'.date("ymdHis").rand(1,9);
+
 		$this->load->model('WriteCargo_model');
 
 		$result=$this->WriteCargo_model->setCargo($data);
