@@ -14,28 +14,27 @@ class ReadCargo_model extends CI_Model
         $sql="SELECT * FROM hz_cargo WHERE shipper_id={$admin_id} ";
         $query=$this->cargo->query($sql);
 
+        $status_name=[
+            1=>'询价中',
+            2=>'进行中',
+            3=>'待付款',
+            4=>'已完成',
+            5=>'已取消',
+            6=>'已过期'
+        ];
         $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
                 $arr['cargo_sn']=$row->cargo_sn;
-                $arr['send_user_mobile']=$row->send_user_mobile;
-                $arr['send_user_name']=$row->send_user_name;
+
                 $arr['send_address']=$row->send_address;
-
-
                 $arr['receive_address']=$row->receive_address;
-                $arr['receive_user_mobile']=$row->receive_user_mobile;
-                $arr['receive_user_name']=$row->receive_user_name;
 
-                $arr['cargo_name']=$row->cargo_name;
-                $arr['cargo_weight']=$row->cargo_weight;
-                $arr['expect_price']=$row->expect_price;
-                $arr['start_time']=$row->start_time;
-                $arr['end_time']=$row->end_time;
+                $arr['cargo_detail']=$row->cargo_name.'/'.$row->cargo_weight.'吨';
+
                 $arr['status']=$row->status;
-                $arr['remark']=$row->remark;
-                $arr['create_time']=$row->create_time;
-                $arr['update_time']=$row->update_time;
+                $arr['status_name']=$status_name[$row->status];
+
 
                 $result[]=$arr;
             }
