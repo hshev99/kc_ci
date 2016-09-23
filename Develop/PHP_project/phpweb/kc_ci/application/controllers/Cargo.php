@@ -101,7 +101,26 @@ class Cargo extends CI_Controller {
 	 * @time 20160921
 	 * **/
 	public function getCargoPriceList(){
-		$this->load->model('ReadCargo_model');
-		$result=$this->ReadCargo_model->getCargoDefault($this->uid);
+		$this->load->model('ReadCargoPrice_model');
+		$data=json_decode(parent::get_json(),true);
+
+		$cargo_sn=isset($data['cargo_sn'])&&!empty($data['cargo_sn']) ? $data['cargo_sn'] : false;
+
+		if (!$cargo_sn) parent::outPutEnd([],301,'cargo_sn无效');
+		$page=isset($data['page'])&&!empty($data['page']) ? $data['page'] : 1;
+		$l=isset($data['limit'])&&!empty($data['limit']) ? $data['limit'] : 12;
+
+		$params=[
+			'cargo_sn'=>$cargo_sn,
+			'page'=>$page,
+			'l'=>$l
+		];
+		$result=$this->ReadCargoPrice_model->getCargoPriceList($this->uid,$params);
+
+		if (!$result){
+			parent::outPutEnd([],302,'暂无物流信息');
+		}else{
+			parent::outPutEnd($result);
+		}
 	}
 }
