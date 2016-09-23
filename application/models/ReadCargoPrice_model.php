@@ -50,5 +50,8 @@ class ReadCargoPrice_model extends CI_Model
         }
     }
 
+    public function getCargoPriceList(){
+
+    }
 }
  ?>
