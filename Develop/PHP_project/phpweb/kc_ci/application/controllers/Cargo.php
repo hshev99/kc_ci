@@ -32,7 +32,7 @@ class Cargo extends CI_Controller {
 		//添加 用户信息  订单号
 		$data['shipper_id']=$this->uid;
 		$data['cargo_sn']='MJ'.date("ymdHis").rand(1,9);
-
+$this->pr($data);
 		$this->load->model('WriteCargo_model');
 
 		$result=$this->WriteCargo_model->setCargo($data);
@@ -85,5 +85,14 @@ class Cargo extends CI_Controller {
 		}else{
 			parent::outPutEnd($result);
 		}
+	}
+
+	/*
+	 * @content
+	 * @time 20160921
+	 * **/
+	public function getCargoPriceList(){
+		$this->load->model('ReadCargo_model');
+		$result=$this->ReadCargo_model->getCargoDefault($this->uid);
 	}
 }
