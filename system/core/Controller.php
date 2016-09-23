@@ -258,7 +258,7 @@ class CI_Controller {
 	}
 
 	public function log_api($data=''){
-		$open=fopen("/fire/phpweb/fire/application/logs/log_api.txt","a" );
+		$open=fopen("/fire/phpweb/kc_ci/application/logs/log_api.txt","a" );
 		fwrite($open,date("Y-m-d H:i:s").'---'.$data."---\n");
 		fclose($open);
 	}
