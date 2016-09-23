@@ -35,6 +35,7 @@ class ReadCargo_model extends CI_Model
 
 
         if ($search['start_time']) $where .=" and start_time > {$search['start_time']}";
+        if ($search['end_time']) $where .=" and start_time < {$search['end_time']}";
 
         $limit='limit '.$l*($page-1).','.$l;
 
