@@ -234,8 +234,8 @@ class CI_Controller {
 	}
 
 	public function log($data=''){
-		$path="/fire/phpweb/fire/application/logs/".date("Y-m-d").'/'.date("H");
-		$path_date="/fire/phpweb/fire/application/logs/".date("Y-m-d");
+		$path="/fire/phpweb/kc_ci/application/logs/".date("Y-m-d").'/'.date("H");
+		$path_date="/fire/phpweb/kc_ci/application/logs/".date("Y-m-d");
 
 		if(!is_file($path_date)) @mkdir($path_date,0777);
 		if(!is_file($path)) @mkdir($path,0777);
