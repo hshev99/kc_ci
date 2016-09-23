@@ -56,9 +56,9 @@ class Cargo extends CI_Controller {
 		$data=json_decode(parent::get_json(),true);
 
 
-		$status=isset($data['status']) ? $data['status'] : '';
-		$page=isset($data['page']) ? $data['page'] : '';
-		$l=isset($data['limit']) ? $data['limit'] : '';
+		$status=isset($data['status']) ? $data['status'] : 0;
+		$page=isset($data['page']) ? $data['page'] : 1;
+		$l=isset($data['limit']) ? $data['limit'] : 12;
 
 		$this->load->model('ReadCargo_model');
 		$result=$this->ReadCargo_model->getCargo($this->uid,$status,$page,$l);
