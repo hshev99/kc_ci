@@ -60,9 +60,16 @@ class Cargo extends CI_Controller {
 		$page=isset($data['page'])&&!empty($data['page']) ? $data['page'] : 1;
 		$l=isset($data['limit'])&&!empty($data['limit']) ? $data['limit'] : 12;
 
+		$search=[
+			'cargo_sn'=>isset($data['cargo_sn'])&&!empty($data['cargo_sn']) ? $data['cargo_sn'] : false,
+			'send_address'=>isset($data['send_address'])&&!empty($data['send_address']) ? $data['send_address'] : false,
+			'receive_address'=>isset($data['receive_address'])&&!empty($data['receive_address']) ? $data['receive_address'] : false,
+			'start_time'=>isset($data['start_time'])&&!empty($data['start_time']) ? $data['start_time'] : false,
+			'end_time'=>isset($data['end_time'])&&!empty($data['end_time']) ? $data['end_time'] : false,
+		];
 
 		$this->load->model('ReadCargo_model');
-		$result=$this->ReadCargo_model->getCargo($this->uid,$status,$page,$l);
+		$result=$this->ReadCargo_model->getCargo($this->uid,$status,$page,$l,$search);
 
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
