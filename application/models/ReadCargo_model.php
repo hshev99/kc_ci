@@ -30,6 +30,11 @@ class ReadCargo_model extends CI_Model
 
         if ($search['cargo_sn']) $where .=" and cargo_sn='{$search['cargo_sn']}' ";
 
+        if ($search['send_address']) $where .=" and send_address like '%{$search['send_address']}%'";
+        if ($search['receive_address']) $where .=" and receive_address like '%{$search['receive_address']}%'";
+
+
+
         $limit='limit '.$l*($page-1).','.$l;
 
         $sql="SELECT * FROM hz_cargo WHERE 1 $where  $limit";
