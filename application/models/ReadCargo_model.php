@@ -32,7 +32,7 @@ class ReadCargo_model extends CI_Model
 
         $sql_count="SELECT COUNT(1) as a FROM hz_cargo WHERE 1 $where  $limit";
         $query_count=$this->cargo->query($sql_count);
-        var_dump($l);exit;
+//        var_dump($l);exit;
 echo $sql_count;$this->pr($sql);
         empty($query_count->result()) ? $totalCount=0 : $totalCount=ceil($query_count->result()[0]->a /$l);
         $status_name=[
