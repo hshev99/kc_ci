@@ -45,7 +45,8 @@ class ReadCargo_model extends CI_Model
         $sql_count="SELECT COUNT(1) as a FROM hz_cargo WHERE 1 $where  $limit";
         $query_count=$this->cargo->query($sql_count);
 
-        empty($query_count->result()) ? $totalCount=0 : $totalCount=ceil($query_count->result()[0]->a /$l);
+        empty($query_count->result()) ? $pageCount=0 : $pageCount=ceil($query_count->result()[0]->a /$l);
+        empty($query_count->result()) ? $totalCount=0 : $totalCount=ceil($query_count->result()[0]->a);
         $status_name=[
             0=>'异常',
             1=>'询价中',
@@ -59,6 +60,7 @@ class ReadCargo_model extends CI_Model
         $result['page']=[
             'curpage'=>$page,
             'limit'=>$l,
+            'pageCount'=>$pageCount,
             'totalCount'=>$totalCount
         ];
         if(!empty($query->result())){
