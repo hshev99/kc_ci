@@ -97,17 +97,11 @@ class ReadCargo_model extends CI_Model
     public function CargoOperate($status=1){
 
         $arr=[];
-        if ($status == 1){
-            $arr[]=[
-                'name'=>'货单详情',
-                'url'=>'CargoDetail'
-            ];
-        }elseif ($status ==2){
-            $arr[]=[
-                'name'=>'货单详情',
-                'url'=>'CargoDetail'
-            ];
-        }
+
+        $arr[]=[
+            'name'=>'货单详情',
+            'url'=>'CargoDetail'
+        ];
 
         $arr[]=[
             'name'=>'报价信息',
