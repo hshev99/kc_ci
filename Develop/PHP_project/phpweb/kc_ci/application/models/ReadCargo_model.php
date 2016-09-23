@@ -34,6 +34,7 @@ class ReadCargo_model extends CI_Model
         if ($search['receive_address']) $where .=" and receive_address like '%{$search['receive_address']}%'";
 
 
+        if ($search['start_time']) $where .=" and start_time > {$search['start_time']}";
 
         $limit='limit '.$l*($page-1).','.$l;
 
