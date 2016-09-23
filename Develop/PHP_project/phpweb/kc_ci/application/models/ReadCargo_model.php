@@ -17,7 +17,12 @@ class ReadCargo_model extends CI_Model
 
 
         $where ='';
-        $where .=" and status in ({$status})";
+        if ($status == 0){
+
+        }else{
+            $where .=" and status in ({$status})";
+        }
+
 
         $where .=" and shipper_id={$admin_id}";
         $limit='limit '.$l*($page-1).','.$l;
