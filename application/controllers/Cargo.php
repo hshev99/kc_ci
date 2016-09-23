@@ -54,7 +54,7 @@ class Cargo extends CI_Controller {
 	public function getCargoList(){
 
 		$data=json_decode(parent::get_json(),true);
-
+$this->pr($data);
 		$status=$data['status'];
 		$page=$data['page'];
 		$l=$data['limit'];
