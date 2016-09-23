@@ -8,7 +8,7 @@ class ReadCargo_model extends CI_Model
         $this->cargo = $this->load->database('cargo',TRUE);
     }
 
-    public function getCargo($admin_id='',$status=1,$page=1,$l=12){
+    public function getCargo($admin_id='',$status=1,$page=1,$l=12,$search){
         if (!$admin_id) return false;
 
         $this->load->model('ReadCargoPrice_model');
@@ -25,6 +25,11 @@ class ReadCargo_model extends CI_Model
 
 
         $where .=" and shipper_id={$admin_id}";
+
+        //搜索条件
+
+        if ($search['cargo_sn']) $where .=" and cargo_sn='{$search['cargo_sn']}' ";
+
         $limit='limit '.$l*($page-1).','.$l;
 
         $sql="SELECT * FROM hz_cargo WHERE 1 $where  $limit";
