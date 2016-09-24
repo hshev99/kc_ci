@@ -82,7 +82,7 @@ class ReadCargo_model extends CI_Model
 
                 $arr['operate']=self::CargoOperate($row->status);
 
-                if ($status == 2 || $status==3){
+                if ($status == 2 || $status==3 || $status==4){
                     $cargo_price=$this->ReadCargoPrice_model->getCargoPricedetail($row->id);
 
                     if (empty($cargo_price)){
