@@ -82,7 +82,7 @@ class ReadCargo_model extends CI_Model
 
                 $arr['operate']=self::CargoOperate($row->status);
 
-                if ($status == 2){
+                if ($status == 2 || $status==3){
                     $cargo_price=$this->ReadCargoPrice_model->getCargoPricedetail($row->id);
 
                     if (empty($cargo_price)){
@@ -175,6 +175,37 @@ class ReadCargo_model extends CI_Model
 
         $sql="SELECT * FROM hz_cargo WHERE cargo_sn='{$cargo_sn}' ";
         $query=$this->cargo->query($sql);
+
+        $result =[];
+        //
+
+        $result['cargo_info']=[];
+        $cargo_id=0;
+        if (empty($query->result())) foreach ($query->result() as $row){
+            $arr=[
+                'send_address'=>is_null($row->send_address) ? '' : $row->send_address,
+                'send_user_name'=>is_null($row->send_user_name) ? '' : $row->send_user_name,
+                'send_user_mobile'=>is_null($row->send_user_mobile) ? '' : $row->send_user_mobile,
+                'send_time'=>$row->send_start_time .'至'. $row->send_end_time,
+
+                'receive_address'=> is_null($row->receive_address) ? '' : $row->receive_address,
+                'receive_user_name'=>is_null($row->receive_user_name) ? '' : $row->receive_user_name,
+                'receive_user_mobile'=>is_null($row->receive_user_mobile) ? '' : $row->receive_user_mobile,
+
+                'cargo_name'=>$row->cargo_name,
+                'cargo_weight'=>$row->cargo_weight.'吨'
+            ];
+
+            $cargo_id=$row->id;
+            $result['cargo_info'] = $arr;
+        }
+
+        //承运公司
+        $result['transport_info']=[];
+        if ($cargo_id){
+            $this->load->model('ReadCargoPrice_model');
+            $result['transport_info']=$this->ReadCargoPrice_model->getCaogoTransportInfo($cargo_id);
+        }
 
 
     }
