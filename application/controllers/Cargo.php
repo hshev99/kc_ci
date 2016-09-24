@@ -123,4 +123,19 @@ class Cargo extends CI_Controller {
 			parent::outPutEnd($result);
 		}
 	}
+
+	/*
+	 * @content 货单详情
+	 * **/
+	public function getCargoDetail(){
+		$data=json_decode(parent::get_json(),true);
+		$cargo_sn = isset($data['cargo_sn']) ? $data['cargo_sn'] : '';
+
+		if (!$cargo_sn) parent::outPutEnd([],606,'未检测到sn');
+
+		$this->load->model('ReadCargo_model');
+		$result=$this->ReadCargo_model->getCargoDetail($cargo_sn);
+
+		$this->pr($result);
+	}
 }

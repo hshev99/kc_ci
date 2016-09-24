@@ -183,7 +183,7 @@ class ReadCargo_model extends CI_Model
 
         $result['cargo_info']=[];
         $cargo_id=0;
-        if (empty($query->result())) foreach ($query->result() as $row){
+        if (!empty($query->result())) foreach ($query->result() as $row){
             $arr=[
                 'send_address'=>is_null($row->send_address) ? '' : $row->send_address,
                 'send_user_name'=>is_null($row->send_user_name) ? '' : $row->send_user_name,
@@ -210,6 +210,35 @@ class ReadCargo_model extends CI_Model
         }
 
 
+        //送达信息
+        $result['delivery_info']=[];
+
+        $delivery_info=[
+            'initial_weight'=>'1000吨',
+            'accept_total_weight'=>'999.5吨',
+            'order'=>[
+                0=>[
+                    'order_sn'=>'MJ1233123',
+                    'end_time'=>'09-20 12:00:00',
+                    'accept_weight'=>'399.5吨'
+                ],
+                1=>[
+                    'order_sn'=>'MJ3213433',
+                    'end_time'=>'09-21 12:22:12',
+                    'accept_weight'=>'500吨'
+                ]
+            ]
+        ];
+
+        $result['delivery_info']=$delivery_info;
+
+
+        //支付信息
+        $result['pay_info']=[];
+        $pay_info=[
+            
+        ];
+        return $result;
     }
 
 }
