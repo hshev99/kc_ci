@@ -35,7 +35,7 @@ class ReadCargo_model extends CI_Model
 
 
         if ($search['start_time']) $where .=" and start_time > {$search['start_time']}";
-        if ($search['end_time']) $where .=" and start_time < {$search['end_time']}";
+        if ($search['end_time']) $where .=" and end_time < {$search['end_time']}";
 
         $limit='limit '.$l*($page-1).','.$l;
 
@@ -164,6 +164,19 @@ class ReadCargo_model extends CI_Model
         }else{
             return '';
         }
+    }
+
+    /*
+     * @content 货单详情
+     * */
+    public function getCargoDetail($cargo_sn=''){
+
+        if (empty($cargo_sn)) return false ;
+
+        $sql="SELECT * FROM hz_cargo WHERE cargo_sn='{$cargo_sn}' ";
+        $query=$this->cargo->query($sql);
+
+
     }
 
 }
