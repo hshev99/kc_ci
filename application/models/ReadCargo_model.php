@@ -99,6 +99,8 @@ class ReadCargo_model extends CI_Model
 
                 }
 
+                if ($status == 5) $arr['cancel_time']=$row->cancel_time;
+
 
                 $result['result'][]=$arr;
             }
