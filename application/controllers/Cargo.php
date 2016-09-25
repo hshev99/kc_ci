@@ -136,6 +136,7 @@ class Cargo extends CI_Controller {
 		$this->load->model('ReadCargo_model');
 		$result=$this->ReadCargo_model->getCargoDetail($cargo_sn);
 
+		parent::outPutEnd($result);
 		$this->pr($result);
 	}
 }
