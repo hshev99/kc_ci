@@ -41,6 +41,13 @@ class Login extends CI_Controller {
 		$this->login_name=$data['login_name'];
 		$this->password=$data['password'];
 
+		//验证 sign
+		$this->sign = $data['sign'];
+
+		$sign= md5(md5(md5($this->login_name+'tuodui2016')+date("md")));
+
+		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,'验证失败')));
+
 		if ($this->login_name=='' || $this->password=='') exit(json_encode(parent::output([],101,'用户名密码不能为空')));
 
 		$data=[];
