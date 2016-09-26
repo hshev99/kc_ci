@@ -226,7 +226,7 @@ class ReadCargo_model extends CI_Model
             //支付信息
             $result['pay_info']=[
                 'pay_status'=>(int)$row->pay_status,
-                'pay_status_name'=>$row->pay_status_name
+                'pay_status_name'=>$pay_status_name[$row->pay_status_name]
             ];
 
         }
