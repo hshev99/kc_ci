@@ -161,4 +161,22 @@ class Cargo extends CI_Controller {
 		}
 
 	}
+
+	public function agreeCargoOrder(){
+		$data=json_decode(parent::get_json(),true);
+		$cargo_sn = isset($data['cargo_sn']) ? $data['cargo_sn'] : '';
+		$cargo_price_id = isset($data['cargo_price_id']) ? $data['cargo_price_id'] : '';
+
+		if (!$cargo_sn || !$cargo_price_id) parent::outPutEnd([],608,'参数不正确');
+
+		$this->load->model('ReadCargo_model');
+		$result=$this->ReadCargo_model->agreeCargoOrder($cargo_sn,$cargo_price_id);
+
+		if (!$result){
+			parent::outPutEnd([],302,'信息不正确');
+		}else{
+			parent::outPutEnd($result);
+		}
+
+	}
 }
