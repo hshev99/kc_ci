@@ -183,6 +183,10 @@ class ReadCargo_model extends CI_Model
             6=>'已过期'
         ];
 
+        $pay_status_name=[
+            1=>'线下支付',
+            2=>'线上支付'
+        ];
         if (empty($cargo_sn)) return false ;
 
         $sql="SELECT * FROM hz_cargo WHERE cargo_sn='{$cargo_sn}' ";
@@ -220,9 +224,9 @@ class ReadCargo_model extends CI_Model
             $result['cargo_info'] = $arr;
 
             //支付信息
-            $result['pay_info']=[];
-            $pay_info=[
-
+            $result['pay_info']=[
+                'pay_status'=>$row->pay_status,
+                'pay_status_name'=>$row->pay_status_name
             ];
 
         }
