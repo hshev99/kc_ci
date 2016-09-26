@@ -312,7 +312,7 @@ class ReadCargo_model extends CI_Model
                 $arr['send_address']=$row->send_address;
 
 
-                $arr['zend_time']=date("Y/m/d",strtotime($row->start_time)).date("Y/m/d",strtotime($row->end_time));
+                $arr['send_time']=date("Y/m/d",strtotime($row->start_time)).date("Y/m/d",strtotime($row->end_time));
 
                 $arr['receive_address']=$row->receive_address;
                 $arr['receive_user_mobile']=$row->receive_user_mobile;
@@ -343,14 +343,19 @@ class ReadCargo_model extends CI_Model
 
             $company_info=$this->ReadPersonCompany_model->getPersonCompany($row->company_id);
 
-            $arr['expect_price']=$row->expect_price.'元/吨';
-            $arr['company_name']=$company_info['company_name'];
+            $transport['expect_price']=$row->expect_price.'元/吨';
+            $transport['company_name']=$company_info['company_name'];
 
             $result['transport_info']=$arr;
         }
 
 
         return $result;
+    }
+
+    public function agreeCargoOrder($cargo_sn,$cargo_price_id){
+
+
     }
 }
  ?>
