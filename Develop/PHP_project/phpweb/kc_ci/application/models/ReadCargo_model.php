@@ -73,7 +73,8 @@ class ReadCargo_model extends CI_Model
                 $arr['start_time']=date("Y/m/d",strtotime($row->start_time));
                 $arr['end_time']=date("Y/m/d",strtotime($row->end_time));
 
-                $arr['cargo_detail']=$row->cargo_name.'/'.$row->cargo_weight.'吨';
+                $arr['cargo_detail_name']=$row->cargo_name;
+                $arr['cargo_detail_weight']=$row->cargo_weight.'吨';
 
                 $arr['cargo_price_time'] = $this->ReadCargoPrice_model->getCargoPrice($row->id).'/次';
 
