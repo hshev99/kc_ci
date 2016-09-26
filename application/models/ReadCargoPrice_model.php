@@ -153,16 +153,34 @@ class ReadCargoPrice_model extends CI_Model
 
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT id FROM hz_cargo WHERE cargo_sn='{$params['cargo_sn']}' ";
+        $sql="SELECT id,status FROM hz_cargo WHERE cargo_sn='{$params['cargo_sn']}' ";
         $query=$this->cargo->query($sql);
 
         if (!empty($query->result()))foreach ($query->result() as $row){
             $cargo_id=$row->id;
+            $status=$row->status;
         }
         if (!$cargo_id) return false;
 
         $data=self::getCargoPriceListdetail($cargo_id,$page,$l);
 
+        if ($data){
+
+            $status_name=[
+                0=>'异常',
+                1=>'询价中',
+                2=>'进行中',
+                3=>'待付款',
+                4=>'已完成',
+                5=>'已取消',
+                6=>'已过期'
+            ];
+
+            $data['status_info']=[
+                'status'=>$status,
+                'status_name'=>$status_name[$status]
+            ];
+        }
         return $data;
     }
 }
