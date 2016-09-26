@@ -322,7 +322,7 @@ class ReadCargo_model extends CI_Model
                 $arr['cargo_weight']=$row->cargo_weight.'吨';
 
                 $pay['pay_status_name']=$pay_status_name[$row->pay_status];
-                $pay['total_expect_price']=number_format(($row->cargo_weight * $row->expect_price),2);
+                $pay['total_expect_price']=number_format(($row->cargo_weight * $row->expect_price),2).'元';
 
             }
             $result['cargo_info']=$arr;
