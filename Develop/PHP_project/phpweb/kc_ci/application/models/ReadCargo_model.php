@@ -173,6 +173,16 @@ class ReadCargo_model extends CI_Model
      * */
     public function getCargoDetail($cargo_sn=''){
 
+        $status_name=[
+            0=>'异常',
+            1=>'询价中',
+            2=>'进行中',
+            3=>'待付款',
+            4=>'已完成',
+            5=>'已取消',
+            6=>'已过期'
+        ];
+
         if (empty($cargo_sn)) return false ;
 
         $sql="SELECT * FROM hz_cargo WHERE cargo_sn='{$cargo_sn}' ";
@@ -182,6 +192,7 @@ class ReadCargo_model extends CI_Model
         //
 
         $result['cargo_info']=[];
+        $result['status_info']=[];
         $cargo_id=0;
         if (!empty($query->result())) foreach ($query->result() as $row){
             $arr=[
@@ -198,8 +209,16 @@ class ReadCargo_model extends CI_Model
                 'cargo_weight'=>$row->cargo_weight.'吨'
             ];
 
+            $result['status_info']=[
+                'status'=>$row->status,
+                'status_name'=>$status_name[$row->status]
+            ];
+
+
             $cargo_id=$row->id;
             $result['cargo_info'] = $arr;
+
+
         }
 
         //承运公司
