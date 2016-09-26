@@ -270,12 +270,16 @@ class ReadCargo_model extends CI_Model
                     0=>[
                         'order_sn'=>'MJ1233123',
                         'end_time'=>'09-20 12:00:00',
-                        'accept_weight'=>'399.5吨'
+                        'former_weight'=>'399.5吨',
+                        'accept_weight'=>'399.5吨',
+                        'platform_scale_url'=>'https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=034b11e55e4e9258b93481eeac83d1d1/b7fd5266d0160924a1705b9adc0735fae7cd34dd.jpg'
                     ],
                     1=>[
                         'order_sn'=>'MJ3213433',
                         'end_time'=>'09-21 12:22:12',
-                        'accept_weight'=>'500吨'
+                        'former_weight'=>'500吨',
+                        'accept_weight'=>'500吨',
+                        'platform_scale_url'=>'https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=034b11e55e4e9258b93481eeac83d1d1/b7fd5266d0160924a1705b9adc0735fae7cd34dd.jpg'
                     ]
                 ]
             ];
