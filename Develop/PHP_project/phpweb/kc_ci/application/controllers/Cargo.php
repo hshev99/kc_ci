@@ -175,7 +175,7 @@ class Cargo extends CI_Controller {
 		if (!$result){
 			parent::outPutEnd([],302,'信息不正确');
 		}else{
-			parent::outPutEnd($result);
+			parent::outPutEnd(['msg'=>'操作成功']);
 		}
 
 	}
