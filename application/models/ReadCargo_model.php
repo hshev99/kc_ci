@@ -346,7 +346,7 @@ class ReadCargo_model extends CI_Model
             $transport['expect_price']=$row->expect_price.'元/吨';
             $transport['company_name']=$company_info['company_name'];
 
-            $result['transport_info']=$arr;
+            $result['transport_info']=$transport;
         }
 
 
