@@ -291,5 +291,56 @@ class ReadCargo_model extends CI_Model
         return $result;
     }
 
+    public function getCargoOrder($cargo_sn='',$cargo_price_id=''){
+
+
+        $sql="SELECT * FROM hz_cargo WHERE cargo_sn='{$cargo_sn}' ";
+        $query=$this->cargo->query($sql);
+
+        $result=[];
+
+        $result['cargo_info']=[];
+        if(!empty($query->result())){
+            foreach ($query->result() as $row) {
+                $arr['send_user_mobile']=$row->send_user_mobile;
+                $arr['send_user_name']=$row->send_user_name;
+                $arr['send_address']=$row->send_address;
+
+
+                $arr['zend_time']=date("Y/m/d",strtotime($row->start_time)).date("Y/m/d",strtotime($row->end_time));
+
+                $arr['receive_address']=$row->receive_address;
+                $arr['receive_user_mobile']=$row->receive_user_mobile;
+                $arr['receive_user_name']=$row->receive_user_name;
+
+                $arr['cargo_name']=$row->cargo_name;
+                $arr['cargo_weight']=$row->cargo_weight.'吨';
+
+
+            }
+            $result['cargo_info']=$arr;
+
+        }
+
+        $result['transport_info']=[];
+
+
+
+        $sql="select * from hz_cargo_price WHERE id={$cargo_price_id}";
+        $query=$this->cargo->query($sql);
+        $this->load->model('ReadPersonCompany_model');
+
+        if (!empty($query->result())) foreach ($query->result() as $row){
+
+            $company_info=$this->ReadPersonCompany_model->getPersonCompany($row->company_id);
+
+            $arr['expect_price']=$row->expect_price.'元/吨';
+            $arr['company_name']=$company_info['company_name'];
+
+            $result['transport_info']=$arr;
+        }
+
+        return $result;
+    }
 }
  ?>
