@@ -177,7 +177,7 @@ class ReadCargoPrice_model extends CI_Model
             ];
 
             $data['status_info']=[
-                'status'=>$status,
+                'status'=>(int)$status,
                 'status_name'=>$status_name[$status]
             ];
         }
