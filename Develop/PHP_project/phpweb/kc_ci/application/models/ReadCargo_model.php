@@ -297,9 +297,14 @@ class ReadCargo_model extends CI_Model
         $sql="SELECT * FROM hz_cargo WHERE cargo_sn='{$cargo_sn}' ";
         $query=$this->cargo->query($sql);
 
+        $pay_status_name=[
+            1=>'线下支付',
+            2=>'线上支付'
+        ];
         $result=[];
 
         $result['cargo_info']=[];
+        $result['pay_info']=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
                 $arr['send_user_mobile']=$row->send_user_mobile;
@@ -316,9 +321,13 @@ class ReadCargo_model extends CI_Model
                 $arr['cargo_name']=$row->cargo_name;
                 $arr['cargo_weight']=$row->cargo_weight.'吨';
 
+                $pay['pay_status_name']=$pay_status_name[$result->pay_status];
+                $pay['total_expect_price']=number_format(($result->cargo_weight * $row->expect_price),2);
 
             }
             $result['cargo_info']=$arr;
+            $result['pay_info']=$pay;
+
 
         }
 
@@ -339,6 +348,7 @@ class ReadCargo_model extends CI_Model
 
             $result['transport_info']=$arr;
         }
+
 
         return $result;
     }
