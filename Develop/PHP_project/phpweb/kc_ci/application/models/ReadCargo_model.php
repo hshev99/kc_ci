@@ -183,6 +183,8 @@ class ReadCargo_model extends CI_Model
             6=>'已过期'
         ];
 
+        $deliver=[2,3,4,];
+
         $pay_status_name=[
             1=>'线下支付',
             2=>'线上支付'
@@ -198,6 +200,7 @@ class ReadCargo_model extends CI_Model
         $result['cargo_info']=[];
         $result['status_info']=[];
         $cargo_id=0;
+        $status=0;
         if (!empty($query->result())) foreach ($query->result() as $row){
             $arr=[
                 'send_address'=>is_null($row->send_address) ? '' : $row->send_address,
@@ -243,11 +246,13 @@ class ReadCargo_model extends CI_Model
                 'log'=>$log
             ];
 
+            $status=$row->status;
         }
+
 
         //承运公司
         $result['transport_info']=[];
-        if ($cargo_id){
+        if ($cargo_id && in_array($status,$deliver)){
             $this->load->model('ReadCargoPrice_model');
             $result['transport_info']=$this->ReadCargoPrice_model->getCaogoTransportInfo($cargo_id);
         }
@@ -256,24 +261,26 @@ class ReadCargo_model extends CI_Model
         //送达信息
         $result['delivery_info']=[];
 
-        $delivery_info=[
-            'initial_weight'=>'1000吨',
-            'accept_total_weight'=>'999.5吨',
-            'order'=>[
-                0=>[
-                    'order_sn'=>'MJ1233123',
-                    'end_time'=>'09-20 12:00:00',
-                    'accept_weight'=>'399.5吨'
-                ],
-                1=>[
-                    'order_sn'=>'MJ3213433',
-                    'end_time'=>'09-21 12:22:12',
-                    'accept_weight'=>'500吨'
+        if (in_array($status,$deliver)){
+            $delivery_info=[
+                'initial_weight'=>'1000吨',
+                'accept_total_weight'=>'999.5吨',
+                'order'=>[
+                    0=>[
+                        'order_sn'=>'MJ1233123',
+                        'end_time'=>'09-20 12:00:00',
+                        'accept_weight'=>'399.5吨'
+                    ],
+                    1=>[
+                        'order_sn'=>'MJ3213433',
+                        'end_time'=>'09-21 12:22:12',
+                        'accept_weight'=>'500吨'
+                    ]
                 ]
-            ]
-        ];
+            ];
 
-        $result['delivery_info']=$delivery_info;
+            $result['delivery_info']=$delivery_info;
+        }
 
 
         return $result;
