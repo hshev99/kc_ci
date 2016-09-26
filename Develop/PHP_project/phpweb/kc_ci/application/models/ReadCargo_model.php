@@ -230,20 +230,17 @@ class ReadCargo_model extends CI_Model
             ];
 
             //系统信息
+            $log[]=['action'=>'创建',
+                'author'=>'张三',
+                'date'=>'2016-12-12 12:12:12'
+            ];
+            $log[]=['action'=>'创建',
+                'author'=>'张三',
+                'date'=>'2016-12-12 12:12:12'
+            ];
             $result['system']=[
                 'cargo_sn'=>$row->cargo_sn,
-                'log'=>[
-                    0=>[
-                        'action'=>'创建',
-                        'author'=>'张三',
-                        'date'=>'2016-12-12 12:12:12'
-                    ],
-                    2=>[
-                        'action'=>'创建',
-                        'author'=>'张三',
-                        'date'=>'2016-12-12 12:12:12'
-                    ]
-                ]
+                'log'=>$log
             ];
 
         }
