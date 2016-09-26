@@ -229,6 +229,23 @@ class ReadCargo_model extends CI_Model
                 'pay_status_name'=>$pay_status_name[$row->pay_status]
             ];
 
+            //系统信息
+            $result['system']=[
+                'cargo_sn'=>$row->cargo_sn,
+                'log'=>[
+                    0=>[
+                        'action'=>'创建',
+                        'author'=>'张三',
+                        'date'=>'2016-12-12 12:12:12'
+                    ],
+                    2=>[
+                        'action'=>'创建',
+                        'author'=>'张三',
+                        'date'=>'2016-12-12 12:12:12'
+                    ]
+                ]
+            ];
+
         }
 
         //承运公司
