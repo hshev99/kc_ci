@@ -36,8 +36,10 @@ class Login extends CI_Controller {
 
 
 	public function getAdminUser(){
-		$this->login_name=$this->input->post('login_name');
-		$this->password=$this->input->post('password');
+		$data=json_decode(parent::get_json(),true);
+
+		$this->login_name=$data['login_name'];
+		$this->password=$data['password'];
 
 		if ($this->login_name=='' || $this->password=='') exit(json_encode(parent::output([],101,'用户名密码不能为空')));
 
