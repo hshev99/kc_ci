@@ -210,7 +210,7 @@ class ReadCargo_model extends CI_Model
             ];
 
             $result['status_info']=[
-                'status'=>$row->status,
+                'status'=>(int)$row->status,
                 'status_name'=>$status_name[$row->status]
             ];
 
