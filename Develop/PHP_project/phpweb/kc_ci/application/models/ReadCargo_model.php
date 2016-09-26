@@ -206,7 +206,8 @@ class ReadCargo_model extends CI_Model
                 'receive_user_mobile'=>is_null($row->receive_user_mobile) ? '' : $row->receive_user_mobile,
 
                 'cargo_name'=>$row->cargo_name,
-                'cargo_weight'=>$row->cargo_weight.'吨'
+                'cargo_weight'=>$row->cargo_weight.'吨',
+                'expect_price'=>$row->expect_price.'元/吨',
             ];
 
             $result['status_info']=[
@@ -218,6 +219,11 @@ class ReadCargo_model extends CI_Model
             $cargo_id=$row->id;
             $result['cargo_info'] = $arr;
 
+            //支付信息
+            $result['pay_info']=[];
+            $pay_info=[
+
+            ];
 
         }
 
@@ -252,11 +258,6 @@ class ReadCargo_model extends CI_Model
         $result['delivery_info']=$delivery_info;
 
 
-        //支付信息
-        $result['pay_info']=[];
-        $pay_info=[
-            
-        ];
         return $result;
     }
 
