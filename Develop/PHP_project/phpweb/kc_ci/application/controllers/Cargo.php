@@ -168,8 +168,8 @@ class Cargo extends CI_Controller {
 		$cargo_sn = isset($data['cargo_sn']) ? $data['cargo_sn'] : '';
 		$cargo_price_id = isset($data['cargo_price_id']) ? $data['cargo_price_id'] : '';
 
-		$cargo_expect_price = isset($data['cargo_expect_price']) ? $data['cargo_expect_price'] : '';
-		$cargo_ton_count = isset($data['cargo_ton_count']) ? $data['cargo_ton_count'] : '';
+		$cargo_expect_price = isset($data['cargo_expect_price']) ? (float)$data['cargo_expect_price'] : '';
+		$cargo_ton_count = isset($data['cargo_ton_count']) ? (float)$data['cargo_ton_count'] : '';
 
 		if (!$cargo_sn || !$cargo_price_id) parent::outPutEnd([],608,'参数不正确');
 
