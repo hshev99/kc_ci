@@ -67,9 +67,11 @@ class Login extends CI_Controller {
 		$uid=$result['user_id'];
 		$user_name = $result['user_name'];
 
-		$result['token']=md5($uid);
+		$result['token']=md5(md5($uid).date("YmdHis"));
 
-		$_SESSION['user_login']=$result;
+		$this->_redis->setex($result['token'],'43200',json_encode($result));
+
+//		$_SESSION['user_login']=$result;
 
 		exit(json_encode(parent::output($result)));
 
