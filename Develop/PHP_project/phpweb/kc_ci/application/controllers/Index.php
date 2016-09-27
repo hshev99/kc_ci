@@ -22,7 +22,14 @@ class Index extends CI_Controller {
 	public function index(){
 
 
-		$this->load->view("/Index/index.html");
+
+//		$this->pr($this->_redis->set('xx','5'));
+
+//		$this->pr($this->_redis->setex('xxx','10','ddd'));
+
+
+//		exit();
+//		$this->load->view("/Index/index.html");
 //		parent::outPutEnd([],404,'You requested does not exist');
 	}
 
