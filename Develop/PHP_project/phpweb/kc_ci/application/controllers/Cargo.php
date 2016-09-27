@@ -208,4 +208,25 @@ class Cargo extends CI_Controller {
 
 
 	}
+
+
+
+	public function cancelCargoOrder()
+	{
+		$data = json_decode(parent::get_json(), true);
+		$cargo_sn = isset($data['cargo_sn']) ? $data['cargo_sn'] : '';
+		$cargo_price_id = isset($data['cargo_price_id']) ? $data['cargo_price_id'] : '';
+
+		if (!$cargo_sn || !$cargo_price_id) parent::outPutEnd([], 608, '参数不正确');
+
+		$this->load->model('WriteCargo_model');
+		$result=$this->WriteCargo_model->cancelCargoOrder($cargo_sn,$cargo_price_id);
+
+		if (!$result){
+			parent::outPutEnd([],402,'信息不正确');
+		}else{
+			parent::outPutEnd(['msg'=>'取消发货操作成功']);
+		}
+
+	}
 }
