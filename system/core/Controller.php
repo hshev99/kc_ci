@@ -59,7 +59,7 @@ class CI_Controller {
 	 */
 	private static $instance;
 	private $_secret_key = 'key';
-	
+	public $uid;
 	/**
 	 * Class constructor
 	 *
@@ -68,7 +68,9 @@ class CI_Controller {
 	public function __construct()
 	{
 		$this->_redis = new Redis();
-		$this->_redis->connect('123.57.56.133');
+		if (!$this->_redis->connect('123.57.56.133',6379,3)){
+			self::outPutEnd([],123,'redis Not connected');
+		}
 
 		self::$instance =& $this;
 
@@ -87,8 +89,18 @@ class CI_Controller {
 		$this->base_url = $this->config->item('base_url');
 
 		//验证原子信息
-		if ($_SERVER["REMOTE_ADDR"] == '223.72.197.45'){
-//			$this->pr($_POST);
+		$data=json_decode(parent::get_json(),true);
+		if (isset($data['token']) && $data['token'] != ''){
+
+			$user_info = $this->_redis->get($data['token']);
+
+			if (empty($user_info)) self::outPutEnd([],144,'登录过期,请重新登录');
+
+			$user_info_arr = json_decode($user_info);
+
+			$this->uid=@$user_info_arr['user_id'];
+		}else{
+			self::outPutEnd([],123,'Undetectable token');
 		}
 
 		//网站请求存入session
