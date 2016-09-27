@@ -34,11 +34,11 @@ class WriteCargo_model extends CI_Model
     }
 
 
-    public function cancelCargoOrder($cargo_sn='',$cargo_price_id=''){
+    public function cancelCargoOrder($cargo_sn=''){
 
-        if (!$cargo_sn || !$cargo_price_id) return false;
+        if (!$cargo_sn) return false;
 
-        $sql="update hz_cargo_price set status=5 WHERE id={$cargo_price_id}";
+        $sql="update hz_cargo set status=5 WHERE cargo_sn='{$cargo_sn}' ";
         $query=$this->cargo->query($sql);
 
         if ($query){
