@@ -100,7 +100,7 @@ class CI_Controller {
 
 			$this->uid=@$user_info_arr['user_id'];
 		}else{
-			self::outPutEnd([],123,'Undetectable token');
+//			self::outPutEnd([],123,'Undetectable token');
 		}
 
 		//网站请求存入session
