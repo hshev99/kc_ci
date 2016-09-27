@@ -8,7 +8,7 @@ class WriteCargo_model extends CI_Model
         $this->cargo = $this->load->database('cargo',TRUE);
     }
 
-    public function setCargo($data){
+    public function setCargo($data){$this->pr($data);
         if (!$data) return false;
 
         if (!empty($data)){
