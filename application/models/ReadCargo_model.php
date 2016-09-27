@@ -227,11 +227,7 @@ class ReadCargo_model extends CI_Model
             $cargo_id=$row->id;
             $result['cargo_info'] = $arr;
 
-            //支付信息
-            $result['pay_info']=[
-                'pay_status'=>(int)$row->pay_status,
-                'pay_status_name'=>$pay_status_name[$row->pay_status]
-            ];
+
 
             //系统信息
             $log[]=['action'=>'创建',
@@ -250,42 +246,65 @@ class ReadCargo_model extends CI_Model
             $status=$row->status;
         }
 
+        // 运输 信息
+        $result['carriage_info']=[];
 
         //承运公司
-        $result['transport_info']=[];
+        $transport_info=[];
         if ($cargo_id && in_array($status,$deliver)){
             $this->load->model('ReadCargoPrice_model');
-            $result['transport_info']=$this->ReadCargoPrice_model->getCaogoTransportInfo($cargo_id);
+            $transport_info=$this->ReadCargoPrice_model->getCaogoTransportInfo($cargo_id);
         }
 
+        $car=[];
+        foreach ($transport_info as $val){
+            #####################################################
+            $car['transport_info'] = $val;
 
-        //送达信息
-        $result['delivery_info']=[];
+            //送达信息
+            $car['delivery_info']=[];
 
-        if (in_array($status,$deliver)){
-            $delivery_info=[
-                'initial_weight'=>'1000吨',
-                'accept_total_weight'=>'999.5吨',
-                'order'=>[
-                    0=>[
-                        'order_sn'=>'MJ1233123',
-                        'end_time'=>'09-20 12:00:00',
-                        'former_weight'=>'399.5吨',
-                        'accept_weight'=>'399.5吨',
-                        'platform_scale_url'=>'https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=034b11e55e4e9258b93481eeac83d1d1/b7fd5266d0160924a1705b9adc0735fae7cd34dd.jpg'
-                    ],
-                    1=>[
-                        'order_sn'=>'MJ3213433',
-                        'end_time'=>'09-21 12:22:12',
-                        'former_weight'=>'500吨',
-                        'accept_weight'=>'500吨',
-                        'platform_scale_url'=>'https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=034b11e55e4e9258b93481eeac83d1d1/b7fd5266d0160924a1705b9adc0735fae7cd34dd.jpg'
+            if (in_array($status,$deliver)){
+                $delivery_info=[
+                    'initial_weight'=>'1000吨',
+                    'accept_total_weight'=>'999.5吨',
+                    'order'=>[
+                        0=>[
+                            'order_sn'=>'MJ1233123',
+                            'end_time'=>'09-20 12:00:00',
+                            'former_weight'=>'399.5吨',
+                            'accept_weight'=>'399.5吨',
+                            'platform_scale_url'=>'https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=034b11e55e4e9258b93481eeac83d1d1/b7fd5266d0160924a1705b9adc0735fae7cd34dd.jpg'
+                        ],
+                        1=>[
+                            'order_sn'=>'MJ3213433',
+                            'end_time'=>'09-21 12:22:12',
+                            'former_weight'=>'500吨',
+                            'accept_weight'=>'500吨',
+                            'platform_scale_url'=>'https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=034b11e55e4e9258b93481eeac83d1d1/b7fd5266d0160924a1705b9adc0735fae7cd34dd.jpg'
+                        ]
                     ]
-                ]
+                ];
+
+
+            }
+
+
+            //支付信息
+            $car['pay_info']=[
+                'pay_status'=>(int)$row->pay_status,
+                'pay_status_name'=>$pay_status_name[$row->pay_status]
             ];
 
-            $result['delivery_info']=$delivery_info;
+
+            $result['carriage_info']=$car;
+
+            #####################################################
         }
+
+
+
+
 
 
         return $result;
