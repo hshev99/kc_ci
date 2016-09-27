@@ -362,6 +362,7 @@ class ReadCargo_model extends CI_Model
 
             $company_info=$this->ReadPersonCompany_model->getPersonCompany($row->company_id);
 
+            $transport['cargo_price_id']=$row->id;
             $transport['expect_price']=$row->expect_price.'元/吨';
             $transport['company_name']=$company_info['company_name'];
 
