@@ -117,8 +117,8 @@ class ReadCargoPrice_model extends CI_Model
             foreach ($query->result() as $row) {
                 $arr['cargo_price_id']=$row->id;
                 $arr['company_name']=$this->ReadPersonCompany_model->getPersonCompany($row->company_id);
-                $arr['expect_price']=$row->expect_price.'/吨';
-                $arr['ton_count']=$row->ton_count;
+                $arr['expect_price']=$row->expect_price.'元/吨';
+                $arr['ton_count']=$row->ton_count.'吨';
                 $arr['create_time']=$row->create_time;
                 $arr['remark']=$row->remark;
 
