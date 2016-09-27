@@ -42,7 +42,7 @@ class ReadCargo_model extends CI_Model
         $sql="SELECT * FROM hz_cargo WHERE 1 $where  $limit";
         $query=$this->cargo->query($sql);
 
-        $sql_count="SELECT COUNT(1) as a FROM hz_cargo WHERE 1 $where ";$this->pr($sql_count);
+        $sql_count="SELECT COUNT(1) as a FROM hz_cargo WHERE 1 $where ";
         $query_count=$this->cargo->query($sql_count);
 
         empty($query_count->result()) ? $pageCount=0 : $pageCount=ceil($query_count->result()[0]->a /$l);
