@@ -297,7 +297,7 @@ class ReadCargo_model extends CI_Model
             ];
 
 
-            $result['carriage_info']=$car;
+            $result['carriage_info'][]=$car;
 
             #####################################################
         }
