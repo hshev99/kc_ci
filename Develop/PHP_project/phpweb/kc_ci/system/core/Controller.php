@@ -67,6 +67,8 @@ class CI_Controller {
 	 */
 	public function __construct()
 	{
+		$this->_redis = new Redis();
+		$this->_redis->connect('123.57.56.133');
 
 		self::$instance =& $this;
 
