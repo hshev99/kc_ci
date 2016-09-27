@@ -99,7 +99,7 @@ class CI_Controller {
 			$user_info_arr = json_decode($user_info,true);
 //$this->pr($user_info_arr);
 			$this->uid=@$user_info_arr['user_id'];
-			$this->uid = 1;
+//			$this->uid = 1;
 		}else{
 //			self::outPutEnd([],123,'Undetectable token');
 		}
