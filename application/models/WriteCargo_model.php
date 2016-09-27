@@ -19,6 +19,20 @@ class WriteCargo_model extends CI_Model
     }
 
 
+    public function agreeCargoOrder($cargo_sn='',$cargo_price_id=''){
+
+        if (!$cargo_sn || !$cargo_price_id) return false;
+
+        $sql="update hz_cargo_price set status=2 WHERE id={$cargo_price_id}";
+        $query=$this->cargo->query($sql);
+
+        if ($query){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
 
 }
  ?>
