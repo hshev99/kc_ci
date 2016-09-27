@@ -89,7 +89,7 @@ class CI_Controller {
 		$this->base_url = $this->config->item('base_url');
 
 		//验证原子信息
-		$data=json_decode(parent::get_json(),true);
+		$data=json_decode(self::get_json(),true);
 		if (isset($data['token']) && $data['token'] != ''){
 
 			$user_info = $this->_redis->get($data['token']);
