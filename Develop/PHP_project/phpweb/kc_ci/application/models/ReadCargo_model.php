@@ -256,7 +256,7 @@ class ReadCargo_model extends CI_Model
             $transport_info=$this->ReadCargoPrice_model->getCaogoTransportInfo($cargo_id);
         }
 
-        $car=[];$this->pr($transport_info);
+        $car=[];
         foreach ($transport_info as $val){
             #####################################################
             $car['transport_info'] = $val;
@@ -286,7 +286,7 @@ class ReadCargo_model extends CI_Model
                     ]
                 ];
 
-
+                $car['delivery_info']=$delivery_info;
             }
 
 
