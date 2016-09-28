@@ -38,6 +38,8 @@ class Cargo extends CI_Controller {
 
 		$result=$this->WriteCargo_model->setCargo($data);
 
+		unset($result['token']);
+
 		if ($result){
 			$arr=[
 				'msg'=>'提交成功'
