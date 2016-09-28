@@ -97,7 +97,7 @@ class CI_Controller {
 			if (empty($user_info)) self::outPutEnd([],144,'登录过期,请重新登录');
 
 			$user_info_arr = json_decode($user_info,true);
-
+$this->pr($user_info_arr);
 			$this->uid=@$user_info_arr['user_id'];
 //			$this->user_name=@$user_info_arr['user_name'];
 
