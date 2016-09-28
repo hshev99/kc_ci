@@ -94,7 +94,7 @@ class ReadCargo_model extends CI_Model
                         $arr['freight_total_price']='---';
                         $arr['progress'] = (float)sprintf("%.2f",substr(sprintf("%.3f", (rand(0,100)/100)), 0, -2)) ;
                         $arr['progress_color'] = '#61C3E1';
-                        $arr['progress_background'] = '#eee';
+                        $arr['progress_background'] = rand(0,1) == 1 ? '#eee' : '#FF6A67';
                     }else{
                         $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
                         $arr['freight_price']=$cargo_price['expect_price'].'/吨';
@@ -103,7 +103,7 @@ class ReadCargo_model extends CI_Model
                         $arr['progress'] = (float)sprintf("%.2f",substr(sprintf("%.3f", (rand(0,100)/100)), 0, -2));
 
                         $arr['progress_color'] = '#61C3E1';
-                        $arr['progress_background'] = '#FF6A67';
+                        $arr['progress_background'] = rand(0,1) == 1? '#eee' : '#FF6A67';
                     }
 
                 }
