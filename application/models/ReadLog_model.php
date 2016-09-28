@@ -16,7 +16,7 @@ class ReadLog_model extends CI_Model
         $query=$this->cargo->query($sql);
         $result=[];
         if (!empty($query->result())) foreach ($query->result() as $row){
-            $arr=json_decode($row->content,true);
+            $arr=empty($row->content) ? '' : json_decode($row->content,true);
             $result[]=$arr;
         }
 
