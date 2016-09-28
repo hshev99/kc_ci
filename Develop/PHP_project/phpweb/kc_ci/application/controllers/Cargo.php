@@ -39,7 +39,7 @@ class Cargo extends CI_Controller {
 		if (isset($data['token'])) unset($data['token']);
 
 
-		$result=$this->WriteCargo_model->setCargo($data);
+		$result=$this->WriteCargo_model->setCargo($data,$this->user_name);
 
 		if ($result){
 			$arr=[
