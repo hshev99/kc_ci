@@ -194,7 +194,7 @@ class Cargo extends CI_Controller {
 		}else{
 
 
-			$this->load->model('ReadCargo_model');
+			$this->load->model('WriteCargo_model');
 			$result=$this->WriteCargo_model->agreeCargoOrder($cargo_sn,$cargo_price_id);
 
 			$this->load->model('WriteCargoPrice_model');
