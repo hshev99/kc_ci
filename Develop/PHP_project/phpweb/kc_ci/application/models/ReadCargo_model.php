@@ -92,6 +92,7 @@ class ReadCargo_model extends CI_Model
                         $arr['company']='---';
                         $arr['freight_price']='---';
                         $arr['freight_total_price']='---';
+                        $arr['progress'] = 0.45;
                     }else{
                         $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
                         $arr['freight_price']=$cargo_price['expect_price'].'/吨';
