@@ -92,13 +92,13 @@ class ReadCargo_model extends CI_Model
                         $arr['company']='---';
                         $arr['freight_price']='---';
                         $arr['freight_total_price']='---';
-                        $arr['progress'] = number_format((rand(0,100)/100),2,'.','');
+                        $arr['progress'] = round((rand(0,100)/100),2);
                     }else{
                         $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
                         $arr['freight_price']=$cargo_price['expect_price'].'/吨';
                         $arr['freight_total_price']=number_format(($cargo_price['expect_price']*$cargo_price['ton_count']),2).'/吨';
 
-                        $arr['progress'] = number_format((rand(0,100)/100),2,'.','');
+                        $arr['progress'] = round((rand(0,100)/100),2);
                     }
 
                 }
