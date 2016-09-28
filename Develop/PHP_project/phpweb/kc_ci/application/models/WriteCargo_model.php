@@ -15,6 +15,15 @@ class WriteCargo_model extends CI_Model
             $result=$this->cargo->insert('hz_cargo',$data);
 
         }
+
+
+        $this->load->model('WriteLog_model');
+        $arr=[
+            'action'=>'创建',
+            'author'=>'',
+            'date'=>date("Y-m-d H:i:s")
+        ];
+        $this->WriteLog_model->setLog($result,json_encode($arr));
         return $result;
     }
 
