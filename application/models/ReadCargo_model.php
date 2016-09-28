@@ -41,7 +41,7 @@ class ReadCargo_model extends CI_Model
 
         $order_by =' order by id DESC ';
 
-        $sql="SELECT * FROM hz_cargo WHERE 1 $where  $limit $order_by";
+        $sql="SELECT * FROM hz_cargo WHERE 1 $where  $order_by $limit ";
         $query=$this->cargo->query($sql);
 
         $sql_count="SELECT COUNT(1) as a FROM hz_cargo WHERE 1 $where ";
