@@ -245,8 +245,7 @@ class ReadCargo_model extends CI_Model
 
             //系统信息
             $this->load->model('ReadLog_model');
-            $log=$this->ReadLog_model->getLog($cargo_id);
-            /*
+//            $log=$this->ReadLog_model->getLog($cargo_id);
             $log[]=['action'=>'创建',
                 'author'=>'张三',
                 'date'=>'2016-12-12 12:12:12'
@@ -255,7 +254,6 @@ class ReadCargo_model extends CI_Model
                 'author'=>'张三',
                 'date'=>'2016-12-12 12:12:12'
             ];
-            */
             $result['system']=[
                 'cargo_sn'=>$row->cargo_sn,
                 'log'=>$log
