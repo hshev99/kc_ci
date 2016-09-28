@@ -13,11 +13,11 @@ class WriteCargoPrice_model extends CI_Model
         if (!$cargo_price_id) return false;
 
         if ($cargo_expect_price || $cargo_expect_price){
-            $set =' status =2 ';
+            $set =' status =4 ';
             if ($cargo_expect_price)$set .=" , cargo_expect_price={$cargo_expect_price}";
             if ($cargo_ton_count) $set .=" , cargo_ton_count={$cargo_ton_count}";
         }else{
-            $set =' status =3 ';
+            $set =' status =2 ';
         }
 
 
