@@ -8,7 +8,7 @@ class WriteAdminUser_model extends CI_Model
 
     public function upAdminUser($data=[]){
         $this->cargo = $this->load->database('cargo',TRUE);
-        $password=md5(md5(md5($data['password'])+'tuodui2016')+'0918');
+        $password=md5(md5(md5($data['password']).'tuodui2016').date("md"));
 
         $sql="SELECT * FROM hz_admin_user WHERE login_name='{$data['login_name']}' ";
         $query=$this->cargo->query($sql);
