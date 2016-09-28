@@ -8,7 +8,7 @@ class WriteCargo_model extends CI_Model
         $this->cargo = $this->load->database('cargo',TRUE);
     }
 
-    public function setCargo($data){
+    public function setCargo($data,$user_name=''){
         if (!$data) return false;
 
         if (!empty($data)){
@@ -20,7 +20,7 @@ class WriteCargo_model extends CI_Model
         $this->load->model('WriteLog_model');
         $arr=[
             'action'=>'创建',
-            'author'=>'',
+            'author'=>$user_name,
             'date'=>date("Y-m-d H:i:s")
         ];
         $this->WriteLog_model->setLog($from_id,json_encode($arr,JSON_UNESCAPED_UNICODE));
