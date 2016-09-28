@@ -36,11 +36,14 @@ class Cargo extends CI_Controller {
 
 		$this->load->model('WriteCargo_model');
 
+		if (isset($data['token'])) unset($data['token']);
+
+
 		$result=$this->WriteCargo_model->setCargo($data);
 
-		if (isset($result['token'])) unset($result['token']);
 
-		$this->pr($result);
+
+
 		if ($result){
 			$arr=[
 				'msg'=>'提交成功'
