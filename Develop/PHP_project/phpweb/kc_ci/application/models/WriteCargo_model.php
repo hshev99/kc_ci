@@ -23,7 +23,7 @@ class WriteCargo_model extends CI_Model
             'author'=>'',
             'date'=>date("Y-m-d H:i:s")
         ];
-        $this->WriteLog_model->setLog($result,json_encode($arr));
+        $this->WriteLog_model->setLog($from_id,json_encode($arr));
         return $result;
     }
 
