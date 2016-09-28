@@ -60,6 +60,7 @@ class CI_Controller {
 	private static $instance;
 	private $_secret_key = 'key';
 	public $uid;
+	public $user_name;
 	/**
 	 * Class constructor
 	 *
@@ -97,9 +98,9 @@ class CI_Controller {
 			if (empty($user_info)) self::outPutEnd([],144,'登录过期,请重新登录');
 
 			$user_info_arr = json_decode($user_info,true);
-//$this->pr($user_info_arr);
+
 			$this->uid=@$user_info_arr['user_id'];
-//			$this->user_name=@$user_info_arr['user_name'];
+			$this->user_name=@$user_info_arr['user_name'];
 
 		}else{
 //			self::outPutEnd([],123,'Undetectable token');
