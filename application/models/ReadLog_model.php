@@ -23,7 +23,7 @@ class ReadLog_model extends CI_Model
         if ($result){
             return $result;
         }else{
-            return false;
+            return [];
         }
     }
     
