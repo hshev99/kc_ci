@@ -41,9 +41,6 @@ class Cargo extends CI_Controller {
 
 		$result=$this->WriteCargo_model->setCargo($data);
 
-
-
-
 		if ($result){
 			$arr=[
 				'msg'=>'提交成功'
