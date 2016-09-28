@@ -139,10 +139,23 @@ class ReadCargoPrice_model extends CI_Model
 
         $arr=[];
 
-        $arr[]=[
-            'name'=>'下单',
-            'url'=>'CargoPriceBOrder'
+        if ($status ==1){
+            $arr[]=[
+                'name'=>'下单',
+                'url'=>'CargoPriceBOrder'
+            ];
+        }
+
+        if ($status == 4) $arr[]=[
+            'name'=>'等待确认',
+            'url'=>''
         ];
+
+        if ($status == 2) $arr[]=[
+            'name'=>'已下单',
+            'url'=>''
+        ];
+
 
         return $arr;
     }
