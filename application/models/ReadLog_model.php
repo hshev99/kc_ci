@@ -12,7 +12,7 @@ class ReadLog_model extends CI_Model
 
         if (!$from_id) return false;
 
-        $sql="select * from hz_log WHERE from_id={$from_id} ";
+        $sql="select * from hz_log WHERE from_id={$from_id} ";$this->pr($sql);
         $query=$this->cargo->query($sql);
         $result=[];
         if (empty($query->result())) foreach ($query->result() as $row){
