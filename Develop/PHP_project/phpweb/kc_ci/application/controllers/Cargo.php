@@ -185,7 +185,7 @@ class Cargo extends CI_Controller {
 			if (!$result){
 				parent::outPutEnd([],302,'信息不正确');
 			}else{
-				parent::outPutEnd(['msg'=>'操作成功,等待物流确认']);
+				parent::outPutEnd(['msg'=>'操作成功,等待物流确认','cargo_sn'=>$cargo_sn]);
 			}
 
 		}else{
@@ -200,7 +200,7 @@ class Cargo extends CI_Controller {
 			if (!$result){
 				parent::outPutEnd([],302,'信息不正确');
 			}else{
-				parent::outPutEnd(['msg'=>'操作成功']);
+				parent::outPutEnd(['msg'=>'操作成功','cargo_sn'=>$cargo_sn]);
 			}
 
 		}
