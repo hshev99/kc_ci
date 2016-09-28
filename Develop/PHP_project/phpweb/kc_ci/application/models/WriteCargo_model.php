@@ -13,7 +13,7 @@ class WriteCargo_model extends CI_Model
 
         if (!empty($data)){
             $result=$this->cargo->insert('hz_cargo',$data);
-
+            $from_id = $this->cargo->insert_id();
         }
 
 
