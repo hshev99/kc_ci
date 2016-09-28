@@ -12,7 +12,7 @@ class WriteLog_model extends CI_Model
 
         if (!$from_id) return false;
 
-        $sql="insert into hz_cargo_price set from_id={$from_id} , content='{$content}' ";
+        $sql="insert into hz_log set from_id={$from_id} , content='{$content}' ";
         $query=$this->cargo->query($sql);
 
         if ($query){
