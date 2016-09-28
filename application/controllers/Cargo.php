@@ -40,6 +40,7 @@ class Cargo extends CI_Controller {
 
 		if (isset($result['token'])) unset($result['token']);
 
+		$this->pr($result);
 		if ($result){
 			$arr=[
 				'msg'=>'提交成功'
