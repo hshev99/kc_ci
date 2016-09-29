@@ -348,6 +348,10 @@ class ReadCargo_model extends CI_Model
             }
 
 
+            $car['pay_info']=[
+                'pay_status'=>'1',
+                'pay_status_name'=>$pay_status_name[1]
+            ];
 
             $result['carriage_info'][]=$car;
             #####################################################
