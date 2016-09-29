@@ -294,7 +294,7 @@ class ReadCargo_model extends CI_Model
                 $query_cargo_price= $query=$this->cargo->query($sql);
                 if (!empty($query_cargo_price->result())){
                     foreach ($query_cargo_price->result() as $row){
-                        $delivery_info['initial_weight']=$row->ton_count;
+                        $delivery_info['initial_weight']=$row->ton_count.'吨';
                         $cargo_price_id = $row->id;
 
                         $voucher_sql="
