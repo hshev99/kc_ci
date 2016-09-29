@@ -287,13 +287,14 @@ class ReadCargo_model extends CI_Model
                 $delivery_info['order']='';
 
 
-                $accept_total_weight='';
+                $accept_total_weight=0;
 
                 //查询运输信息
-                $sql="select id from hz_cargo_price WHERE cargo_id={$cargo_id} AND status=2 ";
+                $sql="select id,ton_count from hz_cargo_price WHERE cargo_id={$cargo_id} AND status=2 ";
                 $query_cargo_price= $query=$this->cargo->query($sql);
                 if (!empty($query_cargo_price->result())){
                     foreach ($query_cargo_price->result() as $row){
+                        $delivery_info['initial_weight']=$row->ton_count;
                         $cargo_price_id = $row->id;
 
                         $voucher_sql="
@@ -315,6 +316,7 @@ class ReadCargo_model extends CI_Model
                                 'accept_weight'=>$row->receive_weight,
                                 'platform_scale_url'=>$row->voucher_url
                             ];
+                            $accept_total_weight +=$row->send_weight;
                             $trade_order[]=$trade_order_arr;
                         }
 
@@ -322,6 +324,7 @@ class ReadCargo_model extends CI_Model
                     }
                 }
 
+                $delivery_info['accept_total_weight']=$accept_total_weight;
                 /*
                 $delivery_info=[
                     'initial_weight'=>'1000吨',
