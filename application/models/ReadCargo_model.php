@@ -211,7 +211,6 @@ class ReadCargo_model extends CI_Model
 
         $result =[];
         //
-
         $result['cargo_info']=[];
         $result['status_info']=[];
         $cargo_id=0;
@@ -259,7 +258,7 @@ class ReadCargo_model extends CI_Model
             ];
 
 
-            $result['carriage_info'][]=$car;
+
         }
 
         // 运输 信息
@@ -322,6 +321,7 @@ class ReadCargo_model extends CI_Model
                         $delivery_info['order']=$trade_order;
                     }
                 }
+
                 /*
                 $delivery_info=[
                     'initial_weight'=>'1000吨',
@@ -349,7 +349,7 @@ class ReadCargo_model extends CI_Model
 
 
 
-
+            $result['carriage_info'][]=$car;
             #####################################################
         }
 
