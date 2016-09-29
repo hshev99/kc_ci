@@ -77,6 +77,13 @@ class Login extends CI_Controller {
 
 	}
 
+	public function quitAdminUser(){
+
+		$this->_redis->del($this->token);
+
+		exit(json_encode(parent::output(['msg'=>'退出登录成功'])));
+	}
+
 	public function getSmsCode(){
 
 		$phone=$this->input->post('phone');
