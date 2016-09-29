@@ -105,7 +105,7 @@ class CI_Controller {
 
 		}else if(isset($data['token']) && $data['token']== null){
 			self::outPutEnd([],144,'登录过期,请重新登录');
-		}elseif(!isset($data['token'])){
+		}elseif(!isset($data['token']) && !isset($data['sign'])){
 			self::outPutEnd([],144,'登录过期,请重新登录');
 		}
 
