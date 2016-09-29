@@ -241,22 +241,9 @@ class ReadCargo_model extends CI_Model
             $cargo_id=$row->id;
             $result['cargo_info'] = $arr;
 
-
-
             //系统信息
             $this->load->model('ReadLog_model');
             $log=$this->ReadLog_model->getLog($cargo_id);
-
-            /*
-            $log[]=['action'=>'创建',
-                'author'=>'张三',
-                'date'=>'2016-12-12 12:12:12'
-            ];
-            $log[]=['action'=>'创建',
-                'author'=>'张三',
-                'date'=>'2016-12-12 12:12:12'
-            ];
-            */
             $result['system']=[
                 'cargo_sn'=>$row->cargo_sn,
                 'log'=>$log
@@ -275,6 +262,7 @@ class ReadCargo_model extends CI_Model
             $transport_info=$this->ReadCargoPrice_model->getCaogoTransportInfo($cargo_id);
         }
 
+        $this->caravans = $this->load->database('caravans',TRUE);
         $car=[];
         foreach ($transport_info as $val){
             #####################################################
@@ -283,7 +271,48 @@ class ReadCargo_model extends CI_Model
             //送达信息
             $car['delivery_info']=[];
 
+            $delivery_info=[];
             if (in_array($status,$deliver)){
+                $delivery_info['initial_weight']='';
+                $delivery_info['accept_total_weight']='';
+                $delivery_info['order']='';
+
+
+                $accept_total_weight='';
+
+                //查询运输信息
+                $sql="select id from hz_cargo_price WHERE cargo_id={$cargo_id} AND status=2 ";
+                $query_cargo_price= $query=$this->cargo->query($sql);
+                if (!empty($query_cargo_price->result())){
+                    foreach ($query_cargo_price->result() as $row){
+                        $cargo_price_id = $row->id;
+
+                        $voucher_sql="
+                        select * from tb_order_voucher where `trade_order_id` IN
+                         (
+                            select id from tb_trade_order where `contract_id` in 
+                                (
+                                    select id from `tb_contract` where `hz_cargo_price_id`={$cargo_price_id}
+                                )
+                         );";
+
+                        $voucher_query = $this->caravans->query($voucher_sql);
+                        $trade_order=[];
+                        if (!empty($voucher_query ->result())) foreach ($voucher_query->result() as $row){
+                            $trade_order_arr=[
+                                'order_sn'=>$row->trade_order_id,
+                                'end_time'=>$row->updated,
+                                'former_weight'=>$row->send_weight,
+                                'accept_weight'=>$row->receive_weight,
+                                'platform_scale_url'=>$row->voucher_url
+                            ];
+                            $trade_order[]=$trade_order_arr;
+                        }
+
+                        $delivery_info['order']=$trade_order;
+                    }
+                }
+                /*
                 $delivery_info=[
                     'initial_weight'=>'1000吨',
                     'accept_total_weight'=>'999.5吨',
@@ -304,7 +333,7 @@ class ReadCargo_model extends CI_Model
                         ]
                     ]
                 ];
-
+*/
                 $car['delivery_info']=$delivery_info;
             }
 
