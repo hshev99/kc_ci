@@ -250,6 +250,16 @@ class ReadCargo_model extends CI_Model
             ];
 
             $status=$row->status;
+
+
+            //支付信息
+            $car['pay_info']=[
+                'pay_status'=>(int)$row->pay_status,
+                'pay_status_name'=>$pay_status_name[$row->pay_status]
+            ];
+
+
+            $result['carriage_info'][]=$car;
         }
 
         // 运输 信息
@@ -338,14 +348,7 @@ class ReadCargo_model extends CI_Model
             }
 
 
-            //支付信息
-            $car['pay_info']=[
-                'pay_status'=>(int)$row->pay_status,
-                'pay_status_name'=>$pay_status_name[$row->pay_status]
-            ];
 
-
-            $result['carriage_info'][]=$car;
 
             #####################################################
         }
