@@ -102,7 +102,7 @@ class ReadCargo_model extends CI_Model
                         $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
 
                         $arr['company_arr'] ='';
-                        foreach ($cargo_price['company_id_arr'] as $val){$this->pr($val);
+                        foreach ($cargo_price['company_id_arr'] as $val){
                             $arr['company_arr'] = $this->ReadPersonCompany_model->getPersonCompany($val).'/';
                         }
                         $arr['freight_price']=$cargo_price['expect_price'].'/吨';
