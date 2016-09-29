@@ -35,6 +35,7 @@ class ReadCargoPrice_model extends CI_Model
         $query=$this->cargo->query($sql);
 
         $result=[];
+        $company_id_arr=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
                 $arr['company_id']=$row->company_id;
@@ -42,7 +43,9 @@ class ReadCargoPrice_model extends CI_Model
                 $arr['ton_count']=$row->ton_count;
                 $arr['status']=$row->status;
                 $arr['remark']=$row->remark;
+                $company_id_arr[]=$row->company_id;
             }
+            $arr['company_id_arr']=$company_id_arr;
 
             return $result=$arr;
         }else{
