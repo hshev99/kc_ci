@@ -84,6 +84,13 @@ class Login extends CI_Controller {
 		exit(json_encode(parent::output(['msg'=>'退出登录成功'])));
 	}
 
+	public function sync(){
+
+		$this->_redis->del($this->token);
+
+		exit(json_encode(parent::output(['data'=>date("Y-m-d H:i:s")])));
+	}
+
 	public function getSmsCode(){
 
 		$phone=$this->input->post('phone');
