@@ -324,7 +324,7 @@ class ReadCargo_model extends CI_Model
                     }
                 }
 
-                $delivery_info['accept_total_weight']=$accept_total_weight;
+                $delivery_info['accept_total_weight']=$accept_total_weight.'/吨';
                 /*
                 $delivery_info=[
                     'initial_weight'=>'1000吨',
