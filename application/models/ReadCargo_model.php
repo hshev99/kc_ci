@@ -100,7 +100,7 @@ class ReadCargo_model extends CI_Model
                         if ($arr['progress_background'] == '#FF6A67') $arr['warning'] =1;
                     }else{
                         $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
-
+$this->pr($cargo_price['company_id_arr']);
                         foreach ($cargo_price['company_id_arr'] as $val){
                             $arr['company_arr'] .= $this->ReadPersonCompany_model->getPersonCompany($val).'/';
                         }
