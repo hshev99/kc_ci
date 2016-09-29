@@ -103,7 +103,7 @@ class CI_Controller {
 			$this->user_name=@$user_info_arr['user_name'];
 
 		}else{
-//			self::outPutEnd([],123,'Undetectable token');
+			self::outPutEnd([],144,'Undetectable token');
 		}
 
 		//网站请求存入session
