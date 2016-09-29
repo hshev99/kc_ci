@@ -20,7 +20,7 @@ class Cargo extends CI_Controller {
 			$this->uid=1;
 		}
 */
-		if (!$this->uid) $this->uid=1;
+//		if (!$this->uid) $this->uid=1;
 	}
 
 

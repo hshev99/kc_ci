@@ -11,14 +11,14 @@ class AdminModule extends CI_Controller {
 		parent::__construct();
 
 		//判断是否登录
+		/*
 		if (!empty($_SESSION['user_login'])){
 			$this->user_login=@$_SESSION['user_login'];
 			$this->uid=@$this->user_login['user_id'];
 		}else{
 			$this->uid=1;
-//			$this->user_login= false;
-//			header("Location:/Login/index");
 		}
+		*/
 
 	}
 
