@@ -63,7 +63,7 @@ class ReadCargoPrice_model extends CI_Model
         $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $company_info=$this->ReadPersonCompany_model->getPersonCompany($row->company_id);
+                $company_info=$this->ReadPersonCompany_model->getPersonCompany($row->company_id);$this->pr($company_info);
                 $arr['company_id']=$row->company_id;
                 $arr['company_name']=$company_info['company_name'];
                 $arr['company_user']=$company_info['company_user'];
