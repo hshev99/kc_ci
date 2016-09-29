@@ -86,8 +86,6 @@ class Login extends CI_Controller {
 
 	public function sync(){
 
-		$this->_redis->del($this->token);
-
 		exit(json_encode(parent::output(['data'=>date("Y-m-d H:i:s")])));
 	}
 
