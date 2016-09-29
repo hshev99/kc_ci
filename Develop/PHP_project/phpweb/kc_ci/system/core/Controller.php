@@ -103,7 +103,7 @@ class CI_Controller {
 			$this->user_name=@$user_info_arr['user_name'];
 			$this->token=@$data['token'];
 
-		}elseif($data['token']== null){
+		}else if($data['token']== null){
 			self::outPutEnd([],144,'登录过期,请重新登录');
 		}
 
