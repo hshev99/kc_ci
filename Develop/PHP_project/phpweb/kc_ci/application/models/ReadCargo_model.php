@@ -100,6 +100,10 @@ class ReadCargo_model extends CI_Model
                         if ($arr['progress_background'] == '#FF6A67') $arr['warning'] =1;
                     }else{
                         $arr['company']=$this->ReadPersonCompany_model->getPersonCompany($cargo_price['company_id']);
+
+                        foreach ($cargo_price['company_id_arr'] as $val){
+                            $arr['company_arr'] .= $this->ReadPersonCompany_model->getPersonCompany($val).'/';
+                        }
                         $arr['freight_price']=$cargo_price['expect_price'].'/吨';
                         $arr['freight_total_price']=number_format(($cargo_price['expect_price']*$cargo_price['ton_count']),2).'/吨';
 
