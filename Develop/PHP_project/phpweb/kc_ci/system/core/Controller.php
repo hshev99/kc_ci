@@ -254,8 +254,8 @@ class CI_Controller {
 	}
 
 	public function log($data=''){
-		$path="/fire/phpweb/kc_ci/application/logs/".date("Y-m-d").'/'.date("H");
-		$path_date="/fire/phpweb/kc_ci/application/logs/".date("Y-m-d");
+		$path="/a8root/phpweb/kc_ci/application/logs/".date("Y-m-d").'/'.date("H");
+		$path_date="/a8root/phpweb/kc_ci/application/logs/".date("Y-m-d");
 
 		if(!is_file($path_date)) @mkdir($path_date,0777);
 		if(!is_file($path)) @mkdir($path,0777);
@@ -266,19 +266,19 @@ class CI_Controller {
 	}
 
 	public function log_alipay($data=''){
-		$open=fopen("/fire/phpweb/fire/application/logs/log_alipay.txt","a" );
+		$open=fopen("/a8root/phpweb/fire/application/logs/log_alipay.txt","a" );
 		fwrite($open,date("Y-m-d H:i:s").'---'.$GLOBALS['URI']->uri_string.'>>>'.$_SERVER['REQUEST_URI'].'---'.$data."---\n");
 		fclose($open);
 	}
 
 	public function log_weichat($data=''){
-		$open=fopen("/fire/phpweb/fire/application/logs/log_weichat.txt","a" );
+		$open=fopen("/a8root/phpweb/fire/application/logs/log_weichat.txt","a" );
 		fwrite($open,date("Y-m-d H:i:s").'---'.$data."---\n");
 		fclose($open);
 	}
 
 	public function log_api($data=''){
-		$open=fopen("/fire/phpweb/kc_ci/application/logs/log_api.txt","a" );
+		$open=fopen("/a8root/phpweb/kc_ci/application/logs/log_api.txt","a" );
 		fwrite($open,date("Y-m-d H:i:s").'---'.$data."---\n");
 		fclose($open);
 	}
