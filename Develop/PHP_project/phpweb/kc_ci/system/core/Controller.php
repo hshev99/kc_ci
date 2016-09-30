@@ -256,7 +256,7 @@ class CI_Controller {
 	public function log($data=''){
 		$path="/a8root/phpweb/kc_ci/application/logs/".date("Y-m-d").'/'.date("H");
 		$path_date=APPPATH."/application/logs/".date("Y-m-d");
-
+$this->pr($path_date);
 		if(!is_file($path_date)) @mkdir($path_date,0777);
 		if(!is_file($path)) @mkdir($path,0777);
 
