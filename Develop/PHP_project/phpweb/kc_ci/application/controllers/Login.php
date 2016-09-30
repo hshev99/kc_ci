@@ -10,7 +10,7 @@ class Login extends CI_Controller {
 
 
 	public function __construct()
-	{phpinfo();exit;
+	{
 		parent::__construct();
 
 		$this->phone=empty($this->input->post('phone')) ? '1' : $this->input->post('phone');
