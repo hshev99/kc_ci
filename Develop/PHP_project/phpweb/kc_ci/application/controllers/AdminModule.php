@@ -39,4 +39,8 @@ class AdminModule extends CI_Controller {
 			parent::outPutEnd($result);
 		}
 	}
+
+	public function tt(){
+
+	}
 }
