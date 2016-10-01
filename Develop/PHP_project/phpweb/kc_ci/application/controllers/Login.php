@@ -46,7 +46,7 @@ class Login extends CI_Controller {
 
 		$sign= md5(md5(md5($this->login_name . 'tuodui2016').date("md")));
 
-		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
+//		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
 
 		if ($this->login_name=='' || $this->password=='') exit(json_encode(parent::output([],101,'用户名密码不能为空')));
 
