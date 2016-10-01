@@ -254,8 +254,8 @@ class CI_Controller {
 	}
 
 	public function log($data=''){
-		$path=APPPATH."application/logs/".date("Y-m-d").'/'.date("H");
-		$path_date=APPPATH."application/logs/".date("Y-m-d");
+		$path=APPPATH."logs/".date("Y-m-d").'/'.date("H");
+		$path_date=APPPATH."logs/".date("Y-m-d");
 		if(!is_file($path_date)) @mkdir($path_date,0777);
 		if(!is_file($path)) @mkdir($path,0777);
 
