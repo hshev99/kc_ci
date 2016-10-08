@@ -224,7 +224,7 @@ $config['log_threshold'] = 0;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '/fire/phpweb/kc_ci/application/logs';
+$config['log_path'] = '/a8root/phpweb/kc_ci/application/logs';
 
 /*
 |--------------------------------------------------------------------------
