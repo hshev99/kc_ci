@@ -70,7 +70,7 @@ class CI_Controller {
 	{
 		$this->_redis = new Redis();
 		phpinfo();
-		$this->pr($this->_redis);
+		$this->pr(new Redis());
 		if (!$this->_redis->connect('127.0.0.1',6379,3)){
 			self::outPutEnd([],123,'redis Not connected');
 		}
