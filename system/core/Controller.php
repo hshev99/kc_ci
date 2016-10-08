@@ -85,6 +85,8 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
+		$this->load->library('session');
+		log_message('info', 'Controller Class Initialized');
 		$this->base_url = $this->config->item('base_url');
 
 		//验证原子信息
@@ -106,6 +108,9 @@ class CI_Controller {
 		}elseif(!isset($data['token']) && !isset($data['sign'])){
 			self::outPutEnd([],144,'登录过期,请重新登录');
 		}
+
+		//网站请求存入session
+
 		//记录日志
 		self::log('-|post>>-'.json_encode($_POST).'-|get>>-'.json_encode($_GET).'-|json>>-'.json_encode(self::get_json()));
 	}
@@ -123,6 +128,17 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+	public function web_login_session($uid=''){
+		if (!$uid) return '';
+		if (isset($_SERVER['SERVER_NAME']) && explode('.',$_SERVER['SERVER_NAME'])[1]=='51huole'){
+			$this->load->model('User_info_model');
+			$user_info=$this->User_info_model->get_user_info($uid);
+
+			$_SESSION['user_login']=$user_info;
+		}
+
+		return '';
+	}
 	//接口输出
 	public function output($arr=[],$error=0,$errorMsg=''){
 		$arr=[
