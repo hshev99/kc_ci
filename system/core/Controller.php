@@ -69,7 +69,7 @@ class CI_Controller {
 	public function __construct()
 	{
 		$this->_redis = new Redis();
-		if (!$this->_redis->connect('123.57.56.133',6379,3)){
+		if (!$this->_redis->connect('127.0.0.1',6379,3)){
 			self::outPutEnd([],123,'redis Not connected');
 		}
 
