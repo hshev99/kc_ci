@@ -54,6 +54,8 @@ class Cargo extends CI_Controller {
 		$page=isset($data['page'])&&!empty($data['page']) ? $data['page'] : 1;
 		$l=isset($data['limit'])&&!empty($data['limit']) ? $data['limit'] : 12;
 
+		$xls=isset($data['xls'])&&!empty($data['xls']) ? $data['xls'] : 'N';
+
 		$search=[
 			'cargo_sn'=>isset($data['cargo_sn'])&&!empty($data['cargo_sn']) ? $data['cargo_sn'] : false,
 			'send_address'=>isset($data['send_address'])&&!empty($data['send_address']) ? $data['send_address'] : false,
@@ -66,8 +68,9 @@ class Cargo extends CI_Controller {
 		$result=$this->ReadCargo_model->getCargo($this->uid,$status,$page,$l,$search);
 
 
-		//文件请求
-		
+
+		if ($xls == "Y") $result['page']['xls']=self::xls($result);
+
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
 		}else{
@@ -75,6 +78,100 @@ class Cargo extends CI_Controller {
 		}
 	}
 
+	public function xls($data=[]){
+		//文件请求
+//$this->pr($data['result']);
+
+		$data=$data['result'];
+		require_once PHPEXCEL_ROOT.'PHPExcel.php';
+		$objPHPExcel = new PHPExcel();
+
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+
+
+
+		$objPHPExcel->setActiveSheetIndex(0); //切换到新创建的工作表
+		$objPHPExcel->getActiveSheet()->setTitle('CargoList'.date('Y-m-d',time())); //设置工作表名称
+
+
+		$page=1;
+		$AZ=range('A','Z');
+
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[0]".$page, '序号');
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[1]".$page, '货单号');
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[2]".$page, '发货地');
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[3]".$page, '收货地');
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[4]".$page, '发货日期');
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[5]".$page, '发货信息');
+		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[6]".$page, '状态');
+// 		pr($data);exit();
+
+		$i=1;$page++;$money_num ='';
+		foreach ($data as $key=>$val)
+		{
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[0]".$page, $i);
+
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[1]".$page, $val['cargo_sn']);
+
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[2]".$page, $val['send_address']);
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[3]".$page, $val['receive_address']);
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[4]".$page, $val['start_time'].'-'.$val['end_time']);
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[5]".$page, $val['cargo_detail_name'].'-'.$val['cargo_detail_weight']);
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[6]".$page, 1);
+				$page++;$i++;
+
+		}
+//		$objPHPExcel->getActiveSheet()->setCellValue("$AZ[9]".$page,'合计:'.$money_num);
+		//EXECL 设置部分
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
+
+		/*
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+		header("Content-Type:application/force-download");
+		header("Content-Type:application/vnd.ms-execl");
+		header("Content-Type:application/octet-stream");
+		header("Content-Type:application/download");header("Content-type:application/vnd.ms-excel;charset=UTF-8");
+		header('Content-Disposition:attachment;filename="CargoList-'.date('Ymd',time()).'.xls"');
+		header("Content-Transfer-Encoding:binary");
+		*/
+		/*
+		$objWriteHTML = new PHPExcel_Writer_HTML($objPHPExcel);
+
+//		exit;
+		$a=$objWriteHTML->save('php://output');
+exit;
+		*/
+		$file_path=APPPATH."xls/";
+		if(!is_file($file_path)) @mkdir($file_path,0777);
+
+		$file_name=date("YmdHis").".xlsx";
+
+		$file=$file_path.$file_name;
+		$fileName = iconv("utf-8", "gb2312", $file);
+		$objWriter->save($fileName);
+
+		return 'xls/'.$file_name;
+
+		exit;
+		exit;
+		echo $a;exit;
+		$this->pr($a);
+		exit();
+
+
+		$this->pr($objPHPExcel);
+	}
 
 	/*
 	 * @content 获取默认信息
