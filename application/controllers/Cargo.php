@@ -67,7 +67,7 @@ class Cargo extends CI_Controller {
 
 
 		//文件请求
-		if ($data) echo '';
+		
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
 		}else{
