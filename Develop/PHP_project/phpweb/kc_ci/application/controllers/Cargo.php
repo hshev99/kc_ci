@@ -65,6 +65,9 @@ class Cargo extends CI_Controller {
 		$this->load->model('ReadCargo_model');
 		$result=$this->ReadCargo_model->getCargo($this->uid,$status,$page,$l,$search);
 
+
+		//文件请求
+		if ($data) echo '';
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
 		}else{
