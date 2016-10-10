@@ -117,7 +117,7 @@ class Cargo extends CI_Controller {
 				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[3]".$page, $val['receive_address']);
 				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[4]".$page, $val['start_time'].'-'.$val['end_time']);
 				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[5]".$page, $val['cargo_detail_name'].'-'.$val['cargo_detail_weight']);
-				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[6]".$page, 1);
+				$objPHPExcel->getActiveSheet()->setCellValue("$AZ[6]".$page, $val['status_name']);
 				$page++;$i++;
 
 		}
