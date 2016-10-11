@@ -79,6 +79,8 @@ class Cargo extends CI_Controller {
 	}
 
 	public function xls($data=[]){
+		if (empty($data)) return '';
+		if (empty($data['result'])) return '';
 		//文件请求
 //$this->pr($data['result']);
 
