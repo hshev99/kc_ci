@@ -68,6 +68,7 @@ class CI_Controller {
 	 */
 	public function __construct()
 	{
+		$url_role=['/login/sync','//login/sync'];
 		$this->_redis = new Redis();
 		if (!$this->_redis->connect('127.0.0.1',6379,3)){
 			self::outPutEnd([],123,'redis Not connected');
@@ -106,11 +107,11 @@ class CI_Controller {
 			$this->token=@$data['token'];
 
 		}else if(isset($data['token']) && $data['token']== null){
-			if ($_SERVER['REQUEST_URI'] != '/login/sync' || $_SERVER['REQUEST_URI'] != '//login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
+			if (!in_array($_SERVER['REQUEST_URI'],$url_role))self::outPutEnd([],144,'登录过期,请重新登录');
 		}elseif(!isset($data['token']) && !isset($data['sign'])){
 			self::outPutEnd([],144,'登录过期,请重新登录');
 		}else{
-			if ($_SERVER['REQUEST_URI'] != '/login/sync' || $_SERVER['REQUEST_URI'] != '//login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
+			if (!in_array($_SERVER['REQUEST_URI'],$url_role)) self::outPutEnd([],144,'登录过期,请重新登录');
 		}
 
 		//网站请求存入session
