@@ -51,8 +51,8 @@ class Cargo extends CI_Controller {
 
 
 		$status=isset($data['status'])&&!empty($data['status']) ? $data['status'] : 0;
-		$page=isset($data['page'])&&!empty($data['page']) ? $data['page'] : 1;
-		$l=isset($data['limit'])&&!empty($data['limit']) ? $data['limit'] : 12;
+		$page=isset($data['page'])&&!empty($data['page']) ? (int)$data['page'] : 1;
+		$l=isset($data['limit'])&&!empty($data['limit']) ? (int)$data['limit'] : 12;
 
 		$xls=isset($data['xls'])&&!empty($data['xls']) ? $data['xls'] : 'N';
 
