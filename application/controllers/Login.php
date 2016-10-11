@@ -134,11 +134,11 @@ class Login extends CI_Controller {
 		$data=json_decode(parent::get_json(),true);
 
 		$this->phone=$data['phone'];
-		$this->code=$data['code'];
+		$this->code_accept=$data['code'];
 		$this->password=$data['password'];
 
 		if (empty($this->code)) parent::outPutEnd([],106,'验证码已过期');
-		if ($this->code != $this->code) parent::outPutEnd([],107,'验证码不正确');
+		if ($this->code != $this->code_accept) parent::outPutEnd([],107,'验证码不正确');
 		if (empty($this->password) || empty($this->phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
 
 		$arr=[
