@@ -94,10 +94,9 @@ class Login extends CI_Controller {
 		$data=json_decode(parent::get_json(),true);
 
 		$this->phone=$data['phone'];
-		$this->token=$data['token'];
+		$this->sign=$data['sign'];
 
 		//验证 sign
-		$this->sign = $data['sign'];
 
 		$sign= md5(md5(md5($this->login_name . 'tuodui2016').date("md")));
 
