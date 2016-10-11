@@ -104,9 +104,9 @@ class CI_Controller {
 			$this->token=@$data['token'];
 
 		}else if(isset($data['token']) && $data['token']== null){
-			self::outPutEnd([],144,'登录过期,请重新登录');
+			if ($_SERVER['REQUEST_URI'] != '/login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
 		}elseif(!isset($data['token']) && !isset($data['sign'])){
-			self::outPutEnd([],144,'登录过期,请重新登录');
+			if ($_SERVER['REQUEST_URI'] != '/login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
 		}
 
 		//网站请求存入session
@@ -115,6 +115,9 @@ class CI_Controller {
 		self::log('-|post>>-'.json_encode($_POST).'-|get>>-'.json_encode($_GET).'-|json>>-'.json_encode(self::get_json()));
 	}
 
+	public function check_atomic(){
+
+	}
 	// --------------------------------------------------------------------
 
 	/**
