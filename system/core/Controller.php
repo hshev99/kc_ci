@@ -96,7 +96,7 @@ class CI_Controller {
 			$user_info = $this->_redis->get($data['token']);
 
 			if (empty($user_info)) {
-				if ($_SERVER['REQUEST_URI'] != '/login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
+				self::outPutEnd([],144,'登录过期,请重新登录');
 			}
 
 			$user_info_arr = json_decode($user_info,true);
@@ -106,9 +106,11 @@ class CI_Controller {
 			$this->token=@$data['token'];
 
 		}else if(isset($data['token']) && $data['token']== null){
-			 self::outPutEnd([],144,'登录过期,请重新登录');
+			if ($_SERVER['REQUEST_URI'] != '/login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
 		}elseif(!isset($data['token']) && !isset($data['sign'])){
-			 self::outPutEnd([],144,'登录过期,请重新登录');
+			self::outPutEnd([],144,'登录过期,请重新登录');
+		}else{
+			if ($_SERVER['REQUEST_URI'] != '/login/sync') self::outPutEnd([],144,'登录过期,请重新登录');
 		}
 
 		//网站请求存入session
