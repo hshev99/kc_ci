@@ -131,22 +131,23 @@ class Login extends CI_Controller {
 	}
 
 	public function setUserPassword(){
+		$data=json_decode(parent::get_json(),true);
 
-		$code=$this->input->post('code');
-		$phone=$this->input->post('phone');
-		$password=$this->input->post('password');
+		$this->phone=$data['phone'];
+		$this->code=$data['code'];
+		$this->password=$data['password'];
 
 		if (empty($this->code)) parent::outPutEnd([],106,'验证码已过期');
-		if ($this->code != $code) parent::outPutEnd([],107,'验证码不正确');
-		if (empty($password) || empty($phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
+		if ($this->code != $this->code) parent::outPutEnd([],107,'验证码不正确');
+		if (empty($this->password) || empty($this->phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
 
-		$data=[
-			'user_name'=>$phone,
-			'login_name'=>$phone,
-			'password'=>$password,
+		$arr=[
+			'user_name'=>$this->phone,
+			'login_name'=>$this->phone,
+			'password'=>$this->password,
 		];
 		$this->load->model('WriteAdminUser_model');
-		$result=$this->WriteAdminUser_model->upAdminUser($data);
+		$result=$this->WriteAdminUser_model->upAdminUser($arr);
 
 		if (!$result){
 			parent::outPutEnd([],109,'改账户未注册');
