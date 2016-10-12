@@ -97,8 +97,8 @@ class Login extends CI_Controller {
 		$this->sign=$data['sign'];
 
 		//验证 sign
-
-		$sign= md5(md5(md5($this->phone . 'tuodui2016').date("md")));
+//$this->pr(date("md"));
+		$sign= md5(md5(md5($this->phone . 'tuodui2016').date("m-d")));
 
 		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,"验证失败")));
 
