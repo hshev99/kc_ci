@@ -44,9 +44,9 @@ class Login extends CI_Controller {
 		//验证 sign
 		$this->sign = $data['sign'];
 
-		$sign= md5(md5(md5($this->login_name . 'tuodui2016').date("md")));
+		$sign= md5(md5(md5($this->login_name . 'tuodui2016').date("m-d")));
 
-//		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
+		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
 
 		if ($this->login_name=='' || $this->password=='') exit(json_encode(parent::output([],101,'用户名密码不能为空')));
 
@@ -97,9 +97,6 @@ class Login extends CI_Controller {
 		$this->sign=$data['sign'];
 
 		//验证 sign
-//$this->pr(date("md"));
-
-//		$this->phone='133';
 		$sign= md5(md5(md5($this->phone . 'tuodui2016').date("m-d")));
 
 		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
