@@ -136,6 +136,13 @@ class Login extends CI_Controller {
 		$this->code_accept=$data['code'];
 		$this->password=$data['password'];
 
+		$this->sign=$data['sign'];
+
+		$sign= md5(md5(md5($this->phone . 'tuodui2016').date("m-d")));
+
+		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
+
+
 		if (empty($this->code)) parent::outPutEnd([],106,'验证码已过期');
 		if ($this->code != $this->code_accept) parent::outPutEnd([],107,'验证码不正确');
 		if (empty($this->password) || empty($this->phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
