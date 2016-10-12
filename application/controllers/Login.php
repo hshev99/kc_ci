@@ -14,8 +14,8 @@ class Login extends CI_Controller {
 		parent::__construct();
 
 		$this->phone=empty($this->input->post('phone')) ? '1' : $this->input->post('phone');
-		$this->user_login=@$_SESSION['user_login'];$this->pr($_SESSION);
-		$this->code=isset($_SESSION['code'][$this->phone]) ? $_SESSION['code'][$this->phone] : '';
+		$this->user_login=@$_SESSION['user_login'];
+		$this->code=isset($_SESSION['code']) ? $_SESSION['code'] : '';
 	}
 
 	public function index(){
@@ -143,7 +143,7 @@ class Login extends CI_Controller {
 		if ($sign !=  substr($this->sign,10,32)) exit(json_encode(parent::output([],104,$sign)));
 
 
-		if (empty($this->code)) parent::outPutEnd([],106,'验证码已过期');
+		if (empty($this->code[$this->phone])) parent::outPutEnd([],106,'验证码已过期');
 		if ($this->code != $this->code_accept) parent::outPutEnd([],107,'验证码不正确');
 		if (empty($this->password) || empty($this->phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
 
