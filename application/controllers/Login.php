@@ -156,7 +156,7 @@ class Login extends CI_Controller {
 		$result=$this->WriteAdminUser_model->upAdminUser($arr);
 
 		if (!$result){
-			parent::outPutEnd([],109,'改账户未注册');
+			parent::outPutEnd([],109,'该账户未注册');
 		}else{
 			parent::outPutEnd(['msg'=>'修改成功']);
 		}
