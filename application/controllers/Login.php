@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 
 		$this->phone=empty($this->input->post('phone')) ? '1' : $this->input->post('phone');
-		$this->user_login=@$_SESSION['user_login'];$this->pr($_SERVER);
+		$this->user_login=@$_SESSION['user_login'];$this->pr($_SESSION);
 		$this->code=isset($_SESSION['code'][$this->phone]) ? $_SESSION['code'][$this->phone] : '';
 	}
 
