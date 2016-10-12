@@ -144,7 +144,7 @@ class Login extends CI_Controller {
 
 
 		if (empty($this->code[$this->phone])) parent::outPutEnd([],106,'验证码已过期');
-		if ($this->code != $this->code_accept) parent::outPutEnd([],107,'验证码不正确');
+		if ($this->code[$this->phone] != $this->code_accept) parent::outPutEnd([],107,'验证码不正确');
 		if (empty($this->password) || empty($this->phone)) parent::outPutEnd([],108,'手机号码或密码不能为空');
 
 		$arr=[
