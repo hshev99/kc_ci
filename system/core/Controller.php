@@ -109,7 +109,7 @@ class CI_Controller {
 		}else if(isset($data['token']) && $data['token']== null){
 			if (!in_array($_SERVER['REQUEST_URI'],$url_role))self::outPutEnd([],144,'登录过期,请重新登录');
 		}elseif(!isset($data['token']) && !isset($data['sign'])){
-			self::outPutEnd([],144,'登录过期,请重新登录');
+            if (!in_array($_SERVER['REQUEST_URI'],$url_role))self::outPutEnd([],144,'登录过期,请重新登录');
 		}
 
 		//网站请求存入session
