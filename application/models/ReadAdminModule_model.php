@@ -39,7 +39,7 @@ class ReadAdminModule_model extends CI_Model
 
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT * FROM hz_admin_module WHERE parent_id=$parent_id";
+        $sql="SELECT * FROM hz_admin_module WHERE parent_id=$parent_id AND enabled=0";
         $query=$this->cargo->query($sql);
 
         $result=[];
