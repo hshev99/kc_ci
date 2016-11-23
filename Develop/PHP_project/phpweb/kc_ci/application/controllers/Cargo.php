@@ -69,7 +69,7 @@ class Cargo extends CI_Controller {
 
 
 
-		if ($xls == "Y") $result['page']['xls']='http://112.126.82.117:9090/'.self::xls($result);
+		if ($xls == "Y") $result['page']['xls']=empty(self::xls($result))? '' :'http://112.126.82.117:9090/'.self::xls($result);
 
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
