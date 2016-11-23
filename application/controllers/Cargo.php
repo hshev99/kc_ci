@@ -157,7 +157,7 @@ exit;
 		$file_path=APPPATH."xls/";
 		if(!is_file($file_path)) @mkdir($file_path,0777);
 
-		$file_name=date("YmdHis").".xlsx";
+		$file_name=date("YmdHis").".xls";
 
 		$file=$file_path.$file_name;
 		$fileName = iconv("utf-8", "gb2312", $file);
