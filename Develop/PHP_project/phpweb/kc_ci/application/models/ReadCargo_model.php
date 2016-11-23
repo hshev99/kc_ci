@@ -83,7 +83,7 @@ class ReadCargo_model extends CI_Model
                 $arr['status']=$row->status;
                 $arr['status_name']=$status_name[$row->status];
 
-                $arr['operate']=self::CargoOperate($row->status);
+                $arr['operate']=self::CargoOperate($row->status,$row->cargo_sn);
 
                 if ($status == 2 || $status==3 || $status==4){
                     $cargo_price=$this->ReadCargoPrice_model->getCargoPricedetail($row->id);
@@ -132,8 +132,9 @@ class ReadCargo_model extends CI_Model
         }
     }
 
-    public function CargoOperate($status=1){
+    public function CargoOperate($status=1,$cargo_sn=''){
 
+        $this->load->model('ReadCargoPrice_model');
         $arr=[];
 
         $arr[]=[
@@ -141,10 +142,14 @@ class ReadCargo_model extends CI_Model
             'url'=>'CargoDetail'
         ];
 
-        $arr[]=[
-            'name'=>'报价信息',
-            'url'=>'CargoPriceList'
-        ];
+        $result=$this->ReadCargoPrice_model->getCargoPriceList('',$params=['cargo_sn'=>$cargo_sn]);
+        if (!empty($result)){
+            $arr[]=[
+                'name'=>'报价信息',
+                'url'=>'CargoPriceList'
+            ];
+        }
+
 
         if ($status ==1) $arr[]=[
             'name'=>'取消发货',
