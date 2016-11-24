@@ -70,7 +70,7 @@ class CI_Controller {
 	{
 		$url_role=['/login/sync','//login/sync'];
 		$this->_redis = new Redis();
-		if (!$this->_redis->connect('127.0.0.1',6379,3)){
+		if (!$this->_redis->connect('redis.php.com',6379,3)){
 			self::outPutEnd([],123,'redis Not connected');
 		}
 
