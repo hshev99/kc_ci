@@ -164,14 +164,16 @@ class ReadCargo_model extends CI_Model
         return $arr;
     }
 
-    public function getCargoDefault($uid=''){
+    public function getCargoDefault($uid='',$cargo_sn=''){
         if (!$uid) return false;
 
         //调用默认货物类型
         $this->load->model('ReadGoodsType_model');
         $goods_type=$this->ReadGoodsType_model->getUserGoodsType($uid);
 
-        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$uid} ORDER BY id DESC limit 1";
+        $where ='';
+        if ($cargo_sn) $where .=" and cargo_sn='{$cargo_sn}' ";
+        $sql="SELECT * FROM hz_cargo WHERE shipper_id={$uid} $where ORDER BY id DESC limit 1";
         $query=$this->cargo->query($sql);
 
         $result=[];
