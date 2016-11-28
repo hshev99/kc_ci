@@ -193,6 +193,7 @@ class ReadCargo_model extends CI_Model
         }else{
 //            return '';
 
+            $arr=[];
             $arr['send_user_mobile']='';
             $arr['send_user_name']='';
             $arr['send_address']='';
