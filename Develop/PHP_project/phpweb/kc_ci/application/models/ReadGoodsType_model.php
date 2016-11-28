@@ -15,7 +15,7 @@ class ReadGoodsType_model extends CI_Model
         $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $result[]['name']=$row->name;
+                $result[]['value']=$row->name;
             }
             return $result;
         }else{
