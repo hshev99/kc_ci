@@ -9,7 +9,7 @@ class ReadGoodsType_model extends CI_Model
     public function getUserGoodsType($uid=''){
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT name FROM hz_goods_type WHERE uid in (0,{$uid})";
+        $sql="SELECT name FROM hz_goods_type WHERE uid in (0,{$uid})";echo $sql;exit;
         $query=$this->cargo->query($sql);
 
         $result=[];
