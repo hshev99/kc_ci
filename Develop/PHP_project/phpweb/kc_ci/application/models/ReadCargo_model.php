@@ -187,8 +187,12 @@ class ReadCargo_model extends CI_Model
                 $arr['receive_address']=$row->receive_address;
                 $arr['receive_user_mobile']=$row->receive_user_mobile;
                 $arr['receive_user_name']=$row->receive_user_name;
+                $arr['cargo_weight']=$row->cargo_weight;
+                $arr['expect_price']=$row->expect_price;
 
                 $arr['goods_type_default']=$goods_type;
+
+
                 $result=$arr;
             }
             return $result;
