@@ -190,6 +190,7 @@ class ReadCargo_model extends CI_Model
                 $arr['cargo_weight']=$row->cargo_weight;
                 $arr['expect_price']=$row->expect_price;
                 $arr['cargo_name']=$row->cargo_name;
+                $arr['remark']=$row->remark;
 
                 $arr['goods_type_default']=$goods_type;
 
