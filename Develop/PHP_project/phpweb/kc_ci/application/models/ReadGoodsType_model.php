@@ -11,7 +11,7 @@ class ReadGoodsType_model extends CI_Model
 
         $sql="SELECT name FROM hz_goods_type WHERE uid in (0,{$uid})";
         $query=$this->cargo->query($sql);
-
+$this->pr($query->result());
         $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
