@@ -181,9 +181,11 @@ exit;
 	 *
 	 * **/
 	public function getCargoDefault(){
+        $data=json_decode(parent::get_json(),true);
 
+        $cargo_sn = isset($data['cargo_sn'])&&!empty($data['cargo_sn']) ? $data['cargo_sn'] : '';
 		$this->load->model('ReadCargo_model');
-		$result=$this->ReadCargo_model->getCargoDefault($this->uid);
+		$result=$this->ReadCargo_model->getCargoDefault($this->uid,$cargo_sn);
 
 		if (!$result){
 			parent::outPutEnd([],201,'暂无默认货物数据');
