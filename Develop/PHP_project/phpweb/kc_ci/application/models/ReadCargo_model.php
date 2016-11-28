@@ -191,7 +191,20 @@ class ReadCargo_model extends CI_Model
             }
             return $result;
         }else{
-            return '';
+//            return '';
+
+            $arr['send_user_mobile']='';
+            $arr['send_user_name']='';
+            $arr['send_address']='';
+
+
+            $arr['receive_address']='';
+            $arr['receive_user_mobile']='';
+            $arr['receive_user_name']='';
+
+            $arr['goods_type_default']=$goods_type;
+            $result=$arr;
+            return $result;
         }
     }
 
