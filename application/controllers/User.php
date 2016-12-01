@@ -54,9 +54,11 @@ class User extends CI_Controller {
         $data=json_decode(parent::get_json(),true);
 
         $search=[
-            'user_name'=>isset($data['user_name'])&&!empty($data['user_name']) ? $data['user_name'] : false,
-            'company_uid'=>isset($data['company_uid'])&&!empty($data['company_uid']) ? $data['company_uid'] : false,
+            'user_id'=>isset($data['user_id'])&&!empty($data['user_id']) ? $data['user_id'] : false,
+
         ];
+        isset($data['user_name'])&&!empty($data['user_name']) ? $search['user_name']=$data['user_name'] : '';
+
 
         $this->load->model('ReadUser_model');
         $result=$this->ReadUser_model->postUser($search);
