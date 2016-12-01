@@ -73,11 +73,16 @@ class ReadUser_model extends CI_Model
     {
 
         $where = '';
+        $header ='';
 
         if (isset($search['user_id']) && $search['user_id']){
             $where .=" and user_id='{$search['user_id']}' ";
+
+            $header .="update";
         } else{
-            return '';
+//            return '';
+            $header .=" insert into ";
+            $where ='';
         }
 
         //搜索条件
@@ -90,7 +95,7 @@ class ReadUser_model extends CI_Model
         $set .=" `update_time`=now() ";
 
 
-        $sql = " update hz_admin_user set $set WHERE 1 $where";
+        $sql = " $header hz_admin_user set $set WHERE 1 $where";
         $query = $this->cargo->query($sql);
 
         if ($query){
