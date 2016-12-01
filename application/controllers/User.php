@@ -50,6 +50,24 @@ class User extends CI_Controller {
 		}
 	}
 
+	public function postUser(){
+        $data=json_decode(parent::get_json(),true);
+
+        $search=[
+            'user_name'=>isset($data['user_name'])&&!empty($data['user_name']) ? $data['user_name'] : false,
+            'company_uid'=>isset($data['company_uid'])&&!empty($data['company_uid']) ? $data['company_uid'] : false,
+        ];
+
+        $this->load->model('ReadUser_model');
+        $result=$this->ReadUser_model->getUser($search);
+
+        if (!$result){
+            parent::outPutEnd([],109,'修改失败');
+        }else{
+            parent::outPutEnd([],0,'修改成功');
+        }
+
+    }
 	public function tt(){
 
 	}
