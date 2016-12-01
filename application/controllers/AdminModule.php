@@ -48,6 +48,20 @@ class AdminModule extends CI_Controller {
 		}
 	}
 
+	public function postAdminModule(){
+        $data=json_decode(parent::get_json(),true);
+        $search=[];
+        isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] :'';
+
+        $result=$this->ReadAdminModule_model->postAdminModule($this->uid,$search);
+        if (!$result){
+            parent::outPutEnd([],109,'暂无数据');
+        }else{
+            parent::outPutEnd($result);
+        }
+
+    }
+
 	public function tt(){
 
 	}
