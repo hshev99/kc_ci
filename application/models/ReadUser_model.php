@@ -13,7 +13,7 @@ class ReadUser_model extends CI_Model
         $where ='';
 
 
-        $where .=" and enabled=1";
+//        $where .=" and enabled=1";
 
         //搜索条件
 
