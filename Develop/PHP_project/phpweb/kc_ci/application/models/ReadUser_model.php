@@ -25,7 +25,7 @@ class ReadUser_model extends CI_Model
 
         $order_by =' order by user_id DESC ';
 
-        $sql="SELECT * FROM hz_admin_user WHERE 1 $where  $order_by $limit ";
+        $sql="SELECT * FROM hz_admin_user WHERE 1 $where  $order_by $limit ";echo $sql;exit;
         $query=$this->cargo->query($sql);
 
         $sql_count="SELECT COUNT(1) as a FROM hz_admin_user WHERE 1 $where ";
