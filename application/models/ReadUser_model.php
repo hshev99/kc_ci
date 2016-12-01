@@ -31,15 +31,7 @@ class ReadUser_model extends CI_Model
 
         empty($query_count->result()) ? $pageCount=0 : $pageCount=ceil($query_count->result()[0]->a /$l);
         empty($query_count->result()) ? $totalCount=0 : $totalCount=ceil($query_count->result()[0]->a);
-        $status_name=[
-            0=>'异常',
-            1=>'询价中',
-            2=>'进行中',
-            3=>'待付款',
-            4=>'已完成',
-            5=>'已取消',
-            6=>'已过期'
-        ];
+
         $result=[];
         $result['page']=[
             'curpage'=>$page,
