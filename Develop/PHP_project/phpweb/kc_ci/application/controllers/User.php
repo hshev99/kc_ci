@@ -29,6 +29,7 @@ class User extends CI_Controller {
 	 * */
 	public function getUser(){
 
+        $data=json_decode(parent::get_json(),true);
         $page=isset($data['page'])&&!empty($data['page']) ? (int)$data['page'] : 1;
         $l=isset($data['limit'])&&!empty($data['limit']) ? (int)$data['limit'] : 12;
 
