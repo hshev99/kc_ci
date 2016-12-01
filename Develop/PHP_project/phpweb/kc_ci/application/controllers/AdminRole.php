@@ -44,22 +44,19 @@ class AdminRole extends CI_Controller {
 		}
 	}
 
-	public function postAdminModule(){
+	public function postAdminRole(){
         $data=json_decode(parent::get_json(),true);
         $search=[];
-        isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] :'';
-        isset($data['parent_id'])&&!empty($data['parent_id']) ? $search['parent_id']=$data['parent_id'] :'';
-        isset($data['name'])&&!empty($data['name']) ? $search['name']=$data['name'] :'';
-        isset($data['url'])&&!empty($data['url']) ? $search['url']=$data['url'] :'';
-        isset($data['enabled'])&&!empty($data['enabled']) ? $search['enabled']=$data['enabled'] :'';
-        isset($data['sort'])&&!empty($data['sort']) ? $search['sort']=$data['sort'] :'';
+        isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] :'';
+        isset($data['role_name'])&&!empty($data['role_name']) ? $search['role_name']=$data['role_name'] :'';
+        isset($data['description'])&&!empty($data['description']) ? $search['description']=$data['description'] :'';
 
-        $this->load->model('ReadAdminModule_model');
-        $result=$this->ReadAdminModule_model->postAdminModule($this->uid,$search);
+        $this->load->model('ReadAdminRole_model');
+        $result=$this->ReadAdminRole_model->postAdminModule($this->uid,$search);
         if (!$result){
-            parent::outPutEnd([],109,empty($data['module_id'])?'添加失败':'修改失败');
+            parent::outPutEnd([],109,empty($data['role_id'])?'添加失败':'修改失败');
         }else{
-            parent::outPutEnd([],0,empty($data['module_id'])?'添加成功':'修改成功');
+            parent::outPutEnd([],0,empty($data['role_id'])?'添加成功':'修改成功');
         }
 
     }
