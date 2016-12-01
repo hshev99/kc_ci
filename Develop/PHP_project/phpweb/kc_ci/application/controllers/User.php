@@ -67,7 +67,7 @@ class User extends CI_Controller {
         $result=$this->ReadUser_model->postUser($search);
 
         if (!$result){
-            parent::outPutEnd([],109,'修改失败');
+            parent::outPutEnd([],109,empty($data)?'添加失败':"修改失败");
         }else{
             parent::outPutEnd([],0,'修改成功');
         }
