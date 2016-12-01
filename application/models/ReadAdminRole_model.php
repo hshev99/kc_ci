@@ -20,7 +20,7 @@ class ReadAdminRole_model extends CI_Model
         }
 
 
-        $sql="SELECT * FROM hz_admin_role WHERE 1 $where ";
+        $sql="SELECT * FROM hz_admin_role WHERE 1 $where ";exit($sql);
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
