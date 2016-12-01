@@ -52,6 +52,11 @@ class AdminModule extends CI_Controller {
         $data=json_decode(parent::get_json(),true);
         $search=[];
         isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] :'';
+        isset($data['parent_id'])&&!empty($data['parent_id']) ? $search['parent_id']=$data['parent_id'] :'';
+        isset($data['name'])&&!empty($data['name']) ? $search['name']=$data['name'] :'';
+        isset($data['url'])&&!empty($data['url']) ? $search['url']=$data['url'] :'';
+        isset($data['enabled'])&&!empty($data['enabled']) ? $search['enabled']=$data['enabled'] :'';
+        isset($data['sort'])&&!empty($data['sort']) ? $search['sort']=$data['sort'] :'';
 
         $result=$this->ReadAdminModule_model->postAdminModule($this->uid,$search);
         if (!$result){
