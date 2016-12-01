@@ -76,5 +76,36 @@ class ReadAdminRole_model extends CI_Model
 
     }
 
+    public function getAdminRoleModule($admin_id='',$search=[]){
+        if (!$admin_id) return false;
+        $this->cargo = $this->load->database('cargo',TRUE);
+
+        $where ='';
+
+
+        if (isset($search['role_id'])) {
+            $where .=" and role_id={$search['role_id']}";
+        }else{
+
+        }
+
+
+        $sql="SELECT * FROM hz_admin_role WHERE 1 $where ";
+        $query=$this->cargo->hz_admin_role_module($sql);
+        $result=[];
+        if(!empty($query->result())){
+            foreach ($query->result() as $row) {
+                $arr['role_id']=$row->role_id;
+                $arr['module_id']=$row->module_id;
+                $result[]=$arr;
+            }
+
+            $this->pr($arr);
+            return $result;
+        }else{
+            return '';
+        }
+    }
+
 }
  ?>
