@@ -105,7 +105,7 @@ class ReadAdminModule_model extends CI_Model
         $set .=" `update_time`=now() ";
 
 
-        $sql = " $header hz_admin_module set $set  $where";
+        $sql = " $header hz_admin_module set $set  $where";exit($sql);
         $query = $this->cargo->query($sql);
 
         if ($query){
