@@ -12,7 +12,12 @@ class ReadAdminModule_model extends CI_Model
 
         $where ='';
 
-        if (isset($search['parent_id'])) $where .=" and parent_id={$search['parent_id']}";
+
+        if (isset($search['module_id'])) {
+            $where .=" and module_id={$search['module_id']}";
+        }else{
+            if (isset($search['parent_id'])) $where .=" and parent_id={$search['parent_id']}";
+        }
 
         $child ="Y";
         if (isset($search['child'])){
