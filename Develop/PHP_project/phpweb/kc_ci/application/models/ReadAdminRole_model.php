@@ -100,7 +100,6 @@ class ReadAdminRole_model extends CI_Model
                 $result[]=$arr;
             }
 
-            $this->pr($result);
             return $result;
         }else{
             return '';
