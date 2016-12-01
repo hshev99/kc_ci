@@ -81,6 +81,7 @@ class ReadAdminModule_model extends CI_Model
 
     public function postAdminModule($admin_id='',$search)
     {
+        $this->cargo = $this->load->database('cargo',TRUE);
 
         $where = ' WHERE 1 ';
         $header ='';
