@@ -11,7 +11,15 @@ class ReadAdminModule_model extends CI_Model
         $this->cargo = $this->load->database('cargo',TRUE);
 
         $where ='';
+
         if (isset($search['parent_id'])) $where .=" and parent_id={$search['parent_id']}";
+
+        if (isset($search['child'])){
+            $child =$search['child'];
+        }else{
+            $child ="Y";
+        }
+
         $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=0";
         $query=$this->cargo->query($sql);
         $result=[];
@@ -25,7 +33,7 @@ class ReadAdminModule_model extends CI_Model
                 $arr['sort']=$row->sort;
                 $arr['action']=$row->action;
 
-                $arr['child'] = self::getAdminModuleChild($row->module_id);
+                if ($child == 'Y')$arr['child'] = self::getAdminModuleChild($row->module_id);
 
 
                 $result[]=$arr;
