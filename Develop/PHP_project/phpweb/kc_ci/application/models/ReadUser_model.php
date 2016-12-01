@@ -72,7 +72,7 @@ class ReadUser_model extends CI_Model
     public function postUser($search)
     {
 
-        $where = '';
+        $where = ' WHERE 1 ';
         $header ='';
 
         if (isset($search['user_id']) && $search['user_id']){
@@ -95,7 +95,7 @@ class ReadUser_model extends CI_Model
         $set .=" `update_time`=now() ";
 
 
-        $sql = " $header hz_admin_user set $set WHERE 1 $where";exit($sql);
+        $sql = " $header hz_admin_user set $set  $where";exit($sql);
         $query = $this->cargo->query($sql);
 
         if ($query){
