@@ -52,7 +52,7 @@ class AdminRole extends CI_Controller {
         isset($data['description'])&&!empty($data['description']) ? $search['description']=$data['description'] :'';
 
         $this->load->model('ReadAdminRole_model');
-        $result=$this->ReadAdminRole_model->postAdminModule($this->uid,$search);
+        $result=$this->ReadAdminRole_model->postAdminRole($this->uid,$search);
         if (!$result){
             parent::outPutEnd([],109,empty($data['role_id'])?'添加失败':'修改失败');
         }else{
