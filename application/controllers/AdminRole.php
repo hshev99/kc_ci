@@ -67,15 +67,20 @@ class AdminRole extends CI_Controller {
         isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] :$search['role_id']=1;
 
 
+        $this->load->model('ReadAdminRole_model');
+        $result=$this->ReadAdminRole_model->getAdminRoleModule($this->uid,$search);
+
+        $this->pr($result);
+
         $this->load->model('ReadAdminModule_model');
         $result=$this->ReadAdminModule_model->getAdminModule($this->uid,$search=["child"=>"Y"]);
+
 
         $this->pr($result);
 
 
 
-        $this->load->model('ReadAdminRole_model');
-        $result=$this->ReadAdminRole_model->getAdminRoleModule($this->uid,$search);
+
         if (!$result){
             parent::outPutEnd([],109,'暂无数据');
         }else{
