@@ -6,11 +6,13 @@ class ReadAdminModule_model extends CI_Model
         parent::__construct();
     }
 
-    public function getAdminModule($admin_id=''){
+    public function getAdminModule($admin_id='',$search=[]){
         if (!$admin_id) return false;
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT * FROM hz_admin_module WHERE parent_id=0 AND enabled=0";
+        $where ='';
+        if (isset($search['parent_id'])) $where .="parent_id={$search['parent_id']}";
+        $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=0";
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
