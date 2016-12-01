@@ -20,7 +20,7 @@ class ReadAdminRole_model extends CI_Model
         }
 
 
-        $sql="SELECT * FROM hz_admin_role WHERE 1 $where ";exit($sql);
+        $sql="SELECT * FROM hz_admin_role WHERE 1 $where ";
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
@@ -90,7 +90,7 @@ class ReadAdminRole_model extends CI_Model
         }
 
 
-        $sql="SELECT * FROM hz_admin_role_module WHERE 1 $where ";
+        $sql="SELECT * FROM hz_admin_role_module WHERE 1 $where ";exit($sql);
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
