@@ -79,5 +79,42 @@ class ReadAdminModule_model extends CI_Model
         return $result;
     }
 
+    public function postAdminModule($admin_id='',$search)
+    {
+
+        $where = ' WHERE 1 ';
+        $header ='';
+
+        if (isset($search['module_id']) && $search['module_id']){
+            $where .=" and module_id='{$search['module_id']}' ";
+
+            $header .="update";
+        } else{
+//            return '';
+            $header .=" insert into ";
+            $where ='';
+        }
+
+        //搜索条件
+
+        $set ="";
+        unset($search['module_id']);
+        foreach ($search as $key =>$value){
+            $set .=" `$key`='{$value}', ";
+        }
+        $set .=" `update_time`=now() ";
+
+
+        $sql = " $header hz_admin_module set $set  $where";
+        $query = $this->cargo->query($sql);
+
+        if ($query){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }
  ?>
