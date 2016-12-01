@@ -58,6 +58,7 @@ class User extends CI_Controller {
 
         ];
         isset($data['user_name'])&&!empty($data['user_name']) ? $search['user_name']=$data['user_name'] : '';
+        isset($data['enabled'])&&!empty($data['enabled']) ? $search['enabled']=$data['enabled'] : '';
 
 
         $this->load->model('ReadUser_model');
