@@ -14,6 +14,7 @@ class ReadAdminModule_model extends CI_Model
 
         if (isset($search['parent_id'])) $where .=" and parent_id={$search['parent_id']}";
 
+        $child ="Y";
         if (isset($search['child'])){
             $child =$search['child'];
         }else{
