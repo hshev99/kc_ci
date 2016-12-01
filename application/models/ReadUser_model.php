@@ -41,6 +41,10 @@ class ReadUser_model extends CI_Model
             'pageCount'=>$pageCount,
             'totalCount'=>$totalCount
         ];
+        $enabled_name =[
+            0=>'禁用',
+            1=>'可用',
+        ];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
                 $arr['user_id']=$row->user_id;
@@ -53,6 +57,7 @@ class ReadUser_model extends CI_Model
                 $arr['email']=$row->email;
                 $arr['company_uid']=$row->company_uid;
                 $arr['enabled']=$row->enabled;
+                $arr['enabled_name']=$enabled_name[$row->enabled];
 
 
                 $result['result'][]=$arr;
