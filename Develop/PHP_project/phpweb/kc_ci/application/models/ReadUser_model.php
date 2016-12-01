@@ -90,7 +90,7 @@ class ReadUser_model extends CI_Model
         $set .=" `update_time`=now() ";
 
 
-        $sql = " update hz_admin_user set $set WHERE 1 $where";
+        $sql = " update hz_admin_user set $set WHERE 1 $where";echo $sql;exit;
         $query = $this->cargo->query($sql);
 
         if ($query){
