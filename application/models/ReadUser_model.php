@@ -52,6 +52,7 @@ class ReadUser_model extends CI_Model
 
                 $arr['email']=$row->email;
                 $arr['company_uid']=$row->company_uid;
+                $arr['enabled']=$row->enabled;
 
 
                 $result['result'][]=$arr;
