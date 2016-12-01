@@ -61,9 +61,9 @@ class AdminModule extends CI_Controller {
         $this->load->model('ReadAdminModule_model');
         $result=$this->ReadAdminModule_model->postAdminModule($this->uid,$search);
         if (!$result){
-            parent::outPutEnd([],109,'暂无数据');
+            parent::outPutEnd([],109,empty($data['module_id'])?'添加失败':'修改失败');
         }else{
-            parent::outPutEnd($result);
+            parent::outPutEnd([],0,empty($data['module_id'])?'添加成功':'修改成功');
         }
 
     }
