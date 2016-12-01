@@ -16,7 +16,7 @@ class ReadAdminRole_model extends CI_Model
         if (isset($search['role_id'])) {
             $where .=" and role_id={$search['role_id']}";
         }else{
-//            if (isset($search['parent_id'])) $where .=" and parent_id={$search['parent_id']}";
+
         }
 
 
