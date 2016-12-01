@@ -26,7 +26,7 @@ class ReadAdminModule_model extends CI_Model
             $child ="Y";
         }
 
-        $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=1";exit($sql);
+        $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=1";
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
