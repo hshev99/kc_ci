@@ -57,6 +57,7 @@ class User extends CI_Controller {
             'user_id'=>isset($data['user_id'])&&!empty($data['user_id']) ? $data['user_id'] : false,
 
         ];
+        isset($data['login_name'])&&!empty($data['login_name']) ? $search['login_name']=$data['login_name'] : '';
         isset($data['user_name'])&&!empty($data['user_name']) ? $search['user_name']=$data['user_name'] : '';
         isset($data['enabled']) ? $search['enabled']=$data['enabled'] : '';
 
