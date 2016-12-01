@@ -6,7 +6,7 @@ class ReadAdminModule_model extends CI_Model
         parent::__construct();
     }
 
-    public function getAdminModule($admin_id='',$search=[]){
+    public function getAdminModule($admin_id='',$search=[],$selected=[]){
         if (!$admin_id) return false;
         $this->cargo = $this->load->database('cargo',TRUE);
 
@@ -38,7 +38,9 @@ class ReadAdminModule_model extends CI_Model
                 $arr['sort']=$row->sort;
                 $arr['action']=$row->action;
 
-                if ($child == 'Y')$arr['child'] = self::getAdminModuleChild($row->module_id);
+                if (!empty($selected)) {in_array($row->module_id,$selected) ? $arr['selected']="Y":$arr['selected']="N";}
+
+                if ($child == 'Y')$arr['child'] = self::getAdminModuleChild($row->module_id,$selected);
 
 
                 $result[]=$arr;
@@ -50,7 +52,7 @@ class ReadAdminModule_model extends CI_Model
         }
     }
 
-    public function getAdminModuleChild($parent_id=''){
+    public function getAdminModuleChild($parent_id='',$selected=[]){
 
         $this->cargo = $this->load->database('cargo',TRUE);
 
@@ -68,7 +70,9 @@ class ReadAdminModule_model extends CI_Model
                 $arr['sort']=$val->sort;
                 $arr['action']=$val->action;
 
-                $arr['child'] = self::getAdminModuleChild($val->module_id);
+                if (!empty($selected)) {in_array($val->module_id,$selected) ? $arr['selected']="Y":$arr['selected']="N";}
+
+                $arr['child'] = self::getAdminModuleChild($val->module_id,$selected);
                 $result[]=$arr;
             }
         }else{
