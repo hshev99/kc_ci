@@ -25,7 +25,7 @@ class ReadUser_model extends CI_Model
 
         $sql="SELECT * FROM hz_admin_user WHERE 1 $where  $order_by $limit ";
         $query=$this->cargo->query($sql);
-
+echo $sql;exit;
         $sql_count="SELECT COUNT(1) as a FROM hz_admin_user WHERE 1 $where ";
         $query_count=$this->cargo->query($sql_count);
 
