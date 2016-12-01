@@ -58,6 +58,7 @@ class AdminModule extends CI_Controller {
         isset($data['enabled'])&&!empty($data['enabled']) ? $search['enabled']=$data['enabled'] :'';
         isset($data['sort'])&&!empty($data['sort']) ? $search['sort']=$data['sort'] :'';
 
+        $this->load->model('ReadAdminModule_model');
         $result=$this->ReadAdminModule_model->postAdminModule($this->uid,$search);
         if (!$result){
             parent::outPutEnd([],109,'暂无数据');
