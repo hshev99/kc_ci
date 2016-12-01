@@ -59,7 +59,7 @@ class User extends CI_Controller {
         ];
 
         $this->load->model('ReadUser_model');
-        $result=$this->ReadUser_model->getUser($search);
+        $result=$this->ReadUser_model->postUser($search);
 
         if (!$result){
             parent::outPutEnd([],109,'修改失败');

@@ -69,6 +69,38 @@ class ReadUser_model extends CI_Model
     }
 
 
+    public function postUser($search)
+    {
+
+        $where = '';
+
+        if (isset($search['user_id']) && $search['user_id']){
+            $where .=" and user_id='{$search['user_id']}' ";
+        } else{
+            return '';
+        }
+
+        //搜索条件
+
+        $set ="";
+        unset($search['user_id']);
+        foreach ($search as $key =>$value){
+            $set .=" `$key`='{$value}', ";
+        }
+        $set .=" `update_time`=now() ";
+
+
+        $sql = " update hz_admin_user set $set WHERE 1 $where";
+        $query = $this->cargo->query($sql);
+
+        if ($query){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 
     
 }
