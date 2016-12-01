@@ -38,15 +38,15 @@ class ReadAdminRole_model extends CI_Model
         }
     }
 
-    public function postAdminModule($admin_id='',$search)
+    public function postAdminRole($admin_id='',$search)
     {
         $this->cargo = $this->load->database('cargo',TRUE);
 
         $where = ' WHERE 1 ';
         $header ='';
 
-        if (isset($search['module_id']) && $search['module_id']){
-            $where .=" and module_id='{$search['module_id']}' ";
+        if (isset($search['role_id']) && $search['role_id']){
+            $where .=" and role_id='{$search['role_id']}' ";
 
             $header .="update";
         } else{
@@ -58,14 +58,14 @@ class ReadAdminRole_model extends CI_Model
         //搜索条件
 
         $set ="";
-        unset($search['module_id']);
+        unset($search['role_id']);
         foreach ($search as $key =>$value){
             $set .=" `$key`='{$value}', ";
         }
         $set .=" `update_time`=now() ";
 
 
-        $sql = " $header hz_admin_module set $set  $where";
+        $sql = " $header hz_admin_role set $set  $where";
         $query = $this->cargo->query($sql);
 
         if ($query){
