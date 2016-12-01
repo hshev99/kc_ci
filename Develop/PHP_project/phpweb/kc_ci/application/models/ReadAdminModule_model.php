@@ -19,11 +19,10 @@ class ReadAdminModule_model extends CI_Model
             if (isset($search['parent_id'])) $where .=" and parent_id={$search['parent_id']}";
         }
 
-        $child ="Y";
         if (isset($search['child'])){
             $child =$search['child'];
         }else{
-            $child ="Y";
+            $child ="N";
         }
 
         $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=1";
