@@ -6,7 +6,7 @@ class ReadAdminModule_model extends CI_Model
         parent::__construct();
     }
 
-    public function getAdminModule($admin_id='',$search=[]){
+    public function getAdminModule($admin_id='',$search=[]){$this->pr($search);
         if (!$admin_id) return false;
         $this->cargo = $this->load->database('cargo',TRUE);
 
