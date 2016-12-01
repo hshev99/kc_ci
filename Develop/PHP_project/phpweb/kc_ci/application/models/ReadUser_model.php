@@ -17,7 +17,7 @@ class ReadUser_model extends CI_Model
 
         //搜索条件
 
-        if ($search['user_name']) $where .=" and user_name='{$search['user_name']}' ";
+        if (isset($search['user_name']) && $search['user_name']) $where .=" and user_name='{$search['user_name']}' ";
 
         $limit='limit '.$l*($page-1).','.$l;
 
