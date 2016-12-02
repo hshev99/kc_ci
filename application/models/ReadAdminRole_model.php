@@ -112,9 +112,17 @@ class ReadAdminRole_model extends CI_Model
 
 
         $role_id = isset($search['role_id'])&&!empty($search['role_id']) ? $search['role_id'] : false;
-        $module_id = isset($search['module_id'])&&!empty($search['module_id']) ? $search['module_id'] : false;
+        $module_id_arr = isset($search['module_id'])&&!empty($search['module_id']) ? $search['module_id'] : false;
 
-        if (!$role_id || !$module_id) return false;
+        if (!$role_id || !$module_id_arr) return false;
+
+        $arr=[];
+        foreach ($module_id_arr as $value){
+            $arr[$value]=$value;
+        }
+        $module_id=[];
+        $module_id=$arr;
+
         $module_id_last=array_pop($module_id);
 
         $set ="";
