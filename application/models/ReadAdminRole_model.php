@@ -115,18 +115,19 @@ class ReadAdminRole_model extends CI_Model
         $module_id = isset($search['module_id'])&&!empty($search['module_id']) ? $search['module_id'] : false;
 
         if (!$role_id || !$module_id) return false;
-        array_pop($module_id);
-        $this->pr($module_id);
+        $module_id_last=array_pop($module_id);
 
         $set ="({$role_id},{$module_id[0]})";
 
-        unset($module_id[0]);
         if (!empty($search['module_id']))foreach ($search['module_id'] as $value){
-
+            $set .=" ($role_id,$value), ";
         }
+        $set .="({$role_id},{$module_id_last})";
 
 
-        $sql ="insert into `hz_admin_role_module`(`module_id`,`role_id`) values (1,10),(2,10),(3,10)";
+        $sql ="insert into `hz_admin_role_module`(`module_id`,`role_id`) values $set";
+
+        $this->pr($sql);
 
 
     }
