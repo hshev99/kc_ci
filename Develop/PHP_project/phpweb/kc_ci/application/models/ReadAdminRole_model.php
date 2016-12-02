@@ -117,8 +117,7 @@ class ReadAdminRole_model extends CI_Model
         if (!$role_id || !$module_id) return false;
         $module_id_last=array_pop($module_id);
 
-        $set ="({$role_id},{$module_id[0]})";
-
+        $set ="";
         if (!empty($search['module_id']))foreach ($search['module_id'] as $value){
             $set .=" ($role_id,$value), ";
         }
