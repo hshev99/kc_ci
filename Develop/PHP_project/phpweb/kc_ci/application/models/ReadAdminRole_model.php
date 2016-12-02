@@ -116,13 +116,13 @@ class ReadAdminRole_model extends CI_Model
 
         if (!$role_id || !$module_id) return false;
         $module_id_last=array_pop($module_id);
-
+        
         $set ="";
-        if (!empty($search['module_id']))foreach ($search['module_id'] as $value){
+        if (!empty($module_id))foreach ($module_id as $value){
             $set .=" ($role_id,$value), ";
         }
         $set .="({$role_id},{$module_id_last})";
-$this->pr($search);
+
 
         $sql_del="delete from `hz_admin_role_module` where role_id={$role_id}";
         $query=$this->cargo->query($sql_del);
