@@ -122,7 +122,7 @@ class ReadAdminRole_model extends CI_Model
         }
         $module_id=[];
         $module_id=$arr;
-$this->pr($module_id);
+        
         $module_id_last=array_pop($module_id);
 
         $set ="";
