@@ -97,8 +97,8 @@ class AdminRole extends CI_Controller {
         $data=json_decode(parent::get_json(),true);
 
         $search=[];
-        isset($data['role_id'])&&!empty($data['role_id']) ? $search=$data['role_id'] : '';
-        isset($data['module_id'])&&!empty($data['module_id']) ? $search=$data['module_id'] : '';
+        isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] : '';
+        isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] : '';
 
         $this->pr($search);
         $this->load->model('ReadAdminRole_model');
