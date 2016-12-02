@@ -67,6 +67,7 @@ class AdminRole extends CI_Controller {
         isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] :$search['role_id']=1;
 
 
+        /*
         $this->load->model('ReadAdminRole_model');
         $result_role=$this->ReadAdminRole_model->getAdminRoleModule($this->uid,$search);
 
@@ -74,6 +75,8 @@ class AdminRole extends CI_Controller {
         foreach ($result_role as $val){
             $arr[]=$val['module_id'];
         }
+        */
+
         $this->load->model('ReadAdminModule_model');
         $result=$this->ReadAdminModule_model->getAdminModule($this->uid,$search=["child"=>"Y"],$arr=[]);
 
