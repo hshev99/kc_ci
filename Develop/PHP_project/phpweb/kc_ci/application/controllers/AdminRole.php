@@ -93,6 +93,11 @@ class AdminRole extends CI_Controller {
 
     }
 
+    public function postAdminRoleModule(){
+        $data=json_decode(parent::get_json(),true);
+        $this->pr($data);
+    }
+
 	public function tt(){
 
 	}
