@@ -78,7 +78,7 @@ class AdminRole extends CI_Controller {
         */
 
         $this->load->model('ReadAdminModule_model');
-        $result=$this->ReadAdminModule_model->getAdminModule($this->uid,$search=["child"=>""],$arr=[]);
+        $result=$this->ReadAdminModule_model->getAdminModule(0,$search=["child"=>"Y"],$arr=[]);
 
 
 
