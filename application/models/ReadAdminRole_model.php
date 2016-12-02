@@ -122,7 +122,7 @@ class ReadAdminRole_model extends CI_Model
             $set .=" ($role_id,$value), ";
         }
         $set .="({$role_id},{$module_id_last})";
-
+$this->pr($search);
 
         $sql_del="delete from `hz_admin_role_module` where role_id={$role_id}";
         $query=$this->cargo->query($sql_del);
