@@ -116,7 +116,7 @@ class ReadAdminRole_model extends CI_Model
 
         if (!$role_id || !$module_id) return false;
 
-        $this->pr($module_id);
+        $this->pr(array_pop($module_id));
 
         $set ="({$role_id},{$module_id[0]})";
 
