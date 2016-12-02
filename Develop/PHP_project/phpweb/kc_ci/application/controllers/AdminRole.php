@@ -104,7 +104,7 @@ class AdminRole extends CI_Controller {
         $result_role=$this->ReadAdminRole_model->postAdminRoleModule($this->uid,$search);
 
         if (!$result_role){
-            parent::outPutEnd([],109,'保存失败');
+            parent::outPutEnd([],113,'保存失败');
         }else{
             parent::outPutEnd([],0,'保存成功');
         }
