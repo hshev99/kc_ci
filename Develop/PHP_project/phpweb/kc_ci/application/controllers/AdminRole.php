@@ -100,7 +100,6 @@ class AdminRole extends CI_Controller {
         isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] : '';
         isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] : '';
 
-        $this->pr($search);
         $this->load->model('ReadAdminRole_model');
         $result_role=$this->ReadAdminRole_model->postAdminRoleModule($this->uid,$search);
 

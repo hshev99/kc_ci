@@ -106,5 +106,30 @@ class ReadAdminRole_model extends CI_Model
         }
     }
 
+    public function postAdminRoleModule($admin_id='',$search=[]){
+        if (!$admin_id) return false;
+        $this->cargo = $this->load->database('cargo',TRUE);
+
+
+        $role_id = isset($search['role_id'])&&!empty($search['role_id']) ? $search['role_id'] : false;
+        $module_id = isset($search['module_id'])&&!empty($search['module_id']) ? $search['module_id'] : false;
+
+        if (!$role_id || !$module_id) return false;
+
+        $this->pr($module_id);
+
+        $set ="({$role_id},{$module_id[0]})";
+
+        unset($module_id[0]);
+        if (!empty($search['module_id']))foreach ($search['module_id'] as $value){
+
+        }
+
+
+        $sql ="insert into `hz_admin_role_module`(`module_id`,`role_id`) values (1,10),(2,10),(3,10)";
+
+
+    }
+
 }
  ?>
