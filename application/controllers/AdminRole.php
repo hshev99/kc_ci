@@ -103,7 +103,11 @@ class AdminRole extends CI_Controller {
         $this->load->model('ReadAdminRole_model');
         $result_role=$this->ReadAdminRole_model->postAdminRoleModule($this->uid,$search);
 
-        $this->pr($data);
+        if (!$result_role){
+            parent::outPutEnd([],109,'保存失败');
+        }else{
+            parent::outPutEnd([],0,'保存成功');
+        }
 
     }
 
