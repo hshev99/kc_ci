@@ -28,7 +28,7 @@ class AdminModule extends CI_Controller {
 	 *
 	 * */
 	public function getAdminModule(){
-$this->pr($this->uid);
+
         $data=json_decode(parent::get_json(),true);
         $search=[
             'parent_id'=>isset($data['parent_id'])&&!empty($data['parent_id']) ? $data['parent_id'] : 0,
