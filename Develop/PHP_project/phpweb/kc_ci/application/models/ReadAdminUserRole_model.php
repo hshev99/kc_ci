@@ -20,12 +20,12 @@ class ReadAdminUserRole_model extends CI_Model
         $sql="SELECT `ur`.`user_id`,`ur`.`role_id`,`r`.`role_name` FROM `hz_admin_user_role` `ur`,`hz_admin_role` `r` 
               WHERE 1 $where and `ur`.`role_id`=`r`.`role_id`  $where ";
         $query=$this->cargo->query($sql);
-        $result=[];$this->pr($query->result());
+        $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
+                $arr['user_id']=$row->user_id;
                 $arr['role_id']=$row->role_id;
                 $arr['role_name']=$row->role_name;
-                $arr['description']=$row->description;
 
                 $result[]=$arr;
             }
