@@ -25,7 +25,11 @@ class ReadAdminModule_model extends CI_Model
             $child ="N";
         }
 
-        $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=1";
+        $sql="SELECT * FROM hz_admin_module WHERE 1 $where AND enabled=1
+              AND module_id IN (
+                select `module_id` from `hz_admin_role_module`where `role_id` in (select `role_id` from `hz_admin_user_role` where `user_id` = {$admin_id});
+              )
+          ";
         $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
@@ -40,7 +44,7 @@ class ReadAdminModule_model extends CI_Model
 
                 if (!empty($selected)) {in_array($row->module_id,$selected) ? $arr['selected']="Y":$arr['selected']="N";}
 
-                if ($child == 'Y')$arr['child'] = self::getAdminModuleChild($row->module_id,$selected);
+                if ($child == 'Y')$arr['child'] = self::getAdminModuleChild($admin_id,$row->module_id,$selected);
 
 
                 $result[]=$arr;
@@ -52,11 +56,15 @@ class ReadAdminModule_model extends CI_Model
         }
     }
 
-    public function getAdminModuleChild($parent_id='',$selected=[]){
+    public function getAdminModuleChild($admin_id='',$parent_id='',$selected=[]){
 
         $this->cargo = $this->load->database('cargo',TRUE);
 
-        $sql="SELECT * FROM hz_admin_module WHERE parent_id=$parent_id AND enabled=1";
+        $sql="SELECT * FROM hz_admin_module WHERE parent_id=$parent_id AND enabled=1
+            AND module_id IN (
+                select `module_id` from `hz_admin_role_module`where `role_id` in (select `role_id` from `hz_admin_user_role` where `user_id` = {$admin_id});
+              )
+              ";
         $query=$this->cargo->query($sql);
 
         $result=[];
@@ -72,7 +80,7 @@ class ReadAdminModule_model extends CI_Model
 
                 if (!empty($selected)) {in_array($val->module_id,$selected) ? $arr['selected']="Y":$arr['selected']="N";}
 
-                $arr['child'] = self::getAdminModuleChild($val->module_id,$selected);
+                $arr['child'] = self::getAdminModuleChild($admin_id,$val->module_id,$selected);
                 $result[]=$arr;
             }
         }else{
