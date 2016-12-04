@@ -50,7 +50,47 @@ class ReadAdminUserRole_model extends CI_Model
 
     }
 
-    public function postAdminUserRole(){
+    public function postAdminUserRole($admin_id='',$search=[]){
+        if (!$admin_id) return false;
+        $this->cargo = $this->load->database('cargo',TRUE);
+
+
+        $role_id = isset($search['role_id'])&&!empty($search['role_id']) ? $search['role_id'] : false;
+
+//        if (!$role_id ) return false;
+
+        $arr=[];
+        if (!empty($role_id))foreach ($role_id as $value){
+            $arr[$value]=$value;
+        }else{
+            $arr=[];
+        }
+
+        $role_id_last=array_pop($arr);
+
+        $role_id_arr=[];
+        $role_id_arr=$arr;
+
+
+
+        $set ="";
+        if (!empty($role_id_arr))foreach ($role_id_arr as $value){
+            $set .=" ($admin_id,$value), ";
+        }
+        $set .="({$admin_id},{$role_id_last})";
+
+
+        $sql_del="delete from `hz_admin_user_role` where user_id={$admin_id}";
+        $query=$this->cargo->query($sql_del);
+
+        $sql ="insert into `hz_admin_user_role`(`user_id`,`role_id`) values $set";
+        $query=$this->cargo->query($sql);
+
+        if ($query){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
