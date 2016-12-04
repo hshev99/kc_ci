@@ -111,6 +111,20 @@ class AdminRole extends CI_Controller {
 
     }
 
+    public function getAdminUserRole(){
+        $data=json_decode(parent::get_json(),true);
+
+        $this->load->model('ReadAdminUserRole_model');
+        $result=$this->ReadAdminUserRole_model->getAdminUserRole($this->uid);
+
+        if (!$result){
+            parent::outPutEnd([],109,'暂无数据');
+        }else{
+            parent::outPutEnd($result);
+        }
+
+    }
+
 	public function tt(){
 
 	}
