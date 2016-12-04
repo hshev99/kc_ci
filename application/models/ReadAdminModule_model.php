@@ -30,7 +30,7 @@ class ReadAdminModule_model extends CI_Model
                 select `module_id` from `hz_admin_role_module`where `role_id` in (select `role_id` from `hz_admin_user_role` where `user_id` = {$admin_id})
               )
           ";
-        $query=$this->cargo->query($sql);$this->pr($query->result());
+        $query=$this->cargo->query($sql);
         $result=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
