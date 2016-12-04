@@ -23,16 +23,11 @@ class ReadAdminUserRole_model extends CI_Model
         $role_id_arr=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-//                $arr['user_id']=$row->user_id;
                 $arr_role[$row->role_id]=$row->role_id;
-//                $arr['role_name']=$row->role_name;
-
                 $role_id_arr[]=$arr_role;
             }
-            
-//            return $result;
+
         }else{
-//            return '';
             $role_id_arr=[];
         }
 
