@@ -62,7 +62,7 @@ class ReadAdminModule_model extends CI_Model
 
         $sql="SELECT * FROM hz_admin_module WHERE parent_id=$parent_id AND enabled=1
             AND module_id IN (
-                select `module_id` from `hz_admin_role_module`where `role_id` in (select `role_id` from `hz_admin_user_role` where `user_id` = {$admin_id});
+                select `module_id` from `hz_admin_role_module`where `role_id` in (select `role_id` from `hz_admin_user_role` where `user_id` = {$admin_id})
               )
               ";
         $query=$this->cargo->query($sql);
