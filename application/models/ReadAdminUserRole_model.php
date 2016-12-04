@@ -30,7 +30,7 @@ class ReadAdminUserRole_model extends CI_Model
         }else{
             $role_id_arr=[];
         }
-        
+
         $sql ="select * FROM hz_admin_role";
         $query=$this->cargo->query($sql);
         if(!empty($query->result())){
