@@ -23,14 +23,14 @@ class ReadAdminUserRole_model extends CI_Model
         $role_id_arr=[];
         if(!empty($query->result())){
             foreach ($query->result() as $row) {
-                $arr_role[$row->role_id]=$row->role_id;
-                $role_id_arr[]=$arr_role;
+//                $arr_role[$row->role_id]=$row->role_id;
+                $role_id_arr[]=$row->role_id;
             }
 
         }else{
             $role_id_arr=[];
         }
-        
+
         $sql ="select * FROM hz_admin_role";
         $query=$this->cargo->query($sql);
         if(!empty($query->result())){
