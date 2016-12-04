@@ -18,7 +18,7 @@ class ReadAdminUserRole_model extends CI_Model
 
 
         $sql="SELECT `ur`.`user_id`,`ur`.`role_id` FROM `hz_admin_user_role` `ur`
-              WHERE 1 $where ";
+              WHERE 1 $where ";exit($sql);
         $query=$this->cargo->query($sql);
         $role_id_arr=[];
         if(!empty($query->result())){
