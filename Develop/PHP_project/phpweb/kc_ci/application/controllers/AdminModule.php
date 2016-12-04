@@ -39,7 +39,7 @@ class AdminModule extends CI_Controller {
         isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] :'';
 
 		$this->load->model('ReadAdminModule_model');
-		$result=$this->ReadAdminModule_model->getAdminModule($this->uid,$search);
+		$result=$this->ReadAdminModule_model->getAdminModule($this->uid,$search,[],true);
 
 		if (!$result){
 			parent::outPutEnd([],109,'暂无数据');
