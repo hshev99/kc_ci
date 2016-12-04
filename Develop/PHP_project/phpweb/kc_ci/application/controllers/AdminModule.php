@@ -38,7 +38,7 @@ class AdminModule extends CI_Controller {
         isset($data['module_id'])&&!empty($data['module_id']) ? $search['module_id']=$data['module_id'] :'';
 
         $role = isset($data['role'])&&!$data['role']=="N" ? false :true;
-
+$this->pr($role);
 		$this->load->model('ReadAdminModule_model');
 		$result=$this->ReadAdminModule_model->getAdminModule($this->uid,$search,[],$role);
 
