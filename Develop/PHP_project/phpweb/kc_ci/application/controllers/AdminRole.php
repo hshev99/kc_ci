@@ -125,6 +125,24 @@ class AdminRole extends CI_Controller {
 
     }
 
+    public function postAdminUserRole(){
+        $data=json_decode(parent::get_json(),true);
+
+
+
+        $search=[];
+        isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] : '';
+
+        $this->load->model('ReadAdminUserRole_model');
+        $result_role=$this->ReadAdminUserRole_model->postAdminUserRole($this->uid,$search);
+
+        if (!$result_role){
+            parent::outPutEnd([],113,'保存失败');
+        }else{
+            parent::outPutEnd([],0,'保存成功');
+        }
+
+    }
 	public function tt(){
 
 	}
