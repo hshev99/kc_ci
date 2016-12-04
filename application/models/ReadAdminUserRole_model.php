@@ -50,6 +50,10 @@ class ReadAdminUserRole_model extends CI_Model
 
     }
 
+    public function postAdminUserRole(){
+
+    }
+
 
 
 
