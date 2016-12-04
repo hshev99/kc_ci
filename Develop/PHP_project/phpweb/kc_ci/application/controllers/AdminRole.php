@@ -114,8 +114,10 @@ class AdminRole extends CI_Controller {
     public function getAdminUserRole(){
         $data=json_decode(parent::get_json(),true);
 
+        $admin_id = isset($data['user_id'])&&!empty($data['user_id']) ? $data['user_id'] : false;
+
         $this->load->model('ReadAdminUserRole_model');
-        $result=$this->ReadAdminUserRole_model->getAdminUserRole($this->uid);
+        $result=$this->ReadAdminUserRole_model->getAdminUserRole($admin_id);
 
         if (!$result){
             parent::outPutEnd([],109,'暂无数据');
@@ -133,8 +135,9 @@ class AdminRole extends CI_Controller {
         $search=[];
         isset($data['role_id'])&&!empty($data['role_id']) ? $search['role_id']=$data['role_id'] : '';
 
+        $admin_id = isset($data['user_id'])&&!empty($data['user_id']) ? $data['user_id'] : false;
         $this->load->model('ReadAdminUserRole_model');
-        $result_role=$this->ReadAdminUserRole_model->postAdminUserRole($this->uid,$search);
+        $result_role=$this->ReadAdminUserRole_model->postAdminUserRole($admin_id,$search);
 
         if (!$result_role){
             parent::outPutEnd([],113,'保存失败');
