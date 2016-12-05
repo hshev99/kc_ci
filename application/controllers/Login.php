@@ -117,7 +117,7 @@ class Login extends CI_Controller {
 		if (json_decode($result,true)['result'] == 0){
 
 			$arr=[
-				'msg'=>json_decode($result,true)['msg']
+				'msg'=>json_decode($result,true)['msg']=='成功'? '验证码已发送，请注意查收':json_decode($result,true)['msg']
 			];
 			parent::outPutEnd($arr);
 
