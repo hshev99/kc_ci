@@ -81,10 +81,11 @@ class AdminModule extends CI_Controller {
 
         $this->load->model('ReadAdminUser_model');
         $result=$this->ReadAdminUser_model->postAdminUser($this->uid,$search);
-        if (!$result){
-            parent::outPutEnd([],109,empty($data['module_id'])?'添加失败':'修改失败');
+        if ($result != 1){
+            if ($result ==2 )parent::outPutEnd([],109,'原密码不正确');
+            if ($result ==3 )parent::outPutEnd([],109,'修改失败');
         }else{
-            parent::outPutEnd([],0,empty($data['module_id'])?'添加成功':'修改成功');
+            parent::outPutEnd([],0,'修改成功');
         }
 
     }
