@@ -72,4 +72,20 @@ class AdminModule extends CI_Controller {
 	public function tt(){
 
 	}
+
+	public function postAdminUser(){
+        $data=json_decode(parent::get_json(),true);
+        $search=[];
+        isset($data['password'])&&!empty($data['password']) ? $search['password']=$data['password'] :'';
+        isset($data['new_pwd'])&&!empty($data['new_pwd']) ? $search['new_pwd']=$data['new_pwd'] :'';
+
+        $this->load->model('ReadAdminUser_model');
+        $result=$this->ReadAdminUser_model->postAdminUser($this->uid,$search);
+        if (!$result){
+            parent::outPutEnd([],109,empty($data['module_id'])?'添加失败':'修改失败');
+        }else{
+            parent::outPutEnd([],0,empty($data['module_id'])?'添加成功':'修改成功');
+        }
+
+    }
 }
